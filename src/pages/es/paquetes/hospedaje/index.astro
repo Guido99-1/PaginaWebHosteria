@@ -1,0 +1,247 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { SITE } from "../../../../config/site";
+
+const pkg = {
+  title: "Hospedaje Familiar",
+  subtitle:
+    "Una opción ideal para familias o grupos que desean descansar en un ambiente cómodo, natural y acogedor en Baños de Agua Santa.",
+  price: "$85",
+  priceNote: "desde / noche",
+  duration: "1 noche o más",
+  guests: "Familias y grupos",
+  availability: "Todo el año",
+  heroImage: "/imagenes/packeges/hospedaje/wallpaper2.jpg",
+  gallery: [
+    "/imagenes/packeges/hospedaje/wallpaper2.jpg",
+    "/imagenes/packeges/hospedaje/wallpaper2.jpg",
+    "/imagenes/packeges/hospedaje/wallpaper2.jpg",
+    "/imagenes/packeges/hospedaje/wallpaper2.jpg",
+  ],
+  includes: [
+    "Alojamiento en habitación familiar",
+    "Desayuno incluido",
+    "Acceso a piscina",
+    "Acceso a sauna y turco",
+    "Uso de áreas verdes",
+    "Parqueadero",
+    "Wi-Fi",
+    "Atención personalizada",
+  ],
+  extras: [
+    "Cama adicional",
+    "Decoración especial",
+    "Almuerzo o cena adicional",
+  ],
+  conditions: [
+    "Tarifa según número de personas",
+    "Check-in desde las 14h00",
+    "Check-out hasta las 12h00",
+    "Reservas sujetas a disponibilidad",
+  ],
+};
+
+const related = [
+  {
+    title: "Full Day",
+    href: "/es/paquetes/full-day/",
+    image: "/imagenes/packeges/full-day/pareja.jpg",
+  },
+  {
+    title: "Paquete Romance",
+    href: "/es/paquetes/romantico/",
+    image: "/imagenes/packeges/romance/romance.jpg",
+  },
+];
+
+const waText = `Hola, quiero información para reservar el ${pkg.title} en ${SITE.name}.`;
+const waUrl =
+  `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
+---
+
+<BaseLayout
+  lang="es"
+  title={`${pkg.title} | ${SITE.name}`}
+  description={pkg.subtitle}
+>
+  <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
+    <div class="relative min-h-[78vh] overflow-hidden">
+      <img src={pkg.heroImage} alt={pkg.title} class="absolute inset-0 h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-slate-950/10"></div>
+
+      <div class="relative z-10 mx-auto flex min-h-[78vh] max-w-7xl items-end px-4 pb-14 pt-28 sm:px-6 lg:px-8">
+        <div class="grid w-full gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+          <div data-reveal>
+            <p class="font-menu text-sm tracking-[0.14em] text-emerald-300">DESCANSO EN FAMILIA</p>
+            <h1 class="mt-4 font-hero text-5xl leading-[1.02] text-white sm:text-6xl lg:text-7xl">{pkg.title}</h1>
+            <p class="mt-5 max-w-2xl text-base leading-8 text-white/82 sm:text-lg">{pkg.subtitle}</p>
+
+            <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a href={waUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-400">
+                Reservar por WhatsApp
+              </a>
+              <a href="#incluye" class="inline-flex items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18">
+                Ver qué incluye
+              </a>
+            </div>
+          </div>
+
+          <aside class="rounded-[2rem] border border-white/15 bg-white/10 p-6 text-white shadow-[0_24px_60px_rgba(0,0,0,0.2)] backdrop-blur-xl" data-reveal>
+            <div class="text-sm uppercase tracking-[0.12em] text-white/70">Tarifa referencial</div>
+            <div class="mt-3 text-5xl font-bold leading-none">{pkg.price}</div>
+            <div class="mt-2 text-sm text-white/70">{pkg.priceNote}</div>
+
+            <div class="mt-6 grid grid-cols-2 gap-3">
+              <div class="rounded-2xl border border-white/10 bg-black/15 p-4">
+                <div class="text-xs text-white/60">Duración</div>
+                <div class="mt-1 text-sm font-semibold">{pkg.duration}</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-black/15 p-4">
+                <div class="text-xs text-white/60">Personas</div>
+                <div class="mt-1 text-sm font-semibold">{pkg.guests}</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-black/15 p-4">
+                <div class="text-xs text-white/60">Disponibilidad</div>
+                <div class="mt-1 text-sm font-semibold">{pkg.availability}</div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-black/15 p-4">
+                <div class="text-xs text-white/60">Reserva</div>
+                <div class="mt-1 text-sm font-semibold">Directa</div>
+              </div>
+            </div>
+
+            <a href={waUrl} target="_blank" rel="noopener" class="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100">
+              Consultar disponibilidad
+            </a>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+        <div data-reveal>
+          <p class="font-menu text-sm text-emerald-600">Comodidad para compartir</p>
+          <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
+            Un hospedaje pensado para disfrutar en familia
+          </h2>
+          <p class="mt-5 text-base leading-8 text-slate-600">
+            Esta propuesta está pensada para quienes buscan una estancia cómoda, espacios agradables y acceso a servicios que complementen la experiencia de descanso.
+          </p>
+        </div>
+
+        <div class="relative" data-reveal>
+          <img src={pkg.gallery[0]} alt="Hospedaje Familiar" class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.08)]" />
+          <div class="absolute -bottom-8 left-8 max-w-xs rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+            <div class="font-semibold text-slate-900">Desayuno incluido</div>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              Habitaciones cómodas, desayuno y acceso a instalaciones para una experiencia más completa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="incluye" class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto mb-12 max-w-3xl text-center" data-reveal>
+        <p class="font-menu text-sm text-sky-600">Qué incluye</p>
+        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Todo para una estancia cómoda y tranquila</h2>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {pkg.includes.map((item) => (
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]" data-reveal>
+            <div class="flex items-start gap-3">
+              <span class="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">✓</span>
+              <p class="text-sm leading-7 text-slate-700">{item}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-6 md:grid-cols-2" data-reveal>
+        {pkg.gallery.map((img, i) => (
+          <img src={img} alt={`Galería hospedaje ${i + 1}`} class="h-[320px] w-full rounded-[2rem] object-cover shadow-[0_16px_40px_rgba(0,0,0,0.08)]" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)]" data-reveal>
+        <p class="font-menu text-sm text-sky-600">Adicionales</p>
+        <h3 class="mt-3 font-hero text-3xl text-slate-900">Personaliza tu estancia</h3>
+        <ul class="mt-5 space-y-3 text-sm leading-7 text-slate-600">
+          {pkg.extras.map((item) => (
+            <li class="flex gap-3"><span class="mt-1 text-emerald-600">•</span><span>{item}</span></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)]" data-reveal>
+        <p class="font-menu text-sm text-sky-600">Condiciones</p>
+        <h3 class="mt-3 font-hero text-3xl text-slate-900">Antes de reservar</h3>
+        <ul class="mt-5 space-y-3 text-sm leading-7 text-slate-600">
+          {pkg.conditions.map((item) => (
+            <li class="flex gap-3"><span class="mt-1 text-emerald-600">•</span><span>{item}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8" data-reveal>
+      <div class="rounded-[2.2rem] border border-slate-200 bg-[linear-gradient(135deg,#f8fafc,#eefbf6)] p-8 text-center shadow-[0_18px_45px_rgba(0,0,0,0.06)] sm:p-12">
+        <p class="font-menu text-sm text-emerald-600">Reserva directa</p>
+        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Reserva tu Hospedaje Familiar</h2>
+        <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600">
+          Una opción ideal para descansar en familia, con comodidad, servicios incluidos y acceso a las instalaciones de la hostería.
+        </p>
+
+        <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+          <a href={waUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400">
+            Reservar por WhatsApp
+          </a>
+          <a href="/es/paquetes/" class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50">
+            Ver todos los paquetes
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center" data-reveal>
+        <p class="font-menu text-sm text-sky-600">También te puede interesar</p>
+        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Otros paquetes</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {related.map((item) => (
+          <a href={item.href} class="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.08)]" data-reveal>
+            <img src={item.image} alt={item.title} class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" />
+            <div class="p-6">
+              <h3 class="font-menu text-xl text-slate-900">{item.title}</h3>
+              <div class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600">
+                <span>Ver detalles</span>
+                <span aria-hidden="true">→</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

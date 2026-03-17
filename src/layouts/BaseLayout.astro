@@ -1,0 +1,125 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+import { SITE } from "../config/site";
+
+import Testimonials from "../components/Testimonials.astro";
+
+type Props = {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  lang?: "es" | "en";
+};
+
+const {
+  title = SITE.name,
+  description = SITE.description,
+  ogImage = SITE.ogImage,
+  lang = "es",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1220" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon (opcional) -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Preconnect fonts (si usas Google Fonts, opcional) -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <!-- Performance: preloads (opcional si tienes una imagen hero fija) -->
+    <!-- <link rel="preload" as="image" href="/images/hero.webp"> -->
+  </head>
+
+  <body class="min-h-screen bg-white text-slate-900 antialiased">
+    <!-- Fondo premium tipo “resort”: gradientes + textura sutil -->
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="absolute -top-48 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl"></div>
+      <div class="absolute top-40 -left-32 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-3xl"></div>
+      <div class="absolute -bottom-48 right-0 h-[620px] w-[820px] rounded-full bg-indigo-500/10 blur-3xl"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_45%)]"></div>
+      <div class="absolute inset-0 opacity-[0.08] [background-image:url('/noise.png')]"></div>
+    </div>
+
+    <Navbar lang={lang} />
+
+    <main>
+  <slot />
+</main>
+    <Footer lang={lang} />
+
+    <WhatsAppFloat lang={lang} />
+
+    <!-- Micro-interacciones: reveal on scroll (ligero, sin librerías) -->
+    <script>
+      (() => {
+        const els = document.querySelectorAll("[data-reveal]");
+        if (!("IntersectionObserver" in window) || els.length === 0) return;
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add("is-revealed");
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.12 }
+        );
+
+        els.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  /* Reveal animation: suave, premium, barato */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 700ms ease, transform 700ms ease;
+    will-change: opacity, transform;
+  }
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Scrollbar sutil (opcional) */
+  :global(html) {
+    scrollbar-color: rgba(148, 163, 184, 0.25) transparent;
+  }
+</style>

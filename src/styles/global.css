@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600&display=swap');
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: white;
+  color: #0f172a;
+}
+
+.font-hero {
+  font-family: 'Cinzel', serif;
+}
+
+.font-menu {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.flag-active img {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
+  filter: brightness(1.12);
+}
+.font-hero {
+  font-family: 'Cinzel', serif;
+}
+
+.font-menu {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

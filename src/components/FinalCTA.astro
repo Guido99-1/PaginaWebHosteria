@@ -1,0 +1,144 @@
+---
+import { SITE } from "../config/site";
+
+type Props = {
+  lang?: "es" | "en";
+  backgroundImage?: string;
+};
+
+const {
+  lang = "es",
+  backgroundImage = "/images/final-cta.jpg",
+} = Astro.props;
+
+const isEs = lang === "es";
+
+const content = isEs
+  ? {
+      eyebrow: "Reserva tu experiencia",
+      title: "Vive una experiencia inolvidable en Hostería Agoyán",
+      subtitle:
+        "Descubre descanso, naturaleza y comodidad en Baños de Agua Santa. Reserva hoy mismo y disfruta una estadía única.",
+      primaryButton: "Reservar por WhatsApp",
+      secondaryButton: "Ver paquetes",
+      secondaryHref: "/es/paquetes/",
+    }
+  : {
+      eyebrow: "Book your experience",
+      title: "Enjoy an unforgettable experience at Hostería Agoyán",
+      subtitle:
+        "Discover rest, nature and comfort in Baños de Agua Santa. Book today and enjoy a unique stay.",
+      primaryButton: "Book on WhatsApp",
+      secondaryButton: "View packages",
+      secondaryHref: "/en/packages/",
+    };
+
+const waText = isEs
+  ? `Hola, quiero información para reservar en ${SITE.name}.`
+  : `Hi, I'd like information to book at ${SITE.name}.`;
+
+const waUrl =
+  `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
+---
+
+<section class="relative bg-white py-28 sm:py-32">
+  <div class="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-8">
+    <div
+      class="group relative overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.18)]"
+      data-reveal
+    >
+      <!-- Fondo -->
+      <div class="absolute inset-0">
+        <img
+          src={backgroundImage}
+          alt={content.title}
+          class="h-full w-full object-cover object-center"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <!-- Overlays -->
+      <div class="absolute inset-0 bg-black/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/55 via-slate-950/30 to-slate-950/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent"></div>
+
+      <!-- Glow -->
+      <div class="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-emerald-300/15 blur-3xl"></div>
+      <div class="pointer-events-none absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-sky-300/10 blur-3xl"></div>
+
+      <!-- Contenido -->
+      <div class="relative z-10 flex min-h-[720px] items-center px-8 py-24 sm:px-14 sm:py-28 lg:px-20 lg:py-32">
+        <div class="mx-auto max-w-5xl text-center">
+          <div class="mb-6 flex justify-center">
+            <div class="inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/10 text-emerald-300 backdrop-blur">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true">
+                <path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <p class="font-menu text-sm tracking-[0.14em] text-emerald-300">
+            {content.eyebrow}
+          </p>
+
+          <h2 class="mt-4 font-hero text-5xl leading-[1.05] text-white sm:text-6xl lg:text-7xl xl:text-8xl">
+            {content.title}
+          </h2>
+
+          <p class="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/82 sm:text-lg lg:text-xl">
+            {content.subtitle}
+          </p>
+
+          <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener"
+              class="cta-primary inline-flex min-w-[230px] items-center justify-center rounded-2xl px-7 py-4 text-sm font-semibold text-white"
+            >
+              {content.primaryButton}
+            </a>
+
+            <a
+              href={content.secondaryHref}
+              class="inline-flex min-w-[190px] items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-7 py-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
+            >
+              {content.secondaryButton}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Borde interno -->
+      <div class="pointer-events-none absolute inset-[1px] rounded-[2.45rem] ring-1 ring-white/10"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-primary {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 18px 40px rgba(16, 185, 129, 0.22);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      filter 0.3s ease;
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+    box-shadow: 0 24px 48px rgba(16, 185, 129, 0.28);
+  }
+
+  .group img {
+    transform: scale(1);
+    transition: transform 7s ease;
+  }
+
+  .group:hover img {
+    transform: scale(1.04);
+  }
+</style>

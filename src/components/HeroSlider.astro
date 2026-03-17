@@ -1,0 +1,213 @@
+---
+import { SITE } from "../config/site";
+
+type Slide = {
+  title: string;
+  subtitle: string;
+  image: string;
+  ctaText: string;
+  ctaHref: string;
+};
+
+type Props = {
+  lang?: "es" | "en";
+  slides: Slide[];
+};
+
+const { lang = "es", slides } = Astro.props;
+const isEs = lang === "es";
+
+const waText = isEs
+  ? `Hola, quiero información para reservar en ${SITE.name}.`
+  : `Hi, I'd like information to book at ${SITE.name}.`;
+
+const waUrl =
+  `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
+---
+
+<section class="relative -mx-4 sm:-mx-6 lg:-mx-8" aria-label="Hero">
+  <div class="relative h-[92vh] min-h-[540px] w-full overflow-hidden">
+    <div class="swiper hero-swiper h-full">
+      <div class="swiper-wrapper h-full">
+        {slides.map((s) => (
+          <div class="swiper-slide h-full">
+            <div class="relative h-full w-full">
+              <img
+                src={s.image}
+                alt={s.title}
+                class="hero-image absolute inset-0 h-full w-full object-cover"
+                loading="eager"
+                decoding="async"
+              />
+
+              <!-- Overlay -->
+              <div class="absolute inset-0 bg-black/45"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10"></div>
+
+              <!-- Content -->
+              <div class="absolute inset-x-0 bottom-0">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14 sm:pb-20">
+                  <div class="max-w-3xl">
+                    <h1 class="hero-title font-hero text-4xl sm:text-6xl lg:text-7xl font-medium tracking-wide text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+                      {s.title}
+                    </h1>
+
+                    <p class="hero-subtitle mt-4 max-w-2xl text-sm sm:text-base lg:text-lg text-white/90 leading-relaxed">
+                      {s.subtitle}
+                    </p>
+
+                    <div class="hero-actions mt-7 flex flex-col gap-3 sm:flex-row">
+                      <a
+                        href={s.ctaHref}
+                        class="inline-flex items-center justify-center border border-white/70 bg-white/10 px-6 py-3 text-sm font-menu text-white backdrop-blur transition hover:bg-white/20"
+                      >
+                        {s.ctaText}
+                      </a>
+
+                      <a
+                        href={waUrl}
+                        target="_blank"
+                        rel="noopener"
+                        class="inline-flex items-center justify-center rounded-md bg-emerald-500/90 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-500"
+                      >
+                        {isEs ? "Reservar por WhatsApp" : "Book on WhatsApp"}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Flechas -->
+      <button
+        class="hero-prev absolute left-3 top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-black/35 text-white backdrop-blur transition hover:bg-black/55 sm:left-6"
+        aria-label="Previous slide"
+        type="button"
+      >
+        ‹
+      </button>
+
+      <button
+        class="hero-next absolute right-3 top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-black/35 text-white backdrop-blur transition hover:bg-black/55 sm:right-6"
+        aria-label="Next slide"
+        type="button"
+      >
+        ›
+      </button>
+
+      <!-- Paginación -->
+      <div class="hero-pagination absolute bottom-4 left-1/2 z-20 -translate-x-1/2"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import "swiper/css/effect-fade";
+
+  (() => {
+    const el = document.querySelector<HTMLElement>(".hero-swiper");
+    if (!el) return;
+
+    new Swiper(el, {
+      modules: [Navigation, Pagination, Autoplay, EffectFade],
+      effect: "fade",
+      fadeEffect: { crossFade: true },
+      loop: true,
+      speed: 900,
+      autoplay: { delay: 6500, disableOnInteraction: false },
+      pagination: { el: ".hero-pagination", clickable: true },
+      navigation: { nextEl: ".hero-next", prevEl: ".hero-prev" },
+    });
+  })();
+</script>
+
+<style>
+  .hero-pagination :global(.swiper-pagination-bullet) {
+    width: 9px;
+    height: 9px;
+    opacity: 0.55;
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  .hero-pagination :global(.swiper-pagination-bullet-active) {
+    opacity: 1;
+  }
+
+  .hero-image {
+    transform: scale(1);
+  }
+
+  :global(.swiper-slide-active) .hero-image {
+    animation: heroImageZoom 6.8s ease forwards;
+  }
+
+  .hero-title,
+  .hero-subtitle,
+  .hero-actions {
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  :global(.swiper-slide-active) .hero-title {
+    animation: heroTitleIn 0.9s ease forwards;
+  }
+
+  :global(.swiper-slide-active) .hero-subtitle {
+    animation: heroSubtitleIn 0.9s ease forwards;
+    animation-delay: 0.25s;
+  }
+
+  :global(.swiper-slide-active) .hero-actions {
+    animation: heroButtonsIn 0.9s ease forwards;
+    animation-delay: 0.45s;
+  }
+
+  @keyframes heroImageZoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.06);
+    }
+  }
+
+  @keyframes heroTitleIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes heroSubtitleIn {
+    from {
+      opacity: 0;
+      transform: translateX(-35px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes heroButtonsIn {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>

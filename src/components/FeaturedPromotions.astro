@@ -1,0 +1,132 @@
+---
+type PromotionItem = {
+  title: string;
+  price: string;
+  description: string;
+  image: string;
+  href: string;
+  featured?: boolean;
+};
+
+type Props = {
+  lang?: "es" | "en";
+  promotions: PromotionItem[];
+};
+
+const { lang = "es", promotions } = Astro.props;
+const isEs = lang === "es";
+
+const content = isEs
+  ? {
+      eyebrow: "Promociones destacadas",
+      title: "Ofertas especiales para vivir una experiencia inolvidable",
+      subtitle:
+        "Descubre promociones pensadas para relajarte, compartir y disfrutar al máximo tu estadía.",
+      button: "Leer más",
+    }
+  : {
+      eyebrow: "Featured promotions",
+      title: "Special offers for an unforgettable experience",
+      subtitle:
+        "Discover promotions designed for relaxation, sharing and enjoying your stay to the fullest.",
+      button: "Read more",
+    };
+
+const featuredPromo = promotions.find((item) => item.featured) ?? promotions[0];
+const secondaryPromos = promotions.filter((item) => item !== featuredPromo);
+---
+
+<section class="bg-slate-50 py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+      <p class="font-menu text-sm text-sky-600">{content.eyebrow}</p>
+      <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
+        {content.title}
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-slate-600">
+        {content.subtitle}
+      </p>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-3">
+      <!-- Featured -->
+      <article class="group overflow-hidden rounded-3xl bg-white shadow-[0_12px_35px_rgba(0,0,0,0.08)] ring-1 ring-slate-200 lg:col-span-2">
+        <a href={featuredPromo.href} class="block h-full">
+          <div class="grid h-full lg:grid-cols-2">
+            <div class="relative h-80 lg:h-full overflow-hidden">
+              <img
+                src={featuredPromo.image}
+                alt={featuredPromo.title}
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-black/5 to-transparent"></div>
+            </div>
+
+            <div class="flex flex-col justify-center p-8 lg:p-10">
+              <span class="inline-flex w-fit rounded-full bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-700">
+                {featuredPromo.price}
+              </span>
+
+              <h3 class="mt-5 font-menu text-2xl text-slate-900 sm:text-3xl">
+                {featuredPromo.title}
+              </h3>
+
+              <p class="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                {featuredPromo.description}
+              </p>
+
+              <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-sky-700 transition group-hover:text-sky-500">
+                <span>{content.button}</span>
+                <span aria-hidden="true">→</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- Secondary -->
+      <div class="grid gap-8">
+        {secondaryPromos.map((item) => (
+          <article class="group overflow-hidden rounded-3xl bg-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.12)]">
+            <a href={item.href} class="block">
+              <div class="relative h-56 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent"></div>
+
+                <div class="absolute bottom-4 left-4">
+                  <span class="rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-slate-900 shadow">
+                    {item.price}
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-6">
+                <h3 class="font-menu text-xl text-slate-900">
+                  {item.title}
+                </h3>
+
+                <p class="mt-3 text-sm leading-6 text-slate-600">
+                  {item.description}
+                </p>
+
+                <div class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-700 transition group-hover:text-sky-500">
+                  <span>{content.button}</span>
+                  <span aria-hidden="true">→</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

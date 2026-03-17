@@ -1,0 +1,462 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { SITE } from "../../../config/site";
+
+const heroSlides = [
+  "/imagenes/instalaciones/wallpaper2.jpg",
+  "/imagenes/instalaciones/wallpaper2.jpg",
+  "/imagenes/instalaciones/wallpaper2.jpg",
+  "/imagenes/instalaciones/wallpaper2.jpg",
+];
+
+const featuredExperiences = [
+  {
+    kicker: "Gastronomía",
+    title: "Restaurante y momentos para compartir",
+    description:
+      "Un espacio acogedor para desayunos, almuerzos, cenas y momentos especiales en un ambiente cálido y agradable.",
+    imageMain: "/imagenes/instalaciones/wallpaper2.jpg",
+    imageTop: "/imagenes/instalaciones/wallpaper2.jpg",
+    imageBottom: "/imagenes/instalaciones/wallpaper2.jpg",
+    points: [
+      "Desayunos y platos especiales",
+      "Ambiente acogedor",
+      "Ideal para compartir",
+    ],
+    href: "/es/instalaciones/restaurante/",
+  },
+  {
+    kicker: "Naturaleza",
+    title: "Áreas verdes y descanso al aire libre",
+    description:
+      "Espacios abiertos, tranquilidad y rincones naturales para caminar, respirar y desconectarte del ritmo diario.",
+    imageMain: "/imagenes/instalaciones/wallpaper2.jpg",
+    imageTop: "/imagenes/instalaciones/wallpaper2.jpg",
+    imageBottom: "/imagenes/instalaciones/wallpaper2.jpg",
+    points: ["Entorno natural", "Áreas de descanso", "Ambiente tranquilo"],
+    href: "/es/instalaciones/areas-verdes/",
+  },
+];
+
+const facilities = [
+  {
+    title: "Área Húmeda",
+    description:
+      "Piscina, sauna, turco e hidromasaje para una experiencia completa de relajación.",
+    image: "/imagenes/instalaciones/wallpaper2.jpg",
+    href: "/es/instalaciones/area-humeda/",
+    badge: "Bienestar",
+  },
+  {
+    title: "Restaurante",
+    description:
+      "Un ambiente ideal para disfrutar buena comida y momentos especiales.",
+    image: "/imagenes/instalaciones/wallpaper2.jpg",
+    href: "/es/instalaciones/restaurante/",
+    badge: "Gastronomía",
+  },
+  {
+    title: "Bar",
+    description:
+      "Un espacio para compartir bebidas y complementar tu experiencia en la hostería.",
+    image: "/imagenes/instalaciones/wallpaper2.jpg",
+    href: "/es/instalaciones/bar/",
+    badge: "Ambiente",
+  },
+  {
+    title: "Áreas Verdes",
+    description:
+      "Naturaleza, paisaje y espacios abiertos para disfrutar con calma.",
+    image: "/imagenes/instalaciones/wallpaper2.jpg",
+    href: "/es/instalaciones/areas-verdes/",
+    badge: "Naturaleza",
+  },
+  {
+    title: "Salón de Juegos",
+    description:
+      "Diversión y entretenimiento para compartir en pareja, familia o con amigos.",
+    image: "/imagenes/instalaciones/wallpaper2.jpg",
+    href: "/es/instalaciones/salon-de-juegos/",
+    badge: "Diversión",
+  },
+  {
+    title: "Parqueadero",
+    description:
+      "Comodidad y seguridad para tu vehículo durante toda tu visita o estadía.",
+    image: "/imagenes/instalaciones/wallpaper2.jpg",
+    href: "/es/instalaciones/parqueadero/",
+    badge: "Confort",
+  },
+];
+
+const waText = `Hola, quiero información sobre las instalaciones de ${SITE.name}.`;
+const waUrl =
+  `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
+---
+
+<BaseLayout
+  lang="es"
+  title={`Instalaciones | ${SITE.name}`}
+  description="Espacios diseñados para descansar, disfrutar y reconectar en Hostería Agoyán."
+>
+  <!-- HERO PREMIUM SOLO IMÁGENES -->
+  <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
+    <div
+      class="facility-hero relative h-[72vh] min-h-[520px] overflow-hidden rounded-b-[2.5rem] bg-slate-950"
+    >
+      <div class="facility-hero-track absolute inset-0">
+        {
+          heroSlides.map((img, i) => (
+            <div
+              class={`facility-hero-slide absolute inset-0 ${i === 0 ? "is-active" : ""}`}
+              style={`background-image:url('${img}')`}
+            />
+          ))
+        }
+      </div>
+
+      <div class="absolute inset-0 bg-black/28"></div>
+      <div
+        class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/55 to-transparent"
+      >
+      </div>
+
+      <div class="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+        {
+          heroSlides.map((_, i) => (
+            <span
+              class={`facility-dot ${i === 0 ? "is-active" : ""}`}
+              data-dot={i}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO MINIMAL -->
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
+      <p class="font-menu text-sm tracking-[0.14em] text-emerald-600">
+        INSTALACIONES AGOYÁN
+      </p>
+      <h1
+        class="mt-4 font-hero text-4xl leading-tight text-slate-900 sm:text-5xl lg:text-6xl"
+      >
+        Espacios que convierten tu visita en una experiencia inolvidable
+      </h1>
+      <p
+        class="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg"
+      >
+        Descubre ambientes pensados para el descanso, la naturaleza, la
+        gastronomía y el bienestar, con un diseño acogedor que te invita a
+        disfrutar cada momento.
+      </p>
+    </div>
+  </section>
+<!-- zona humeda -->
+  <section class="bg-white py-20">
+  <div class="w-full px-4 sm:px-6 lg:px-8" data-reveal>
+    <div class="overflow-hidden rounded-[2.5rem] border border-slate-200 bg-slate-50 shadow-[0_20px_55px_rgba(0,0,0,0.08)]">
+      <div class="grid lg:grid-cols-[1.15fr_0.85fr]">
+        <div class="relative min-h-[380px] lg:min-h-[560px]">
+          <img
+            src="/imagenes/instalaciones/wallpaper2.jpg"
+            alt="Zona húmeda Hostería Agoyán"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-black/20 via-black/5 to-transparent"></div>
+        </div>
+
+        <div class="p-8 sm:p-10 lg:p-14">
+          <p class="font-menu text-sm tracking-[0.14em] text-emerald-600">
+            EXPERIENCIA DESTACADA
+          </p>
+
+          <h2 class="mt-4 font-hero text-4xl leading-tight text-slate-900 sm:text-5xl">
+            Zona húmeda, descanso y bienestar en un solo lugar
+          </h2>
+
+          <p class="mt-5 text-base leading-8 text-slate-600">
+            Uno de los espacios más atractivos de la hostería. Piscina, sauna, turco e hidromasaje
+            se combinan para crear una experiencia premium de relajación, ideal para parejas,
+            familias y quienes buscan desconectarse.
+          </p>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
+              <div class="text-xs uppercase tracking-[0.08em] text-slate-400">Incluye</div>
+              <div class="mt-2 text-base font-semibold text-slate-900">
+                Piscina, sauna, turco e hidromasaje
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
+              <div class="text-xs uppercase tracking-[0.08em] text-slate-400">Ideal para</div>
+              <div class="mt-2 text-base font-semibold text-slate-900">
+                Descanso y bienestar
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="/es/instalaciones/area-humeda/"
+              class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
+            >
+              Ver área húmeda
+            </a>
+
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+            >
+              Consultar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- EXPERIENCIAS DESTACADAS -->
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto mb-14 max-w-3xl text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.14em] text-sky-600">
+          EXPERIENCIAS DESTACADAS
+        </p>
+        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
+          Ambientes con personalidad propia
+        </h2>
+      </div>
+
+      <div class="space-y-20">
+        {
+          featuredExperiences.map((item, index) => (
+            <section
+              class="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]"
+              data-reveal
+            >
+              <div class={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
+                <div class="grid gap-5 sm:grid-cols-[1.15fr_0.85fr]">
+                  <div class="overflow-hidden rounded-[2rem] shadow-[0_18px_45px_rgba(0,0,0,0.08)]">
+                    <img
+                      src={item.imageMain}
+                      alt={item.title}
+                      class="h-full min-h-[440px] w-full object-cover transition duration-700 hover:scale-[1.04]"
+                    />
+                  </div>
+
+                  <div class="grid gap-5">
+                    <div class="overflow-hidden rounded-[1.75rem] shadow-[0_14px_35px_rgba(0,0,0,0.08)]">
+                      <img
+                        src={item.imageTop}
+                        alt={`${item.title} detalle 1`}
+                        class="h-[210px] w-full object-cover transition duration-700 hover:scale-[1.04]"
+                      />
+                    </div>
+                    <div class="overflow-hidden rounded-[1.75rem] shadow-[0_14px_35px_rgba(0,0,0,0.08)]">
+                      <img
+                        src={item.imageBottom}
+                        alt={`${item.title} detalle 2`}
+                        class="h-[210px] w-full object-cover transition duration-700 hover:scale-[1.04]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                <p class="font-menu text-sm tracking-[0.14em] text-emerald-600">
+                  {item.kicker}
+                </p>
+                <h3 class="mt-4 font-hero text-4xl leading-tight text-slate-900 sm:text-5xl">
+                  {item.title}
+                </h3>
+                <p class="mt-5 text-base leading-8 text-slate-600">
+                  {item.description}
+                </p>
+
+                <ul class="mt-8 space-y-4">
+                  {item.points.map((point) => (
+                    <li class="flex items-center gap-4 text-slate-700">
+                      <span class="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-500">
+                        ●
+                      </span>
+                      <span class="text-base">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div class="mt-8">
+                  <a
+                    href={item.href}
+                    class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+                  >
+                    Ver detalle
+                  </a>
+                </div>
+              </div>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID COMPLETO -->
+  <section class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto mb-12 max-w-3xl text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.14em] text-sky-600">
+          TODAS LAS INSTALACIONES
+        </p>
+        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
+          Cada espacio pensado para disfrutar mejor tu visita
+        </h2>
+      </div>
+
+      <div class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
+        {
+          facilities.map((item) => (
+            <article
+              class="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]"
+              data-reveal
+            >
+              <a href={item.href} class="block">
+                <div class="relative h-80 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/8 to-transparent" />
+
+                  <div class="absolute left-5 top-5">
+                    <span class="rounded-full bg-white/95 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-slate-900 shadow">
+                      {item.badge}
+                    </span>
+                  </div>
+                </div>
+
+                <div class="p-6">
+                  <h3 class="font-menu text-2xl text-slate-900">
+                    {item.title}
+                  </h3>
+                  <p class="mt-4 text-sm leading-7 text-slate-600">
+                    {item.description}
+                  </p>
+
+                  <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition group-hover:text-emerald-500">
+                    <span>Explorar espacio</span>
+                    <span aria-hidden="true">→</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="bg-white py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8" data-reveal>
+      <div
+        class="rounded-[2.4rem] border border-slate-200 bg-[linear-gradient(135deg,#f8fafc,#eefbf6)] p-8 text-center shadow-[0_18px_45px_rgba(0,0,0,0.06)] sm:p-12"
+      >
+        <p class="font-menu text-sm tracking-[0.14em] text-emerald-600">
+          DESCUBRE CADA ESPACIO
+        </p>
+        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
+          Vive la experiencia completa de Hostería Agoyán
+        </h2>
+        <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600">
+          Explora nuestras instalaciones, encuentra el ambiente ideal para tu
+          visita y reserva la experiencia que mejor se adapte a tu viaje.
+        </p>
+
+        <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+          <a
+            href="/es/paquetes/"
+            class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
+          >
+            Ver paquetes
+          </a>
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+          >
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .facility-hero-slide {
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    transform: scale(1.06);
+    transition:
+      opacity 1.2s ease,
+      transform 7s ease;
+  }
+
+  .facility-hero-slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .facility-dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.45);
+    transition: all 0.3s ease;
+  }
+
+  .facility-dot.is-active {
+    width: 28px;
+    background: white;
+  }
+</style>
+
+<script>
+  (() => {
+    const hero = document.querySelector(".facility-hero");
+    if (!hero) return;
+
+    const slides = Array.from(hero.querySelectorAll(".facility-hero-slide"));
+    const dots = Array.from(hero.querySelectorAll(".facility-dot"));
+
+    if (!slides.length) return;
+
+    let current = 0;
+
+    const setActive = (index: number) => {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("is-active", i === index);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === index);
+      });
+    };
+    setActive(current);
+
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      setActive(current);
+    }, 4200);
+  })();
+</script>

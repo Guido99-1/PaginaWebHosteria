@@ -1,0 +1,431 @@
+---
+import { SITE } from "../config/site";
+
+type Props = {
+  lang?: "es" | "en";
+};
+
+const { lang = "es" } = Astro.props;
+const isEs = lang === "es";
+const base = `/${lang}`;
+
+const labels = isEs
+  ? {
+      home: "HOME",
+      packages: "PAQUETES",
+      promotions: "PROMOCIONES",
+      facilities: "INSTALACIONES",
+      contact: "CONTACTO",
+    }
+  : {
+      home: "HOME",
+      packages: "PACKAGES",
+      promotions: "PROMOTIONS",
+      facilities: "FACILITIES",
+      contact: "CONTACT",
+    };
+
+const packagesLinks = isEs
+  ? [
+      { label: "Full Day", href: "/es/paquetes/full-day/" },
+      { label: "Romántico", href: "/es/paquetes/romantico/" },
+      { label: "Hospedaje", href: "/es/paquetes/hospedaje/" },
+    ]
+  : [
+      { label: "Full Day", href: "/en/packages/full-day/" },
+      { label: "Romantic", href: "/en/packages/romantic/" },
+      { label: "Lodging", href: "/en/packages/lodging/" },
+    ];
+
+const promotionsLinks = isEs
+  ? [
+      { label: "Promociones vigentes", href: "/es/promociones/" },
+      { label: "Fin de semana", href: "/es/promociones/fin-de-semana/" },
+      { label: "Temporada", href: "/es/promociones/temporada/" },
+    ]
+  : [
+      { label: "Current promotions", href: "/en/promotions/" },
+      { label: "Weekend", href: "/en/promotions/weekend/" },
+      { label: "Season", href: "/en/promotions/season/" },
+    ];
+
+const facilitiesLinks = isEs
+  ? [
+      { label: "Piscina", href: "/es/instalaciones/piscina/" },
+      { label: "Sauna y turco", href: "/es/instalaciones/sauna-turco/" },
+      { label: "Áreas verdes", href: "/es/instalaciones/areas-verdes/" },
+    ]
+  : [
+      { label: "Pool", href: "/en/facilities/pool/" },
+      { label: "Sauna & Steam", href: "/en/facilities/sauna-steam/" },
+      { label: "Green Areas", href: "/en/facilities/green-areas/" },
+    ];
+
+const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
+---
+
+<header class="absolute inset-x-0 top-0 z-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 items-center">
+      <!-- IZQUIERDA: Logo + Marca -->
+      <a href={`${base}/`} class="flex shrink-0 items-center gap-4 text-white">
+        <div
+          class="flex h-16 w-16 items-center justify-center rounded-xl bg-white/95 p-1.5 shadow-lg ring-1 ring-black/10"
+        >
+          <img
+            src="/logoAgoyanHosteria.png"
+            alt="Logo Hostería Agoyán"
+            class="h-full w-full object-contain"
+          />
+        </div>
+
+        <div class="leading-tight">
+          <div
+            class="text-[1.05rem] font-extrabold uppercase tracking-[0.1em] text-white drop-shadow"
+          >
+            {SITE.name}
+          </div>
+          <div
+            class="mt-0.5 text-xs font-medium tracking-[0.04em] text-white/80"
+          >
+            {isEs ? "Baños de Agua Santa" : "Baños de Agua Santa, Ecuador"}
+          </div>
+        </div>
+      </a>
+
+      <!-- DERECHA: menú + banderas + mobile -->
+      <div class="ml-auto flex items-center gap-14">
+        <!-- Desktop Menu -->
+        <nav class="hidden items-center gap-8 md:flex lg:ml-10">
+          <a href={`${base}/`} class="nav-link">
+            {labels.home}
+          </a>
+
+          <!-- Packages -->
+          <div class="group relative">
+            <a
+              href={isEs ? "/es/paquetes/" : "/en/packages/"}
+              class="nav-link flex items-center gap-1"
+            >
+              {labels.packages}
+              <span class="text-[10px]">▼</span>
+            </a>
+
+            <div class="dropdown-menu">
+              {
+                packagesLinks.map((item) => (
+                  <a href={item.href} class="dropdown-item">
+                    {item.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Promotions -->
+          <div class="group relative">
+            <button class="nav-link flex items-center gap-1" type="button">
+              {labels.promotions}
+              <span class="text-[10px]">▼</span>
+            </button>
+
+            <div class="dropdown-menu">
+              {
+                promotionsLinks.map((item) => (
+                  <a href={item.href} class="dropdown-item">
+                    {item.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Facilities -->
+          <div class="group relative">
+            <a
+              href={isEs ? "/es/instalaciones/" : "/en/facilities/"}
+              class="nav-link flex items-center gap-1"
+            >
+              {labels.facilities}
+              <span class="text-[10px]">▼</span>
+            </a>
+
+            <div class="dropdown-menu">
+              {
+                facilitiesLinks.map((item) => (
+                  <a href={item.href} class="dropdown-item">
+                    {item.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+
+          <a href={contactHref} class="nav-link">
+            {labels.contact}
+          </a>
+        </nav>
+
+        <!-- Flags desktop -->
+        <div class="hidden items-center gap-3 md:flex">
+          <a
+            href="/es/"
+            aria-label="Español"
+            class={`flag-link ${isEs ? "flag-active" : ""}`}
+          >
+            <img
+              src="/flags/ecuador.png"
+              alt="Bandera de Ecuador"
+              class="h-4 w-6 rounded-sm object-cover"
+            />
+          </a>
+
+          <a
+            href="/en/"
+            aria-label="English"
+            class={`flag-link ${!isEs ? "flag-active" : ""}`}
+          >
+            <img
+              src="/flags/usa.png"
+              alt="Flag of United States"
+              class="h-4 w-6 rounded-sm object-cover"
+            />
+          </a>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button
+          id="navToggle"
+          class="inline-flex items-center justify-center rounded-md border border-white/30 bg-black/20 p-2 text-white backdrop-blur md:hidden"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M4 7h16M4 12h16M4 17h16"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileNav" class="hidden bg-black/75 backdrop-blur-xl md:hidden">
+    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+      <div class="grid gap-2">
+        <a href={`${base}/`} class="mobile-link">
+          {labels.home}
+        </a>
+
+        <details class="rounded-md bg-white/5">
+          <summary class="mobile-link list-none cursor-pointer">
+            {labels.packages}
+          </summary>
+          <div class="pb-2">
+            {
+              packagesLinks.map((item) => (
+                <a href={item.href} class="mobile-sub-link">
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+        </details>
+
+        <details class="rounded-md bg-white/5">
+          <summary class="mobile-link list-none cursor-pointer">
+            {labels.promotions}
+          </summary>
+          <div class="pb-2">
+            {
+              promotionsLinks.map((item) => (
+                <a href={item.href} class="mobile-sub-link">
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+        </details>
+
+        <details class="rounded-md bg-white/5">
+          <summary class="mobile-link list-none cursor-pointer">
+            {labels.facilities}
+          </summary>
+          <div class="pb-2">
+            {
+              facilitiesLinks.map((item) => (
+                <a href={item.href} class="mobile-sub-link">
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+        </details>
+
+        <a href={contactHref} class="mobile-link">
+          {labels.contact}
+        </a>
+
+        <div class="mt-3 flex items-center gap-3 px-4">
+          <a href="/es/" class="flag-link" aria-label="Español">
+            <img
+              src="/flags/ecuador.png"
+              alt="Bandera de Ecuador"
+              class="h-5 w-7 rounded-sm object-cover"
+            />
+          </a>
+
+          <a href="/en/" class="flag-link" aria-label="English">
+            <img
+              src="/flags/usa.png"
+              alt="Flag of United States"
+              class="h-5 w-7 rounded-sm object-cover"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  (() => {
+    const btn = document.getElementById("navToggle");
+    const panel = document.getElementById("mobileNav");
+
+    if (!btn || !panel) return;
+
+    btn.addEventListener("click", () => {
+      const isHidden = panel.classList.contains("hidden");
+      panel.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", String(isHidden));
+    });
+  })();
+</script>
+
+<style>
+  .nav-link {
+    font-family: "Oswald", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: white;
+    transition: color 0.25s ease;
+  }
+
+  .nav-link:hover {
+    color: #29b6f6;
+  }
+
+  .dropdown-menu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.75rem;
+    min-width: 15rem;
+    border-radius: 0.375rem;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 0.5rem 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+  }
+
+  .group:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 0.65rem 1rem;
+    font-size: 0.92rem;
+    color: #334155;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .dropdown-item:hover {
+    background: #f1f5f9;
+    color: #0ea5e9;
+  }
+
+  .flag-link {
+    transition: transform 0.2s ease;
+  }
+
+  .flag-link:hover {
+    transform: scale(1.08);
+  }
+
+  .mobile-link {
+    display: block;
+    padding: 0.85rem 1rem;
+    font-family: "Oswald", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: white;
+    transition:
+      color 0.25s ease,
+      background-color 0.25s ease;
+  }
+
+  .mobile-link:hover {
+    color: #29b6f6;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-sub-link {
+    display: block;
+    padding: 0.55rem 1.5rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.88);
+    transition: color 0.25s ease;
+  }
+
+  .mobile-sub-link:hover {
+    color: #29b6f6;
+  }
+  .flag-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      transform 0.25s ease,
+      filter 0.25s ease,
+      opacity 0.25s ease;
+  }
+
+  .flag-link img {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      filter 0.25s ease;
+  }
+
+  .flag-link:hover img {
+    transform: scale(1.12) translateY(-1px);
+    filter: brightness(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  }
+  .flag-active img {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
+    filter: brightness(1.12);
+  }
+</style>

@@ -1,0 +1,191 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSlider from "../../components/HeroSlider.astro";
+import FeaturedPackages from "../../components/feacturePackages.astro";
+import FeaturedPromotions from "../../components/FeaturedPromotions.astro";
+import FacilitiesServices from "../../components/FacilitiesServices.astro";
+import ContactSection from "../../components/ContactSection.astro";
+import Testimonials from "../../components/Testimonials.astro";
+import FinalCTA from "../../components/FinalCTA.astro";
+
+
+const slides = [
+  {
+    title: "Naturaleza, descanso y confort",
+    subtitle: "Hospédate en Baños de Agua Santa con piscina, sauna, turco y áreas verdes.",
+    image: "/public/wallpaper1.jpg",
+    ctaText: "Ver paquetes",
+    ctaHref: "/es/paquetes/",
+  },
+  {
+    title: "Momentos únicos en pareja o familia",
+    subtitle: "Ambiente acogedor, vistas y experiencias para desconectarte de todo.",
+    image: "/public/wallpaper2.jpg",
+    ctaText: "Contáctanos",
+    ctaHref: "/es/contacto/",
+  },
+];
+
+const featuredPackages = [
+  {
+    title: "Full Day",
+    price: "Desde $25",
+    description: "Disfruta un día especial con acceso a áreas recreativas, descanso y naturaleza.",
+    image: "/public/fullday.jpg",
+    href: "/es/paquetes/full-day/",
+  },
+  {
+    title: "Paquete Romántico",
+    price: "Desde $60",
+    description: "Ideal para parejas que buscan privacidad, comodidad y un momento inolvidable.",
+    image: "/public/romance.jpg",
+    href: "/es/paquetes/romantico/",
+  },
+  {
+    title: "Hospedaje Familiar",
+    price: "Desde $85",
+    description: "Una opción cómoda para compartir en familia con acceso a espacios y servicios de la hostería.",
+    image: "/public/familia.jpg",
+    href: "/es/paquetes/hospedaje/",
+  },
+];
+const featuredPromotions = [
+  {
+    title: "Escapada Romántica",
+    price: "Desde $70",
+    description: "Una experiencia ideal para parejas con comodidad, privacidad y un ambiente especial para compartir.",
+    image: "/public/fullday.jpg",
+    href: "/es/promociones/escapada-romantica/",
+    featured: true,
+  },
+  {
+    title: "Promoción Full Day",
+    price: "Desde $25",
+    description: "Disfruta de un día de descanso con acceso a espacios recreativos y áreas de relajación.",
+    image: "/public/romance.jpg",
+    href: "/es/promociones/full-day/",
+  },
+  {
+    title: "Fin de Semana Especial",
+    price: "Desde $95",
+    description: "Aprovecha una promoción perfecta para desconectarte y vivir una experiencia completa en la hostería.",
+    image: "/public/familia.jpg",
+    href: "/es/promociones/fin-de-semana/",
+  },
+];
+const facilitiesServices = [
+  {
+    title: "Zona de parking",
+    description: "Contamos con una zona de parqueo segura y amplia para mayor comodidad de nuestros huéspedes.",
+    icon: `
+      <svg viewBox="0 0 24 24">
+        <path d="M3 14l2-6a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 6" />
+        <path d="M5 14h14v4a1 1 0 0 1-1 1h-1v-2H7v2H6a1 1 0 0 1-1-1v-4Z" />
+        <circle cx="7.5" cy="14.5" r="1" />
+        <circle cx="16.5" cy="14.5" r="1" />
+      </svg>
+    `,
+    href: "/es/servicios/parking/",
+  },
+  {
+    title: "Hospedaje",
+    description: "Habitaciones y espacios cómodos para parejas, familias o grupos en un ambiente acogedor.",
+    icon: `
+      <svg viewBox="0 0 24 24">
+        <path d="M3 18v-7h18v7" />
+        <path d="M7 11V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3" />
+        <path d="M3 18v2M21 18v2" />
+      </svg>
+    `,
+    href: "/es/servicios/hospedaje/",
+  },
+  {
+    title: "Zona Húmeda",
+    description: "Piscina, sauna, turco e hidromasaje para disfrutar momentos de relajación y bienestar.",
+    icon: `
+      <svg viewBox="0 0 24 24">
+        <path d="M3 15c1.2 0 1.8 1 3 1s1.8-1 3-1 1.8 1 3 1 1.8-1 3-1 1.8 1 3 1 1.8-1 3-1" />
+        <path d="M7 10a3 3 0 1 1 6 0v1H7v-1Z" />
+      </svg>
+    `,
+    href: "/es/instalaciones/zona-humeda/",
+  },
+  {
+    title: "Internet",
+    description: "Conexión disponible para que puedas mantenerte comunicado durante tu estadía.",
+    icon: `
+      <svg viewBox="0 0 24 24">
+        <path d="M2 8a16 16 0 0 1 20 0" />
+        <path d="M5 12a11 11 0 0 1 14 0" />
+        <path d="M8.5 15.5a6 6 0 0 1 7 0" />
+        <circle cx="12" cy="19" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    `,
+    href: "/es/servicios/internet/",
+  },
+  {
+    title: "Desayuno Buffet",
+    description: "Empieza el día con opciones deliciosas y variadas para disfrutar en familia o en pareja.",
+    icon: `
+      <svg viewBox="0 0 24 24">
+        <path d="M4 14h16" />
+        <path d="M6 14v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2" />
+        <path d="M8 10h8" />
+        <path d="M9 6h6" />
+      </svg>
+    `,
+    href: "/es/servicios/desayuno/",
+  },
+  {
+    title: "Eventos",
+    description: "Espacios ideales para reuniones, celebraciones y ocasiones especiales con atención personalizada.",
+    icon: `
+      <svg viewBox="0 0 24 24">
+        <rect x="4" y="5" width="16" height="15" rx="2" />
+        <path d="M8 3v4M16 3v4M4 10h16" />
+      </svg>
+    `,
+    href: "/es/servicios/eventos/",
+  },
+];
+const testimonials = [
+  {
+    name: "María C.",
+    comment:
+      "Un lugar muy bonito, tranquilo y perfecto para descansar. La atención fue muy amable y las instalaciones estuvieron limpias y cómodas.",
+    rating: 5,
+    source: "Google",
+    date: "Hace 2 semanas",
+  },
+  {
+    name: "Carlos P.",
+    comment:
+      "La experiencia fue excelente. El ambiente, la vista y la comodidad hicieron que nuestra estadía fuera realmente agradable.",
+    rating: 5,
+    source: "Google",
+    date: "Hace 1 mes",
+  },
+  {
+    name: "Andrea R.",
+    comment:
+      "Muy recomendado para ir en pareja o familia. Nos gustó mucho la atención y el espacio para relajarse.",
+    rating: 5,
+    source: "Google",
+    date: "Hace 3 semanas",
+  },
+];
+---
+
+<BaseLayout lang="es" title="Hosteria Agoyan | Baños de Agua Santa">
+  <HeroSlider lang="es" slides={slides} />
+  <FacilitiesServices lang="es" items={facilitiesServices} />
+  <FeaturedPackages lang="es" packages={featuredPackages} />
+  <FeaturedPromotions lang="es" promotions={featuredPromotions} />
+  <Testimonials
+  lang="es"
+  items={testimonials}
+  googleReviewsUrl="https://www.google.com/maps/place/Hoster%C3%ADa+Agoyan+Deluxe/@-1.3989756,-78.3707316,17z/data=!4m11!3m10!1s0x91d393e94e9b472b:0x4c9cab982843a0ba!5m2!4m1!1i2!8m2!3d-1.398981!4d-78.3681567!9m1!1b1!16s%2Fg%2F11c2llttmh?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D"/>
+  <ContactSection lang="es" />
+  
+  <!-- <FinalCTA lang="es" backgroundImage="/public/wallpaper1.jpg" /> -->
+</BaseLayout>
