@@ -5,34 +5,67 @@ import { SITE } from "../../../config/site";
 const page = {
   title: "Promociones",
   subtitle:
-    "Descubre ofertas especiales y promociones pensadas para que disfrutes más por menos en Hostería Agoyán.",
-  heroImage: "/imagenes/promotions/pareja.jpg",
+    "Descubre ofertas especiales pensadas para que disfrutes más por menos en Hostería Agoyán.",
+  heroImage: "/imagenes/instalaciones/Familia.jpg",
 };
 
 const promotions = [
   {
-    title: "Promoción Weekend",
+    number: "01",
+    title: "Promoción familiar",
     description:
-      "Una promoción especial para disfrutar tu fin de semana con beneficios exclusivos, descanso y acceso a nuestras instalaciones.",
-    price: "Desde $59",
+      "Disfruta tu semana con una promoción exclusiva de domingo a jueves: descanso, beneficios únicos y acceso completo para un verdadero relax.",
+    price: "Desde $25 por persona",
     href: "/es/promociones/fin-de-semana/",
-    image: "/imagenes/promotions/season/pareja.jpg",
-    badge: "Fin de semana",
+    image: "/imagenes/instalaciones/Familia3.jpg",
+    badge: "Entre Semana",
+    highlights: ["Hospedaje incluido", "Acceso a instalaciones", "Ambiente de descanso"],
   },
   {
-    title: "Promoción Season",
+    number: "02",
+    title: "Promoción solo Hospedaje",
     description:
       "Aprovecha nuestra temporada promocional con tarifas especiales en hospedaje y experiencias seleccionadas.",
-    price: "Desde $79",
+    price: "Desde $25 por persona",
     href: "/es/promociones/temporada/",
-    image: "/imagenes/promotions/weekend/pareja.jpg",
+    image: "/imagenes/instalaciones/balconHosteria.jpeg",
     badge: "Temporada",
+    highlights: ["Tarifas de temporada", "Experiencias incluidas", "Reserva anticipada"],
   },
 ];
 
+const benefits = [
+  {
+    title: "Precio especial",
+    description: "Tarifas pensadas para que aproveches más tu visita sin sacrificar comodidad.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="24" height="24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`,
+  },
+  {
+    title: "Sin intermediarios",
+    description: "Reserva directo con nosotros por WhatsApp y obtén el mejor precio disponible.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="24" height="24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+  },
+  {
+    title: "Acceso completo",
+    description: "Nuestras promociones incluyen acceso a instalaciones, espacios y servicios.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="24" height="24"><path d="M3 15c1.2 0 1.8 1 3 1s1.8-1 3-1 1.8 1 3 1 1.8-1 3-1 1.8 1 3 1 1.8-1 3-1"/><path d="M7 10a3 3 0 1 1 6 0v1H7v-1Z"/></svg>`,
+  },
+  {
+    title: "Atención personalizada",
+    description: "Nuestro equipo te acompaña en cada paso para que disfrutes sin preocupaciones.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  },
+];
+
+const stats = [
+  { value: "2",    label: "promociones activas" },
+  { value: "100%", label: "reserva directa" },
+  { value: "365",  label: "días disponible" },
+  { value: "∞",    label: "beneficios incluidos" },
+];
+
 const waText = `Hola, quiero información sobre las promociones de ${SITE.name}.`;
-const waUrl =
-  `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
+const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
 <BaseLayout
@@ -40,135 +73,223 @@ const waUrl =
   title={`Promociones | ${SITE.name}`}
   description={page.subtitle}
 >
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
-    <div class="relative min-h-[56vh] overflow-hidden">
+    <div class="relative h-[78vh] min-h-[560px] overflow-hidden">
       <img
         src={page.heroImage}
         alt="Promociones Hostería Agoyán"
-        class="absolute inset-0 h-full w-full object-cover"
+        class="absolute inset-0 h-full w-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
       />
-      <div class="absolute inset-0 bg-black/45"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-slate-950/10"></div>
+      <!-- Gradientes -->
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10"></div>
 
-      <div class="relative z-10 mx-auto flex min-h-[56vh] max-w-7xl items-end px-4 pb-14 pt-28 sm:px-6 lg:px-8">
+      <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6 lg:px-8">
         <div class="max-w-3xl" data-reveal>
-          <p class="font-menu text-sm tracking-[0.14em] text-emerald-300">
+
+          <!-- Eyebrow -->
+          <p class="mb-4 font-menu text-sm tracking-[0.16em] text-emerald-300">
             OFERTAS ESPECIALES
           </p>
-          <h1 class="mt-4 font-hero text-5xl leading-[1.02] text-white sm:text-6xl lg:text-7xl">
+
+          <h1 class="font-hero text-5xl leading-[1.02] text-white sm:text-6xl lg:text-7xl">
             {page.title}
           </h1>
           <p class="mt-5 max-w-2xl text-base leading-8 text-white/82 sm:text-lg">
             {page.subtitle}
           </p>
 
+          <!-- Botones -->
           <div class="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href={waUrl}
               target="_blank"
               rel="noopener"
-              class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-400"
+              class="hero-wa-btn inline-flex items-center justify-center gap-2.5 rounded-2xl px-7 py-3.5 text-sm font-bold text-white"
             >
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+              </svg>
               Consultar por WhatsApp
             </a>
 
             <a
               href="#listado-promociones"
-              class="inline-flex items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
+              class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
             >
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+              </svg>
               Ver promociones
             </a>
           </div>
         </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/50">
+          <span class="font-menu text-[10px] tracking-widest">EXPLORAR</span>
+          <svg class="scroll-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-white py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-        <div data-reveal>
-          <p class="font-menu text-sm text-emerald-600">Aprovecha más</p>
-          <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
-            Promociones para disfrutar tu estadía
-          </h2>
-          <p class="mt-5 text-base leading-8 text-slate-600">
-            Aquí encontrarás promociones actuales y ofertas pensadas para fechas,
-            fines de semana o temporadas especiales. Una forma más conveniente de
-            vivir la experiencia Agoyán.
-          </p>
-        </div>
 
-        <div class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-[0_16px_40px_rgba(0,0,0,0.05)]" data-reveal>
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div class="rounded-2xl bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-              <div class="text-sm text-slate-500">Promociones</div>
-              <div class="mt-2 text-2xl font-bold text-slate-900">2 activas</div>
-            </div>
-            <div class="rounded-2xl bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-              <div class="text-sm text-slate-500">Reserva</div>
-              <div class="mt-2 text-2xl font-bold text-slate-900">Directa</div>
-            </div>
-            <div class="rounded-2xl bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-              <div class="text-sm text-slate-500">Consulta</div>
-              <div class="mt-2 text-2xl font-bold text-slate-900">WhatsApp</div>
-            </div>
-            <div class="rounded-2xl bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-              <div class="text-sm text-slate-500">Beneficios</div>
-              <div class="mt-2 text-2xl font-bold text-slate-900">Especiales</div>
-            </div>
+  <!-- ══ STATS ═════════════════════════════════════════════ -->
+  <section class="border-b border-slate-100 bg-white py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-slate-100 lg:grid-cols-4">
+        {stats.map((s) => (
+          <div class="bg-white px-6 py-7 text-center">
+            <p class="font-hero text-4xl text-emerald-600 sm:text-5xl">{s.value}</p>
+            <p class="mt-1.5 text-sm leading-snug text-slate-500">{s.label}</p>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section id="listado-promociones" class="bg-slate-50 py-20">
+
+  <!-- ══ INTRO + BENEFICIOS ════════════════════════════════ -->
+  <section class="bg-white py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto mb-12 max-w-3xl text-center" data-reveal>
-        <p class="font-menu text-sm text-sky-600">Promociones disponibles</p>
+
+      <div class="mb-14 text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">POR QUÉ APROVECHAR</p>
+        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
+          Más experiencia, mejor precio
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-500">
+          Nuestras promociones son una forma conveniente de vivir la experiencia Agoyán con beneficios exclusivos en fechas y temporadas especiales.
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {benefits.map((b, i) => (
+          <div class="benefit-card group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_14px_36px_rgba(0,0,0,0.10)]" data-reveal>
+            <!-- Accent line top -->
+            <div class="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-emerald-400 to-teal-400 transition-transform duration-500 group-hover:scale-x-100 [will-change:transform]"></div>
+
+            <!-- Número editorial -->
+            <span class="select-none font-hero text-5xl font-bold leading-none text-slate-100">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+
+            <!-- Ícono -->
+            <div class="benefit-icon mt-3 inline-flex h-12 w-12 items-center justify-center rounded-2xl text-emerald-600 transition-colors duration-300">
+              <Fragment set:html={b.icon} />
+            </div>
+
+            <h3 class="mt-4 font-hero text-xl text-slate-900">{b.title}</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-500">{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ LISTADO DE PROMOCIONES ════════════════════════════ -->
+  <section id="listado-promociones" class="bg-slate-50 py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-14 text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">PROMOCIONES DISPONIBLES</p>
         <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
           Elige la oferta ideal para tu visita
         </h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-slate-500">
+          Dos opciones pensadas para distintos momentos. Consulta disponibilidad antes de reservar.
+        </p>
       </div>
 
       <div class="grid gap-8 lg:grid-cols-2">
         {promotions.map((item) => (
           <article
-            class="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]"
+            class="promo-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.07)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]"
             data-reveal
           >
+            <!-- Línea de acento top -->
+            <div class="absolute inset-x-0 top-0 z-10 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-emerald-400 to-teal-400 transition-transform duration-500 group-hover:scale-x-100 [will-change:transform]"></div>
+
             <a href={item.href} class="block">
-              <div class="relative h-80 overflow-hidden">
+              <!-- Imagen -->
+              <div class="relative h-72 overflow-hidden sm:h-80">
                 <img
                   src={item.image}
                   alt={item.title}
-                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 [will-change:transform]"
+                  loading="lazy"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/8 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent"></div>
 
+                <!-- Badge categoría -->
                 <div class="absolute left-5 top-5">
-                  <span class="rounded-full bg-white/95 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-slate-900 shadow">
+                  <span class="rounded-full bg-white/95 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-slate-800 shadow-sm backdrop-blur">
                     {item.badge}
                   </span>
                 </div>
 
-                <div class="absolute bottom-5 left-5">
-                  <span class="rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow">
+                <!-- Precio en imagen -->
+                <div class="absolute bottom-5 right-5">
+                  <span class="price-pill rounded-full px-5 py-2 text-sm font-bold text-white shadow-lg">
                     {item.price}
+                  </span>
+                </div>
+
+                <!-- Número editorial en imagen -->
+                <div class="absolute bottom-5 left-5">
+                  <span class="font-hero text-5xl font-bold leading-none text-white/20 select-none">
+                    {item.number}
                   </span>
                 </div>
               </div>
 
-              <div class="p-6">
-                <h3 class="font-menu text-2xl text-slate-900">{item.title}</h3>
-                <p class="mt-4 text-sm leading-7 text-slate-600">
-                  {item.description}
-                </p>
+              <!-- Contenido -->
+              <div class="p-7">
+                <h3 class="font-hero text-2xl text-slate-900">{item.title}</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-500">{item.description}</p>
 
-                <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition group-hover:text-emerald-500">
-                  <span>Ver detalles</span>
-                  <span aria-hidden="true">→</span>
+                <!-- Highlights -->
+                <ul class="mt-5 space-y-2.5">
+                  {item.highlights.map((h) => (
+                    <li class="flex items-center gap-3">
+                      <span class="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3" class="text-emerald-600">
+                          <path d="M20 6L9 17l-5-5"/>
+                        </svg>
+                      </span>
+                      <span class="text-sm text-slate-600">{h}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <!-- CTA link -->
+                <div class="mt-7 flex items-center justify-between border-t border-slate-100 pt-5">
+                  <span class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition-colors duration-200 group-hover:text-emerald-500">
+                    Ver detalles
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </span>
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener"
+                    onclick="event.stopPropagation()"
+                    class="inline-flex items-center gap-1.5 rounded-xl bg-emerald-50 px-4 py-2 text-xs font-semibold text-emerald-700 transition hover:bg-emerald-100"
+                  >
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+                    </svg>
+                    Consultar
+                  </a>
                 </div>
               </div>
             </a>
@@ -178,35 +299,202 @@ const waUrl =
     </div>
   </section>
 
-  <section class="bg-white py-20">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8" data-reveal>
-      <div class="rounded-[2.2rem] border border-slate-200 bg-[linear-gradient(135deg,#f8fafc,#eefbf6)] p-8 text-center shadow-[0_18px_45px_rgba(0,0,0,0.06)] sm:p-12">
-        <p class="font-menu text-sm text-emerald-600">Consulta rápida</p>
-        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
-          ¿Quieres saber cuál te conviene más?
-        </h2>
-        <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600">
-          Escríbenos por WhatsApp y te ayudamos a elegir la promoción más conveniente
-          según la fecha de tu viaje y el tipo de experiencia que buscas.
-        </p>
 
-        <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
-          >
-            Consultar por WhatsApp
-          </a>
-          <a
-            href="/es/contacto/"
-            class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-          >
-            Ir a contacto
-          </a>
+  <!-- ══ AVISO TEMPORADA ═══════════════════════════════════ -->
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center" data-reveal>
+
+        <!-- Texto -->
+        <div>
+          <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">CONSULTA RÁPIDA</p>
+          <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
+            ¿No sabes cuál te conviene más?
+          </h2>
+          <p class="mt-5 text-base leading-8 text-slate-600">
+            Escríbenos por WhatsApp y te ayudamos a elegir la promoción más conveniente según la fecha de tu viaje y el tipo de experiencia que buscas. La atención es inmediata.
+          </p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener"
+              class="hero-wa-btn inline-flex items-center justify-center gap-2.5 rounded-2xl px-7 py-3.5 text-sm font-bold text-white"
+            >
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+              </svg>
+              Consultar por WhatsApp
+            </a>
+            <a
+              href="/es/contacto/"
+              class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+            >
+              Ir a contacto
+            </a>
+          </div>
+        </div>
+
+        <!-- Card de apoyo -->
+        <div class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+          <p class="font-menu text-xs tracking-[0.16em] text-emerald-600">LO QUE INCLUYEN NUESTRAS PROMOS</p>
+          <ul class="mt-6 space-y-4">
+            {[
+              "Acceso a piscina, sauna y turco",
+              "Hospedaje en habitaciones cómodas",
+              "Desayuno incluido en paquetes",
+              "Atención personalizada",
+              "Entorno natural único en Baños",
+              "Reserva directa sin intermediarios",
+            ].map((item) => (
+              <li class="flex items-start gap-3.5">
+                <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3" class="text-emerald-600">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                </span>
+                <span class="text-sm leading-7 text-slate-600">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
   </section>
+
+
+  <!-- ══ CTA FINAL ════════════════════════════════════════ -->
+  <section class="cta-section relative -mx-4 overflow-hidden py-28 sm:-mx-6 sm:py-36 lg:-mx-8">
+    <!-- Glow orbs -->
+    <div class="pointer-events-none absolute -left-32 -top-32 h-[480px] w-[480px] rounded-full bg-emerald-400/20 blur-[96px]"></div>
+    <div class="pointer-events-none absolute -right-32 bottom-0 h-[440px] w-[440px] rounded-full bg-teal-300/15 blur-[80px]"></div>
+    <div class="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[100px]"></div>
+
+    <!-- Grid pattern -->
+    <div class="cta-grid pointer-events-none absolute inset-0 opacity-[0.06]"></div>
+
+    <!-- Líneas decorativas -->
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/40 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent"></div>
+
+    <div class="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
+
+      <!-- Badge icon -->
+      <div class="mb-8 flex justify-center">
+        <div class="cta-badge inline-flex h-16 w-16 items-center justify-center rounded-2xl">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+      </div>
+
+      <p class="font-menu text-sm tracking-[0.2em] text-emerald-300">APROVECHA AHORA</p>
+      <h2 class="mt-5 font-hero text-4xl leading-[1.04] text-white sm:text-5xl lg:text-6xl">
+        No dejes pasar<br />la mejor oferta
+      </h2>
+      <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
+        Consulta disponibilidad y reserva tu estadía con uno de nuestros paquetes promocionales. El equipo de Hostería Agoyán está listo para atenderte.
+      </p>
+
+      <!-- Feature pills -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        {[
+          { icon: "💧", label: "Piscina & Spa" },
+          { icon: "🌿", label: "Naturaleza" },
+          { icon: "🏡", label: "Hospedaje" },
+        ].map((f) => (
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-5 py-2 text-sm text-white/85 backdrop-blur">
+            <span aria-hidden="true">{f.icon}</span>
+            {f.label}
+          </span>
+        ))}
+      </div>
+
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener"
+          class="cta-wa-btn inline-flex min-w-[220px] items-center justify-center gap-2.5 rounded-2xl bg-white px-8 py-4 text-sm font-bold text-emerald-700"
+        >
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+          </svg>
+          Reservar por WhatsApp
+        </a>
+
+        <a
+          href="/es/paquetes/"
+          class="inline-flex min-w-[180px] items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition hover:border-white/40 hover:bg-white/18"
+        >
+          Ver paquetes
+        </a>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
+
+<style>
+  /* ── Hero WA button ── */
+  .hero-wa-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.38);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+  }
+  .hero-wa-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.07);
+    box-shadow: 0 14px 34px rgba(16, 185, 129, 0.48);
+  }
+
+  /* ── Scroll arrow ── */
+  .scroll-arrow { animation: bounce-arr 1.8s ease-in-out infinite; }
+  @keyframes bounce-arr {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+
+  /* ── Benefit icon bg ── */
+  .benefit-icon { background: rgba(16, 185, 129, 0.09); }
+  .benefit-card:hover .benefit-icon { background: rgba(16, 185, 129, 0.16); }
+
+  /* ── Price pill gradient ── */
+  .price-pill {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  }
+
+  /* ── CTA final ── */
+  .cta-section {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(20, 184, 166, 0.14) 0%, transparent 45%),
+      linear-gradient(160deg, #0d2218 0%, #0f2d22 30%, #0b2320 60%, #071a17 100%);
+  }
+
+  .cta-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  .cta-badge {
+    background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(20,184,166,0.15));
+    border: 1px solid rgba(16,185,129,0.3);
+    color: #6ee7b7;
+    box-shadow: 0 0 0 6px rgba(16,185,129,0.06), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .cta-wa-btn {
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  }
+  .cta-wa-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.03);
+    box-shadow: 0 22px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+</style>

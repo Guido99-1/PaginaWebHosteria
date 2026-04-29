@@ -35,8 +35,8 @@ const content = isEs
 <section class="bg-white py-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="mx-auto mb-12 max-w-3xl text-center">
-      <p class="font-menu text-sm text-sky-600">{content.eyebrow}</p>
+    <div class="mx-auto mb-12 max-w-3xl text-center" data-reveal>
+      <p class="font-menu text-sm tracking-[0.18em] text-emerald-600 uppercase">{content.eyebrow}</p>
       <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
         {content.title}
       </h2>
@@ -54,9 +54,8 @@ const content = isEs
               <img
                 src={item.image}
                 alt={item.title}
-                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-105 [will-change:transform]"
                 loading="lazy"
-                decoding="async"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent"></div>
 

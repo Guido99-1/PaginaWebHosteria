@@ -1,76 +1,106 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroSlider from "../../components/HeroSlider.astro";
+import Welcome from "../../components/Welcome.astro";
 import FeaturedPackages from "../../components/feacturePackages.astro";
 import FeaturedPromotions from "../../components/FeaturedPromotions.astro";
 import FacilitiesServices from "../../components/FacilitiesServices.astro";
 import ContactSection from "../../components/ContactSection.astro";
 import Testimonials from "../../components/Testimonials.astro";
 import FinalCTA from "../../components/FinalCTA.astro";
+import YoutubeSection from "../../components/YoutubeSection.astro";
 
 
 const slides = [
   {
     title: "Naturaleza, descanso y confort",
     subtitle: "Hospédate en Baños de Agua Santa con piscina, sauna, turco y áreas verdes.",
-    image: "/public/wallpaper1.jpg",
+    image: "/imagenes/instalaciones/ExteriorComedor.jpg",
     ctaText: "Ver paquetes",
     ctaHref: "/es/paquetes/",
   },
   {
+    title: "Momentos únicos de relax en nuestra zona húmeda",
+    subtitle: "Un ambiente cálido con piscinas, sauna y turco, ideal para desconectarte y renovarte por completo.",
+    image: "/imagenes/instalaciones/hidromasaje.jpg",
+    ctaText: "Contáctanos",
+    ctaHref: "/es/instalaciones/",
+  },
+  {
     title: "Momentos únicos en pareja o familia",
     subtitle: "Ambiente acogedor, vistas y experiencias para desconectarte de todo.",
-    image: "/public/wallpaper2.jpg",
-    ctaText: "Contáctanos",
-    ctaHref: "/es/contacto/",
+    image: "/imagenes/instalaciones/Suite5.jpg",
+    ctaText: "Promociones",
+    ctaHref: "/es/promociones/",
   },
 ];
 
 const featuredPackages = [
   {
-    title: "Full Day",
-    price: "Desde $25",
-    description: "Disfruta un día especial con acceso a áreas recreativas, descanso y naturaleza.",
-    image: "/public/fullday.jpg",
-    href: "/es/paquetes/full-day/",
+    title: "Paquete Aventura",
+    price: "Desde $79 p/p",
+    description: "Cinco tours en un solo paquete: cascadas, miradores, vida silvestre y cultura local con guía profesional incluido.",
+    image: "/imagenes/instalaciones/Aventura2.jpeg",
+    href: "/es/paquetes/aventura/",
   },
   {
-    title: "Paquete Romántico",
-    price: "Desde $60",
-    description: "Ideal para parejas que buscan privacidad, comodidad y un momento inolvidable.",
-    image: "/public/romance.jpg",
-    href: "/es/paquetes/romantico/",
+    title: "Paquete Baños Extremo",
+    price: "Desde $155 p/p",
+    description: "Rafting, rapel en cascadas, Animal Park y Laberinto del Dragón. Todas las entradas privadas incluidas.",
+    image: "/imagenes/instalaciones/Extremo.jpeg",
+    href: "/es/paquetes/banos-extremo/",
   },
   {
-    title: "Hospedaje Familiar",
-    price: "Desde $85",
-    description: "Una opción cómoda para compartir en familia con acceso a espacios y servicios de la hostería.",
-    image: "/public/familia.jpg",
-    href: "/es/paquetes/hospedaje/",
+    title: "Paquete Baños Premium",
+    price: "Desde $175 p/p",
+    description: "Más de 12 tours exclusivos con todas las entradas privadas incluidas. La experiencia más completa de Baños.",
+    image: "/imagenes/instalaciones/Aventura5.jpeg",
+    href: "/es/paquetes/banos-premium/",
+  },
+  {
+    title: "Paquete Baños + Quilotoa",
+    price: "Desde $135 p/p",
+    description: "Baños de Agua Santa y la majestuosa Laguna del Quilotoa en un solo paquete con caminata épica incluida.",
+    image: "/imagenes/instalaciones/Quilotoa3.jpeg",
+    href: "/es/paquetes/banos-quilotoa/",
+  },
+  {
+    title: "Paquete Baños + Selva",
+    price: "Desde $129 p/p",
+    description: "Ruta de Cascadas, Casa del Árbol, Manos de Dios y un día completo en la selva amazónica con almuerzo.",
+    image: "/imagenes/instalaciones/Amazonia2.jpeg",
+    href: "/es/paquetes/banos-selva/",
+  },
+  {
+    title: "Paquete Selva Amazónica",
+    price: "Desde $69 p/p",
+    description: "Caminatas, canoa en el Río Puyo, animales exóticos y convivencia con comunidades indígenas quichuas.",
+    image: "/imagenes/instalaciones/Amazonia5.jpeg",
+    href: "/es/paquetes/selva-amazonica/",
   },
 ];
 const featuredPromotions = [
   {
     title: "Escapada Romántica",
-    price: "Desde $70",
+    price: "Desde $199",
     description: "Una experiencia ideal para parejas con comodidad, privacidad y un ambiente especial para compartir.",
-    image: "/public/fullday.jpg",
-    href: "/es/promociones/escapada-romantica/",
+    image: "/imagenes/instalaciones/pareja.jpg",
+    href: "/es/paquetes/romantico/",
     featured: true,
   },
   {
     title: "Promoción Full Day",
-    price: "Desde $25",
+    price: "Desde $10",
     description: "Disfruta de un día de descanso con acceso a espacios recreativos y áreas de relajación.",
-    image: "/public/romance.jpg",
-    href: "/es/promociones/full-day/",
+    image: "/imagenes/instalaciones/FullDay.jpg",
+    href: "/es/paquetes/full-day/",
   },
   {
     title: "Fin de Semana Especial",
-    price: "Desde $95",
+    price: "Desde $35",
     description: "Aprovecha una promoción perfecta para desconectarte y vivir una experiencia completa en la hostería.",
-    image: "/public/familia.jpg",
-    href: "/es/promociones/fin-de-semana/",
+    image: "/imagenes/instalaciones/Familia2.jpg",
+    href: "/es/paquetes/hospedaje/",
   },
 ];
 const facilitiesServices = [
@@ -85,7 +115,6 @@ const facilitiesServices = [
         <circle cx="16.5" cy="14.5" r="1" />
       </svg>
     `,
-    href: "/es/servicios/parking/",
   },
   {
     title: "Hospedaje",
@@ -97,7 +126,6 @@ const facilitiesServices = [
         <path d="M3 18v2M21 18v2" />
       </svg>
     `,
-    href: "/es/servicios/hospedaje/",
   },
   {
     title: "Zona Húmeda",
@@ -108,7 +136,6 @@ const facilitiesServices = [
         <path d="M7 10a3 3 0 1 1 6 0v1H7v-1Z" />
       </svg>
     `,
-    href: "/es/instalaciones/zona-humeda/",
   },
   {
     title: "Internet",
@@ -121,11 +148,10 @@ const facilitiesServices = [
         <circle cx="12" cy="19" r="1" fill="currentColor" stroke="none" />
       </svg>
     `,
-    href: "/es/servicios/internet/",
   },
   {
-    title: "Desayuno Buffet",
-    description: "Empieza el día con opciones deliciosas y variadas para disfrutar en familia o en pareja.",
+    title: "Desayuno Incluido",
+    description: "Empieza el día con un desayuno para disfrutar en familia o en pareja.",
     icon: `
       <svg viewBox="0 0 24 24">
         <path d="M4 14h16" />
@@ -134,7 +160,6 @@ const facilitiesServices = [
         <path d="M9 6h6" />
       </svg>
     `,
-    href: "/es/servicios/desayuno/",
   },
   {
     title: "Eventos",
@@ -145,7 +170,6 @@ const facilitiesServices = [
         <path d="M8 3v4M16 3v4M4 10h16" />
       </svg>
     `,
-    href: "/es/servicios/eventos/",
   },
 ];
 const testimonials = [
@@ -176,16 +200,18 @@ const testimonials = [
 ];
 ---
 
-<BaseLayout lang="es" title="Hosteria Agoyan | Baños de Agua Santa">
+<BaseLayout lang="es" title={`Hostería Agoyán | Baños de Agua Santa`}>
   <HeroSlider lang="es" slides={slides} />
-  <FacilitiesServices lang="es" items={facilitiesServices} />
+  <Welcome lang="es" />
   <FeaturedPackages lang="es" packages={featuredPackages} />
   <FeaturedPromotions lang="es" promotions={featuredPromotions} />
+  <FacilitiesServices lang="es" items={facilitiesServices} />
   <Testimonials
-  lang="es"
-  items={testimonials}
-  googleReviewsUrl="https://www.google.com/maps/place/Hoster%C3%ADa+Agoyan+Deluxe/@-1.3989756,-78.3707316,17z/data=!4m11!3m10!1s0x91d393e94e9b472b:0x4c9cab982843a0ba!5m2!4m1!1i2!8m2!3d-1.398981!4d-78.3681567!9m1!1b1!16s%2Fg%2F11c2llttmh?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D"/>
+    lang="es"
+    items={testimonials}
+    googleReviewsUrl="https://www.google.com/maps/place/Hoster%C3%ADa+Agoyan+Deluxe/@-1.3989756,-78.3707316,17z/data=!4m11!3m10!1s0x91d393e94e9b472b:0x4c9cab982843a0ba!5m2!4m1!1i2!8m2!3d-1.398981!4d-78.3681567!9m1!1b1!16s%2Fg%2F11c2llttmh?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D"
+  />
+  <YoutubeSection />
   <ContactSection lang="es" />
-  
-  <!-- <FinalCTA lang="es" backgroundImage="/public/wallpaper1.jpg" /> -->
+  <FinalCTA lang="es" />
 </BaseLayout>

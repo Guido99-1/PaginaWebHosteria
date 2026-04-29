@@ -3,10 +3,19 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../config/site";
 
 const heroSlides = [
-  "/imagenes/instalaciones/wallpaper2.jpg",
-  "/imagenes/instalaciones/wallpaper2.jpg",
-  "/imagenes/instalaciones/wallpaper2.jpg",
-  "/imagenes/instalaciones/wallpaper2.jpg",
+  "/imagenes/instalaciones/hidromasaje.jpg",
+  "/imagenes/instalaciones/Piscina3.jpg",
+  "/imagenes/instalaciones/Comedor.jpg",
+  "/imagenes/instalaciones/Sala.jpg",
+];
+
+const quickNav = [
+  { label: "Zona Húmeda",    href: "/es/instalaciones/areaHumeda/",    icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 15c1.2 0 1.8 1 3 1s1.8-1 3-1 1.8 1 3 1 1.8-1 3-1 1.8 1 3 1 1.8-1 3-1"/><path d="M7 10a3 3 0 1 1 6 0v1H7v-1Z"/></svg>` },
+  { label: "Restaurante",    href: "/es/instalaciones/restaurante/",   icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l1-6h16l1 6"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8Z"/></svg>` },
+  { label: "Áreas Verdes",   href: "/es/instalaciones/areasVerdes/",   icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22V12M12 12C12 7 7 4 3 6M12 12C12 7 17 4 21 6"/></svg>` },
+  { label: "Salón de Juegos",href: "/es/instalaciones/salonDeJuegos/", icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M8 12h2m1-1v2M16 11h2"/></svg>` },
+  { label: "Bar",            href: "/es/instalaciones/discoteca/",     icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2l4 10 4-10"/><path d="M4 10h16M9 22h6M12 12v10"/></svg>` },
+  { label: "Parqueadero",    href: "#instalaciones",                   icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="22" height="14" rx="2"/><path d="M6 21h12M9 17v4M15 17v4"/></svg>` },
 ];
 
 const featuredExperiences = [
@@ -15,77 +24,83 @@ const featuredExperiences = [
     title: "Restaurante y momentos para compartir",
     description:
       "Un espacio acogedor para desayunos, almuerzos, cenas y momentos especiales en un ambiente cálido y agradable.",
-    imageMain: "/imagenes/instalaciones/wallpaper2.jpg",
-    imageTop: "/imagenes/instalaciones/wallpaper2.jpg",
-    imageBottom: "/imagenes/instalaciones/wallpaper2.jpg",
+    imageMain: "/imagenes/instalaciones/Comedor3.jpg",
+    imageTop: "/imagenes/instalaciones/Comedor4.jpg",
+    imageBottom: "/imagenes/instalaciones/Comedor5.jpg",
     points: [
       "Desayunos y platos especiales",
-      "Ambiente acogedor",
-      "Ideal para compartir",
+      "Ambiente acogedor y cálido",
+      "Ideal para compartir en grupo",
     ],
     href: "/es/instalaciones/restaurante/",
+    number: "01",
   },
   {
     kicker: "Naturaleza",
     title: "Áreas verdes y descanso al aire libre",
     description:
       "Espacios abiertos, tranquilidad y rincones naturales para caminar, respirar y desconectarte del ritmo diario.",
-    imageMain: "/imagenes/instalaciones/wallpaper2.jpg",
-    imageTop: "/imagenes/instalaciones/wallpaper2.jpg",
-    imageBottom: "/imagenes/instalaciones/wallpaper2.jpg",
-    points: ["Entorno natural", "Áreas de descanso", "Ambiente tranquilo"],
-    href: "/es/instalaciones/areas-verdes/",
+    imageMain: "/imagenes/instalaciones/Cascada2.jpeg",
+    imageTop: "/imagenes/instalaciones/AreasVerdes.jpeg",
+    imageBottom: "/imagenes/instalaciones/AreasVerdes4.png",
+    points: [
+      "Entorno natural privilegiado",
+      "Áreas de descanso al aire libre",
+      "Ambiente tranquilo y relajante",
+    ],
+    href: "/es/instalaciones/areasVerdes/",
+    number: "02",
   },
 ];
 
 const facilities = [
   {
     title: "Área Húmeda",
-    description:
-      "Piscina, sauna, turco e hidromasaje para una experiencia completa de relajación.",
-    image: "/imagenes/instalaciones/wallpaper2.jpg",
-    href: "/es/instalaciones/area-humeda/",
+    description: "Piscina, sauna, turco e hidromasaje para una experiencia completa de relajación.",
+    image: "/imagenes/instalaciones/Piscina.jpeg",
+    href: "/es/instalaciones/areaHumeda/",
     badge: "Bienestar",
+    number: "01",
   },
   {
     title: "Restaurante",
-    description:
-      "Un ambiente ideal para disfrutar buena comida y momentos especiales.",
-    image: "/imagenes/instalaciones/wallpaper2.jpg",
+    description: "Un ambiente ideal para disfrutar buena comida y momentos especiales.",
+    image: "/imagenes/instalaciones/Comedor6.jpg",
     href: "/es/instalaciones/restaurante/",
     badge: "Gastronomía",
+    number: "02",
   },
   {
     title: "Bar",
-    description:
-      "Un espacio para compartir bebidas y complementar tu experiencia en la hostería.",
-    image: "/imagenes/instalaciones/wallpaper2.jpg",
-    href: "/es/instalaciones/bar/",
+    description: "Un espacio para compartir bebidas y complementar tu experiencia en la hostería.",
+    image: "/imagenes/instalaciones/Bar.png",
+    href: "/es/instalaciones/discoteca/",
     badge: "Ambiente",
+    number: "03",
   },
   {
     title: "Áreas Verdes",
-    description:
-      "Naturaleza, paisaje y espacios abiertos para disfrutar con calma.",
-    image: "/imagenes/instalaciones/wallpaper2.jpg",
-    href: "/es/instalaciones/areas-verdes/",
+    description: "Naturaleza, paisaje y espacios abiertos para disfrutar con calma.",
+    image: "/imagenes/instalaciones/AreasVerdes2.jpeg",
+    href: "/es/instalaciones/areasVerdes/",
     badge: "Naturaleza",
+    number: "04",
   },
   {
     title: "Salón de Juegos",
-    description:
-      "Diversión y entretenimiento para compartir en pareja, familia o con amigos.",
-    image: "/imagenes/instalaciones/wallpaper2.jpg",
-    href: "/es/instalaciones/salon-de-juegos/",
+    description: "Diversión y entretenimiento para compartir en pareja, familia o con amigos.",
+    image: "/imagenes/instalaciones/SalonJuegos.jpeg",
+    href: "/es/instalaciones/salonDeJuegos/",
     badge: "Diversión",
+    number: "05",
   },
   {
     title: "Parqueadero",
-    description:
-      "Comodidad y seguridad para tu vehículo durante toda tu visita o estadía.",
-    image: "/imagenes/instalaciones/wallpaper2.jpg",
-    href: "/es/instalaciones/parqueadero/",
+    description: "Comodidad y seguridad para tu vehículo durante toda tu visita o estadía.",
+    image: "/imagenes/instalaciones/Garage3.jpg",
+    href: undefined,
     badge: "Confort",
+    number: "06",
   },
 ];
 
@@ -99,335 +114,551 @@ const waUrl =
   title={`Instalaciones | ${SITE.name}`}
   description="Espacios diseñados para descansar, disfrutar y reconectar en Hostería Agoyán."
 >
-  <!-- HERO PREMIUM SOLO IMÁGENES -->
+
+  <!-- ── Hero con texto overlay ─────────────────────────── -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
-    <div
-      class="facility-hero relative h-[72vh] min-h-[520px] overflow-hidden rounded-b-[2.5rem] bg-slate-950"
-    >
+    <div class="facility-hero relative h-[78vh] min-h-[560px] overflow-hidden rounded-b-[2.5rem] bg-slate-950">
+
+      <!-- Slides -->
       <div class="facility-hero-track absolute inset-0">
-        {
-          heroSlides.map((img, i) => (
-            <div
-              class={`facility-hero-slide absolute inset-0 ${i === 0 ? "is-active" : ""}`}
-              style={`background-image:url('${img}')`}
-            />
-          ))
-        }
-      </div>
-
-      <div class="absolute inset-0 bg-black/28"></div>
-      <div
-        class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/55 to-transparent"
-      >
-      </div>
-
-      <div class="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
-        {
-          heroSlides.map((_, i) => (
-            <span
-              class={`facility-dot ${i === 0 ? "is-active" : ""}`}
-              data-dot={i}
-            />
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- INTRO MINIMAL -->
-  <section class="bg-white py-16 sm:py-20">
-    <div class="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
-      <p class="font-menu text-sm tracking-[0.14em] text-emerald-600">
-        INSTALACIONES AGOYÁN
-      </p>
-      <h1
-        class="mt-4 font-hero text-4xl leading-tight text-slate-900 sm:text-5xl lg:text-6xl"
-      >
-        Espacios que convierten tu visita en una experiencia inolvidable
-      </h1>
-      <p
-        class="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg"
-      >
-        Descubre ambientes pensados para el descanso, la naturaleza, la
-        gastronomía y el bienestar, con un diseño acogedor que te invita a
-        disfrutar cada momento.
-      </p>
-    </div>
-  </section>
-<!-- zona humeda -->
-  <section class="bg-white py-20">
-  <div class="w-full px-4 sm:px-6 lg:px-8" data-reveal>
-    <div class="overflow-hidden rounded-[2.5rem] border border-slate-200 bg-slate-50 shadow-[0_20px_55px_rgba(0,0,0,0.08)]">
-      <div class="grid lg:grid-cols-[1.15fr_0.85fr]">
-        <div class="relative min-h-[380px] lg:min-h-[560px]">
-          <img
-            src="/imagenes/instalaciones/wallpaper2.jpg"
-            alt="Zona húmeda Hostería Agoyán"
-            class="absolute inset-0 h-full w-full object-cover"
+        {heroSlides.map((img, i) => (
+          <div
+            class={`facility-hero-slide absolute inset-0 ${i === 0 ? "is-active" : ""}`}
+            style={`background-image:url('${img}')`}
           />
-          <div class="absolute inset-0 bg-gradient-to-r from-black/20 via-black/5 to-transparent"></div>
-        </div>
+        ))}
+      </div>
 
-        <div class="p-8 sm:p-10 lg:p-14">
-          <p class="font-menu text-sm tracking-[0.14em] text-emerald-600">
-            EXPERIENCIA DESTACADA
+      <!-- Overlays -->
+      <div class="absolute inset-0 bg-black/28"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/15 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent"></div>
+
+      <!-- Contenido text overlay -->
+      <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-between px-4 pb-12 pt-28 sm:px-6 lg:px-8">
+        <div class="max-w-3xl" data-reveal>
+          <p class="font-menu text-sm tracking-[0.18em] text-emerald-300 uppercase">
+            INSTALACIONES AGOYÁN
           </p>
-
-          <h2 class="mt-4 font-hero text-4xl leading-tight text-slate-900 sm:text-5xl">
-            Zona húmeda, descanso y bienestar en un solo lugar
-          </h2>
-
-          <p class="mt-5 text-base leading-8 text-slate-600">
-            Uno de los espacios más atractivos de la hostería. Piscina, sauna, turco e hidromasaje
-            se combinan para crear una experiencia premium de relajación, ideal para parejas,
-            familias y quienes buscan desconectarse.
+          <h1 class="mt-4 font-hero text-5xl leading-[1.02] text-white sm:text-6xl lg:text-7xl">
+            Espacios para<br class="hidden sm:block" /> disfrutar y reconectar
+          </h1>
+          <p class="mt-5 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
+            Descubre ambientes pensados para el bienestar, la gastronomía y la
+            naturaleza en Hostería Agoyán.
           </p>
-
-          <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
-              <div class="text-xs uppercase tracking-[0.08em] text-slate-400">Incluye</div>
-              <div class="mt-2 text-base font-semibold text-slate-900">
-                Piscina, sauna, turco e hidromasaje
-              </div>
-            </div>
-
-            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
-              <div class="text-xs uppercase tracking-[0.08em] text-slate-400">Ideal para</div>
-              <div class="mt-2 text-base font-semibold text-slate-900">
-                Descanso y bienestar
-              </div>
-            </div>
-          </div>
 
           <div class="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
-              href="/es/instalaciones/area-humeda/"
-              class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
+              href="#instalaciones"
+              class="hero-primary inline-flex items-center justify-center gap-2 rounded-2xl px-7 py-3.5 text-sm font-semibold text-white"
             >
-              Ver área húmeda
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+              Explorar instalaciones
             </a>
-
             <a
               href={waUrl}
               target="_blank"
               rel="noopener"
-              class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100"
+              class="inline-flex items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
             >
               Consultar por WhatsApp
             </a>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-  <!-- EXPERIENCIAS DESTACADAS -->
-  <section class="bg-white py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto mb-14 max-w-3xl text-center" data-reveal>
-        <p class="font-menu text-sm tracking-[0.14em] text-sky-600">
-          EXPERIENCIAS DESTACADAS
-        </p>
-        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
-          Ambientes con personalidad propia
-        </h2>
-      </div>
 
-      <div class="space-y-20">
-        {
-          featuredExperiences.map((item, index) => (
-            <section
-              class="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]"
-              data-reveal
-            >
-              <div class={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div class="grid gap-5 sm:grid-cols-[1.15fr_0.85fr]">
-                  <div class="overflow-hidden rounded-[2rem] shadow-[0_18px_45px_rgba(0,0,0,0.08)]">
-                    <img
-                      src={item.imageMain}
-                      alt={item.title}
-                      class="h-full min-h-[440px] w-full object-cover transition duration-700 hover:scale-[1.04]"
-                    />
-                  </div>
+        <!-- Dots + scroll indicator -->
+        <div class="flex items-center justify-between">
+          <div class="flex gap-2" aria-hidden="true">
+            {heroSlides.map((_, i) => (
+              <span class={`facility-dot ${i === 0 ? "is-active" : ""}`} data-dot={i} />
+            ))}
+          </div>
 
-                  <div class="grid gap-5">
-                    <div class="overflow-hidden rounded-[1.75rem] shadow-[0_14px_35px_rgba(0,0,0,0.08)]">
-                      <img
-                        src={item.imageTop}
-                        alt={`${item.title} detalle 1`}
-                        class="h-[210px] w-full object-cover transition duration-700 hover:scale-[1.04]"
-                      />
-                    </div>
-                    <div class="overflow-hidden rounded-[1.75rem] shadow-[0_14px_35px_rgba(0,0,0,0.08)]">
-                      <img
-                        src={item.imageBottom}
-                        alt={`${item.title} detalle 2`}
-                        class="h-[210px] w-full object-cover transition duration-700 hover:scale-[1.04]"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                <p class="font-menu text-sm tracking-[0.14em] text-emerald-600">
-                  {item.kicker}
-                </p>
-                <h3 class="mt-4 font-hero text-4xl leading-tight text-slate-900 sm:text-5xl">
-                  {item.title}
-                </h3>
-                <p class="mt-5 text-base leading-8 text-slate-600">
-                  {item.description}
-                </p>
-
-                <ul class="mt-8 space-y-4">
-                  {item.points.map((point) => (
-                    <li class="flex items-center gap-4 text-slate-700">
-                      <span class="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-500">
-                        ●
-                      </span>
-                      <span class="text-base">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div class="mt-8">
-                  <a
-                    href={item.href}
-                    class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-                  >
-                    Ver detalle
-                  </a>
-                </div>
-              </div>
-            </section>
-          ))
-        }
+          <div class="scroll-arrow flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- GRID COMPLETO -->
-  <section class="bg-slate-50 py-20">
+  <!-- ── Intro + quick nav ──────────────────────────────── -->
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
+      <p class="font-menu text-sm tracking-[0.14em] text-emerald-600 uppercase">
+        INSTALACIONES AGOYÁN
+      </p>
+      <h2 class="mt-4 font-hero text-4xl leading-tight text-slate-900 sm:text-5xl lg:text-6xl">
+        Espacios que convierten tu visita en una experiencia inolvidable
+      </h2>
+      <p class="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
+        Descubre ambientes pensados para el descanso, la naturaleza, la gastronomía y el
+        bienestar, con un diseño acogedor que te invita a disfrutar cada momento.
+      </p>
+
+      <!-- Quick nav chips -->
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+        {quickNav.map((item) => (
+          <a
+            href={item.href}
+            class="qnav-chip inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:-translate-y-0.5 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
+          >
+            <span class="text-emerald-500" set:html={item.icon} />
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Zona húmeda destacada ─────────────────────────── -->
+  <section class="bg-white pb-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" data-reveal>
+      <div class="overflow-hidden rounded-[2.5rem] border border-slate-200 bg-slate-50 shadow-[0_20px_55px_rgba(0,0,0,0.08)]">
+        <div class="grid lg:grid-cols-[1.15fr_0.85fr]">
+
+          <!-- Imagen -->
+          <div class="relative min-h-[380px] overflow-hidden lg:min-h-[560px]">
+            <img
+              src="/imagenes/instalaciones/Piscina.jpeg"
+              alt="Zona húmeda Hostería Agoyán"
+              class="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-[1.03]"
+              loading="eager" fetchpriority="high"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/20 via-black/5 to-transparent"></div>
+            <!-- Badge flotante -->
+            <div class="absolute left-5 top-5">
+              <span class="rounded-full bg-white/95 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-slate-800 shadow-sm">
+                Experiencia destacada
+              </span>
+            </div>
+          </div>
+
+          <!-- Contenido -->
+          <div class="p-8 sm:p-10 lg:p-14">
+            <p class="font-menu text-sm tracking-[0.14em] text-emerald-600 uppercase">
+              BIENESTAR
+            </p>
+
+            <h2 class="mt-4 font-hero text-4xl leading-tight text-slate-900 sm:text-5xl">
+              Zona húmeda, descanso y bienestar en un solo lugar
+            </h2>
+
+            <p class="mt-5 text-base leading-8 text-slate-600">
+              Piscina, sauna, turco e hidromasaje se combinan para crear una experiencia
+              premium de relajación, ideal para parejas, familias y quienes buscan desconectarse.
+            </p>
+
+            <!-- Info cards con iconos -->
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
+                <div class="mb-2 flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-500">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 15c1.2 0 1.8 1 3 1s1.8-1 3-1 1.8 1 3 1 1.8-1 3-1 1.8 1 3 1 1.8-1 3-1"/><path d="M7 10a3 3 0 1 1 6 0v1H7v-1Z"/></svg>
+                </div>
+                <div class="text-xs uppercase tracking-[0.08em] text-slate-400">Incluye</div>
+                <div class="mt-1 text-sm font-semibold text-slate-900">
+                  Piscina, sauna, turco e hidromasaje
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
+                <div class="mb-2 flex h-8 w-8 items-center justify-center rounded-lg bg-sky-50 text-sky-500">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="text-xs uppercase tracking-[0.08em] text-slate-400">Ideal para</div>
+                <div class="mt-1 text-sm font-semibold text-slate-900">
+                  Descanso y bienestar
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="/es/instalaciones/areaHumeda/"
+                class="wet-btn inline-flex items-center justify-center gap-2 rounded-2xl px-7 py-3.5 text-sm font-semibold text-white"
+              >
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Ver área húmeda
+              </a>
+              <a
+                href={waUrl}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-700 transition hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
+              >
+                Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Experiencias destacadas ───────────────────────── -->
+  <section class="bg-white py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto mb-12 max-w-3xl text-center" data-reveal>
-        <p class="font-menu text-sm tracking-[0.14em] text-sky-600">
+      <div class="mx-auto mb-14 max-w-3xl text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.14em] text-emerald-600 uppercase">
+          EXPERIENCIAS DESTACADAS
+        </p>
+        <h2 class="mt-4 font-hero text-4xl text-slate-900 sm:text-5xl">
+          Ambientes con personalidad propia
+        </h2>
+      </div>
+
+      <div class="space-y-24">
+        {featuredExperiences.map((item, index) => (
+          <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]" data-reveal>
+
+            <!-- Imágenes -->
+            <div class={index % 2 === 1 ? "lg:order-2" : ""}>
+              <div class="grid gap-5 sm:grid-cols-[1.15fr_0.85fr]">
+                <div class="exp-img-wrap overflow-hidden rounded-[2rem] shadow-[0_18px_45px_rgba(0,0,0,0.08)]">
+                  <img
+                    src={item.imageMain}
+                    alt={item.title}
+                    class="h-full min-h-[440px] w-full object-cover transition duration-700 hover:scale-[1.04]"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="grid gap-5">
+                  <div class="overflow-hidden rounded-[1.75rem] shadow-[0_14px_35px_rgba(0,0,0,0.08)]">
+                    <img
+                      src={item.imageTop}
+                      alt={`${item.title} detalle 1`}
+                      class="h-[210px] w-full object-cover transition duration-700 hover:scale-[1.04]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="overflow-hidden rounded-[1.75rem] shadow-[0_14px_35px_rgba(0,0,0,0.08)]">
+                    <img
+                      src={item.imageBottom}
+                      alt={`${item.title} detalle 2`}
+                      class="h-[210px] w-full object-cover transition duration-700 hover:scale-[1.04]"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Texto -->
+            <div class={index % 2 === 1 ? "lg:order-1" : ""}>
+              <!-- Número editorial -->
+              <span class="font-hero text-8xl font-bold leading-none text-slate-100 select-none" aria-hidden="true">
+                {item.number}
+              </span>
+
+              <p class="mt-1 font-menu text-sm tracking-[0.14em] text-emerald-600 uppercase">
+                {item.kicker}
+              </p>
+              <h3 class="mt-3 font-hero text-4xl leading-tight text-slate-900 sm:text-5xl">
+                {item.title}
+              </h3>
+              <p class="mt-5 text-base leading-8 text-slate-600">
+                {item.description}
+              </p>
+
+              <!-- Puntos con checkmarks SVG -->
+              <ul class="mt-8 space-y-3">
+                {item.points.map((point) => (
+                  <li class="flex items-center gap-3 text-slate-700">
+                    <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" aria-hidden="true">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <span class="text-base">{point}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <!-- CTA pill -->
+              <div class="mt-8">
+                <a
+                  href={item.href}
+                  class="exp-cta-pill inline-flex items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-emerald-400 hover:bg-emerald-50 hover:text-emerald-700"
+                >
+                  Ver espacio completo
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Grid completo de instalaciones ───────────────── -->
+  <section id="instalaciones" class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto mb-14 max-w-3xl text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.14em] text-emerald-600 uppercase">
           TODAS LAS INSTALACIONES
         </p>
-        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
+        <h2 class="mt-4 font-hero text-4xl text-slate-900 sm:text-5xl">
           Cada espacio pensado para disfrutar mejor tu visita
         </h2>
       </div>
 
       <div class="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
-        {
-          facilities.map((item) => (
-            <article
-              class="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]"
-              data-reveal
-            >
-              <a href={item.href} class="block">
-                <div class="relative h-80 overflow-hidden">
+        {facilities.map((item) => {
+          const Tag = item.href ? "a" : "div";
+          return (
+            <article class="fac-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_12px_35px_rgba(0,0,0,0.06)]" data-reveal>
+
+              <!-- Línea de acento superior -->
+              <div class="fac-accent-line" aria-hidden="true"></div>
+
+              <Tag href={item.href} class="block">
+                <!-- Imagen -->
+                <div class="relative h-72 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
-                    class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
+                    class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.05] [will-change:transform]"
+                    loading="lazy"
                   />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/8 to-transparent" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/8 to-transparent"></div>
 
+                  <!-- Badge -->
                   <div class="absolute left-5 top-5">
-                    <span class="rounded-full bg-white/95 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-slate-900 shadow">
+                    <span class="rounded-full bg-white/95 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-slate-800 shadow-sm">
                       {item.badge}
                     </span>
                   </div>
                 </div>
 
-                <div class="p-6">
-                  <h3 class="font-menu text-2xl text-slate-900">
-                    {item.title}
-                  </h3>
-                  <p class="mt-4 text-sm leading-7 text-slate-600">
-                    {item.description}
-                  </p>
+                <!-- Body -->
+                <div class="relative p-7">
+                  <!-- Número editorial -->
+                  <span class="pointer-events-none absolute right-6 top-4 select-none font-hero text-7xl font-bold leading-none text-slate-100 transition duration-300 group-hover:text-emerald-50" aria-hidden="true">
+                    {item.number}
+                  </span>
 
-                  <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition group-hover:text-emerald-500">
-                    <span>Explorar espacio</span>
-                    <span aria-hidden="true">→</span>
-                  </div>
+                  <h3 class="relative font-hero text-2xl text-slate-900">{item.title}</h3>
+                  <p class="relative mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+
+                  {item.href && (
+                    <div class="relative mt-6">
+                      <span class="fac-cta-pill inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-sm font-semibold transition">
+                        Explorar espacio
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
+                          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                    </div>
+                  )}
                 </div>
-              </a>
+              </Tag>
             </article>
-          ))
-        }
+          );
+        })}
       </div>
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="bg-white py-20">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8" data-reveal>
-      <div
-        class="rounded-[2.4rem] border border-slate-200 bg-[linear-gradient(135deg,#f8fafc,#eefbf6)] p-8 text-center shadow-[0_18px_45px_rgba(0,0,0,0.06)] sm:p-12"
-      >
-        <p class="font-menu text-sm tracking-[0.14em] text-emerald-600">
-          DESCUBRE CADA ESPACIO
-        </p>
-        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
-          Vive la experiencia completa de Hostería Agoyán
-        </h2>
-        <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600">
-          Explora nuestras instalaciones, encuentra el ambiente ideal para tu
-          visita y reserva la experiencia que mejor se adapte a tu viaje.
-        </p>
+  <!-- ── CTA final full-width ──────────────────────────── -->
+  <section class="cta-inst-section relative overflow-hidden py-28 sm:py-32">
 
-        <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-          <a
-            href="/es/paquetes/"
-            class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
-          >
-            Ver paquetes
-          </a>
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-          >
-            Consultar por WhatsApp
-          </a>
+    <!-- Decoración -->
+    <div class="pointer-events-none absolute -left-32 -top-32 h-[480px] w-[480px] rounded-full bg-emerald-400/18 blur-[90px]"></div>
+    <div class="pointer-events-none absolute -right-32 bottom-0 h-[440px] w-[440px] rounded-full bg-teal-300/14 blur-[75px]"></div>
+    <div class="cta-inst-grid pointer-events-none absolute inset-0 opacity-[0.055]"></div>
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/35 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-teal-300/25 to-transparent"></div>
+
+    <div class="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
+
+      <!-- Badge icono -->
+      <div class="mb-7 flex justify-center">
+        <div class="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-400/30 bg-emerald-400/15 text-emerald-300 shadow-[0_0_0_6px_rgba(16,185,129,0.06)]">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
         </div>
+      </div>
+
+      <p class="font-menu text-sm tracking-[0.2em] text-emerald-300 uppercase">
+        DESCUBRE CADA ESPACIO
+      </p>
+
+      <h2 class="mt-5 font-hero text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">
+        Vive la experiencia completa de Hostería Agoyán
+      </h2>
+
+      <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
+        Explora nuestras instalaciones, encuentra el ambiente ideal para tu visita
+        y reserva la experiencia que mejor se adapte a tu viaje.
+      </p>
+
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href="/es/paquetes/"
+          class="cta-inst-primary inline-flex min-w-[220px] items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 text-sm font-bold text-emerald-700"
+        >
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/>
+            <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/>
+            <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/>
+            <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          Ver paquetes
+        </a>
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex min-w-[220px] items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18 hover:border-white/40"
+        >
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+          </svg>
+          Consultar por WhatsApp
+        </a>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  /* ── Hero slides ── */
   .facility-hero-slide {
     background-position: center;
     background-size: cover;
     opacity: 0;
     transform: scale(1.06);
-    transition:
-      opacity 1.2s ease,
-      transform 7s ease;
+    transition: opacity 1.2s ease, transform 7s ease;
   }
-
   .facility-hero-slide.is-active {
     opacity: 1;
     transform: scale(1);
   }
 
+  /* ── Dots ── */
   .facility-dot {
-    height: 10px;
-    width: 10px;
+    height: 8px;
+    width: 8px;
     border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.45);
-    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.35s ease;
   }
-
   .facility-dot.is-active {
     width: 28px;
     background: white;
+  }
+
+  /* ── Hero botón principal ── */
+  .hero-primary {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 14px 30px rgba(16, 185, 129, 0.28);
+    transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+  }
+  .hero-primary:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    box-shadow: 0 18px 36px rgba(16, 185, 129, 0.34);
+  }
+
+  /* ── Scroll indicator ── */
+  .scroll-arrow {
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50%       { transform: translateY(6px); opacity: 1; }
+  }
+
+  /* ── Quick nav chips ── */
+  .qnav-chip {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  .qnav-chip :global(svg) { flex-shrink: 0; }
+
+  /* ── Zona húmeda botón ── */
+  .wet-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 12px 28px rgba(16, 185, 129, 0.24);
+    transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+  }
+  .wet-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    box-shadow: 0 16px 32px rgba(16, 185, 129, 0.3);
+  }
+
+  /* ── Facility card ── */
+  .fac-card {
+    transition: transform 0.32s ease, box-shadow 0.32s ease;
+  }
+  .fac-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.11);
+  }
+
+  /* Línea de acento superior */
+  .fac-accent-line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #10b981, #0ea5e9);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+  .fac-card:hover .fac-accent-line {
+    transform: scaleX(1);
+  }
+
+  /* CTA pill en cards */
+  .fac-cta-pill {
+    border-color: #e2e8f0;
+    color: #10b981;
+    background: transparent;
+  }
+  .fac-card:hover .fac-cta-pill {
+    border-color: #10b981;
+    background: #f0fdf4;
+    color: #059669;
+  }
+
+  /* ── CTA final ── */
+  .cta-inst-section {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.17) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(20, 184, 166, 0.13) 0%, transparent 45%),
+      linear-gradient(160deg, #0d2218 0%, #0f2d22 30%, #0b2320 60%, #071a17 100%);
+  }
+  .cta-inst-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+  .cta-inst-primary {
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  }
+  .cta-inst-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.03);
+    box-shadow: 0 22px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
   }
 </style>
 
@@ -436,27 +667,38 @@ const waUrl =
     const hero = document.querySelector(".facility-hero");
     if (!hero) return;
 
-    const slides = Array.from(hero.querySelectorAll(".facility-hero-slide"));
-    const dots = Array.from(hero.querySelectorAll(".facility-dot"));
-
+    const slides = Array.from(hero.querySelectorAll<HTMLElement>(".facility-hero-slide"));
+    const dots   = Array.from(hero.querySelectorAll<HTMLElement>(".facility-dot"));
     if (!slides.length) return;
 
     let current = 0;
+    let timer: ReturnType<typeof setInterval>;
 
     const setActive = (index: number) => {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("is-active", i === index);
-      });
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("is-active", i === index);
-      });
+      slides.forEach((s, i) => s.classList.toggle("is-active", i === index));
+      dots.forEach((d, i)   => d.classList.toggle("is-active", i === index));
     };
-    setActive(current);
 
-    setInterval(() => {
+    const advance = () => {
       current = (current + 1) % slides.length;
       setActive(current);
-    }, 4200);
+    };
+
+    const reset = () => {
+      clearInterval(timer);
+      timer = setInterval(advance, 4500);
+    };
+
+    setActive(current);
+    reset();
+
+    // Click en dots para navegar
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        current = i;
+        setActive(current);
+        reset();
+      });
+    });
   })();
 </script>

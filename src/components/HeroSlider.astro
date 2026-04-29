@@ -37,12 +37,11 @@ const waUrl =
                 alt={s.title}
                 class="hero-image absolute inset-0 h-full w-full object-cover"
                 loading="eager"
-                decoding="async"
               />
 
-              <!-- Overlay -->
-              <div class="absolute inset-0 bg-black/45"></div>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10"></div>
+              <!-- Overlay oscuro en la foto-->
+              <div class="absolute inset-0 bg-black/20"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-slate-950/10 to-transparent"></div>
 
               <!-- Content -->
               <div class="absolute inset-x-0 bottom-0">
@@ -59,7 +58,7 @@ const waUrl =
                     <div class="hero-actions mt-7 flex flex-col gap-3 sm:flex-row">
                       <a
                         href={s.ctaHref}
-                        class="inline-flex items-center justify-center border border-white/70 bg-white/10 px-6 py-3 text-sm font-menu text-white backdrop-blur transition hover:bg-white/20"
+                        class="inline-flex items-center justify-center rounded-2xl border border-white/50 bg-white/12 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/22"
                       >
                         {s.ctaText}
                       </a>
@@ -68,8 +67,11 @@ const waUrl =
                         href={waUrl}
                         target="_blank"
                         rel="noopener"
-                        class="inline-flex items-center justify-center rounded-md bg-emerald-500/90 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-500"
+                        class="hero-wa inline-flex items-center justify-center gap-2 rounded-2xl px-7 py-3.5 text-sm font-semibold text-white transition"
                       >
+                        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+                          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+                        </svg>
                         {isEs ? "Reservar por WhatsApp" : "Book on WhatsApp"}
                       </a>
                     </div>
@@ -83,19 +85,23 @@ const waUrl =
 
       <!-- Flechas -->
       <button
-        class="hero-prev absolute left-3 top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-black/35 text-white backdrop-blur transition hover:bg-black/55 sm:left-6"
-        aria-label="Previous slide"
+        class="hero-prev absolute left-3 top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/30 text-white backdrop-blur transition hover:bg-black/50 hover:border-white/40 sm:left-6"
+        aria-label="Slide anterior"
         type="button"
       >
-        ‹
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </button>
 
       <button
-        class="hero-next absolute right-3 top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-black/35 text-white backdrop-blur transition hover:bg-black/55 sm:right-6"
-        aria-label="Next slide"
+        class="hero-next absolute right-3 top-1/2 z-20 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-black/30 text-white backdrop-blur transition hover:bg-black/50 hover:border-white/40 sm:right-6"
+        aria-label="Siguiente slide"
         type="button"
       >
-        ›
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </button>
 
       <!-- Paginación -->
@@ -108,8 +114,8 @@ const waUrl =
   import Swiper from "swiper";
   import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
   import "swiper/css";
-  import "swiper/css/pagination";
   import "swiper/css/effect-fade";
+  import "swiper/css/pagination";
 
   (() => {
     const el = document.querySelector<HTMLElement>(".hero-swiper");
@@ -119,7 +125,7 @@ const waUrl =
       modules: [Navigation, Pagination, Autoplay, EffectFade],
       effect: "fade",
       fadeEffect: { crossFade: true },
-      loop: true,
+      rewind: true,
       speed: 900,
       autoplay: { delay: 6500, disableOnInteraction: false },
       pagination: { el: ".hero-pagination", clickable: true },
@@ -129,6 +135,17 @@ const waUrl =
 </script>
 
 <style>
+  .hero-wa {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 14px 30px rgba(16, 185, 129, 0.28);
+    transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+  }
+  .hero-wa:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    box-shadow: 0 18px 36px rgba(16, 185, 129, 0.34);
+  }
+
   .hero-pagination :global(.swiper-pagination-bullet) {
     width: 9px;
     height: 9px;
@@ -144,9 +161,9 @@ const waUrl =
     transform: scale(1);
   }
 
-  :global(.swiper-slide-active) .hero-image {
+  /* :global(.swiper-slide-active) .hero-image {
     animation: heroImageZoom 6.8s ease forwards;
-  }
+  } */
 
   .hero-title,
   .hero-subtitle,
@@ -169,14 +186,14 @@ const waUrl =
     animation-delay: 0.45s;
   }
 
-  @keyframes heroImageZoom {
+  /* @keyframes heroImageZoom {
     from {
       transform: scale(1);
     }
     to {
       transform: scale(1.06);
     }
-  }
+  } */
 
   @keyframes heroTitleIn {
     from {

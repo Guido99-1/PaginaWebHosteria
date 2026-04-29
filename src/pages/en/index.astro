@@ -1,77 +1,110 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroSlider from "../../components/HeroSlider.astro";
+import Welcome from "../../components/Welcome.astro";
 import FeaturedPackages from "../../components/feacturePackages.astro";
 import FeaturedPromotions from "../../components/FeaturedPromotions.astro";
 import FacilitiesServices from "../../components/FacilitiesServices.astro";
 import ContactSection from "../../components/ContactSection.astro";
 import Testimonials from "../../components/Testimonials.astro";
 import FinalCTA from "../../components/FinalCTA.astro";
+import YoutubeSection from "../../components/YoutubeSection.astro";
+
 
 const slides = [
   {
     title: "Nature, rest and comfort",
     subtitle: "Stay in Baños de Agua Santa with pool, sauna, steam room and green areas.",
-    image: "/public/wallpaper1.jpg",
+    image: "/imagenes/instalaciones/exteriorSuites.jpg",
     ctaText: "View packages",
     ctaHref: "/en/packages/",
   },
   {
-    title: "Unforgettable moments",
-    subtitle: "A cozy atmosphere, beautiful views and experiences to disconnect.",
-    image: "/public/wallpaper2.jpg",
+    title: "Unique moments of relaxation in our wet area",
+    subtitle: "A warm atmosphere with pools, sauna, and steam room, ideal to disconnect and fully recharge",
+    image: "/imagenes/instalaciones/hidromasaje.jpg",
+    ctaText: "Contáctanos",
+    ctaHref: "/es/facilities/",
+  },
+  {
+    title: "Unforgettable moments for couples and families",
+    subtitle: "A cozy atmosphere, stunning views and experiences to truly disconnect.",
+    image: "/imagenes/instalaciones/Suite5.jpg",
     ctaText: "Contact us",
-    ctaHref: "/en/contact/",
+    ctaHref: "/en/promotions/",
   },
 ];
 
 const featuredPackages = [
   {
-    title: "Full Day",
-    price: "From $25",
-    description: "Enjoy a special day with access to recreational areas, relaxation and nature.",
-    image: "/public/fullday.jpg",
-    href: "/en/packages/full-day/",
+    title: "Adventure Package",
+    price: "From $79 p/p",
+    description: "Five tours in one package: waterfalls, viewpoints, wildlife and local culture with a professional guide included.",
+    image: "/imagenes/instalaciones/Aventura2.jpeg",
+    href: "/en/packages/adventure/",
   },
   {
-    title: "Romantic Package",
-    price: "From $60",
-    description: "Perfect for couples seeking privacy, comfort and an unforgettable experience.",
-    image: "/public/romance.jpg",
-    href: "/en/packages/romantic/",
+    title: "Baños Extreme Package",
+    price: "From $155 p/p",
+    description: "Rafting, rappelling on waterfalls, Animal Park and Dragon Labyrinth. All private entries included.",
+    image: "/imagenes/instalaciones/Extremo.jpeg",
+    href: "/en/packages/banos-extreme/",
   },
   {
-    title: "Family Stay",
-    price: "From $85",
-    description: "A comfortable option for families with access to the inn’s spaces and services.",
-    image: "/public/familia.jpg",
-    href: "/en/packages/lodging/",
+    title: "Baños Premium Package",
+    price: "From $175 p/p",
+    description: "12+ exclusive tours with all private entries included. The most complete experience in Baños de Agua Santa.",
+    image: "/imagenes/instalaciones/Aventura3.jpeg",
+    href: "/en/packages/banos-premium/",
+  },
+  {
+    title: "Baños + Quilotoa Package",
+    price: "From $135 p/p",
+    description: "Baños de Agua Santa and the majestic Quilotoa Lagoon in one package with an epic crater hike included.",
+    image: "/imagenes/instalaciones/Quilotoa3.jpeg",
+    href: "/en/packages/banos-quilotoa/",
+  },
+  {
+    title: "Baños + Amazon Package",
+    price: "From $129 p/p",
+    description: "Waterfalls Route, Tree House, Hands of God and a full day in the tropical rainforest with lunch included.",
+    image: "/imagenes/instalaciones/Amazonia2.jpeg",
+    href: "/en/packages/banos-amazon/",
+  },
+  {
+    title: "Amazon Rainforest Package",
+    price: "From $69 p/p",
+    description: "Jungle walks, canoeing on the Puyo River, exotic wildlife and an authentic Quichua indigenous experience.",
+    image: "/imagenes/instalaciones/Amazonia5.jpeg",
+    href: "/en/packages/amazon-rainforest/",
   },
 ];
+
 const featuredPromotions = [
   {
-    title: "Escapada Romántica",
-    price: "Desde $70",
-    description: "Una experiencia ideal para parejas con comodidad, privacidad y un ambiente especial para compartir.",
-    image: "/public/fullday.jpg",
-    href: "/es/promociones/escapada-romantica/",
+    title: "Romantic Getaway",
+    price: "From $199",
+    description: "An ideal experience for couples with comfort, privacy and a special atmosphere to share together.",
+    image: "/imagenes/instalaciones/pareja.jpg",
+    href: "/en/packages/romantic/",
     featured: true,
   },
   {
-    title: "Promoción Full Day",
-    price: "Desde $25",
-    description: "Disfruta de un día de descanso con acceso a espacios recreativos y áreas de relajación.",
-    image: "/public/familia.jpg",
-    href: "/es/promociones/full-day/",
+    title: "Full Day Promo",
+    price: "From $10",
+    description: "Enjoy a day of relaxation with access to recreational spaces and wellness areas.",
+    image: "/imagenes/instalaciones/FullDay.jpg",
+    href: "/en/packages/full-day/",
   },
   {
-    title: "Fin de Semana Especial",
-    price: "Desde $95",
-    description: "Aprovecha una promoción perfecta para desconectarte y vivir una experiencia completa en la hostería.",
-    image: "/images/promo-3.webp",
-    href: "/es/promociones/fin-de-semana/",
+    title: "Special Weekend",
+    price: "From $35",
+    description: "The perfect getaway to disconnect and enjoy a complete experience at the inn.",
+    image: "/imagenes/instalaciones/Familia.jpg",
+    href: "/en/packages/lodging/",
   },
 ];
+
 const facilitiesServices = [
   {
     title: "Parking Area",
@@ -84,7 +117,6 @@ const facilitiesServices = [
         <circle cx="16.5" cy="14.5" r="1" />
       </svg>
     `,
-    href: "/en/services/parking/",
   },
   {
     title: "Lodging",
@@ -96,22 +128,20 @@ const facilitiesServices = [
         <path d="M3 18v2M21 18v2" />
       </svg>
     `,
-    href: "/en/services/lodging/",
   },
   {
     title: "Wellness Area",
-    description: "Pool, sauna, steam room and hydromassage for moments of relaxation and wellness.",
+    description: "Pool, sauna, steam room and hydromassage for moments of relaxation and wellbeing.",
     icon: `
       <svg viewBox="0 0 24 24">
         <path d="M3 15c1.2 0 1.8 1 3 1s1.8-1 3-1 1.8 1 3 1 1.8-1 3-1 1.8 1 3 1 1.8-1 3-1" />
         <path d="M7 10a3 3 0 1 1 6 0v1H7v-1Z" />
       </svg>
     `,
-    href: "/en/facilities/wellness-area/",
   },
   {
     title: "Internet",
-    description: "Available connection so you can stay connected during your stay.",
+    description: "Wi-Fi connection available throughout the inn so you can stay connected during your stay.",
     icon: `
       <svg viewBox="0 0 24 24">
         <path d="M2 8a16 16 0 0 1 20 0" />
@@ -120,11 +150,10 @@ const facilitiesServices = [
         <circle cx="12" cy="19" r="1" fill="currentColor" stroke="none" />
       </svg>
     `,
-    href: "/en/services/internet/",
   },
   {
-    title: "Buffet Breakfast",
-    description: "Start the day with delicious and varied options to enjoy with family or as a couple.",
+    title: "Breakfast Included",
+    description: "Start the day with a delicious breakfast to enjoy with family or as a couple.",
     icon: `
       <svg viewBox="0 0 24 24">
         <path d="M4 14h16" />
@@ -133,20 +162,19 @@ const facilitiesServices = [
         <path d="M9 6h6" />
       </svg>
     `,
-    href: "/en/services/breakfast/",
   },
   {
     title: "Events",
-    description: "Ideal spaces for meetings, celebrations and special occasions with personalized attention.",
+    description: "Ideal spaces for meetings, celebrations and special occasions with personalised attention.",
     icon: `
       <svg viewBox="0 0 24 24">
         <rect x="4" y="5" width="16" height="15" rx="2" />
         <path d="M8 3v4M16 3v4M4 10h16" />
       </svg>
     `,
-    href: "/en/services/events/",
   },
 ];
+
 const testimonials = [
   {
     name: "Maria C.",
@@ -175,16 +203,18 @@ const testimonials = [
 ];
 ---
 
-<BaseLayout lang="en" title="Hosteria Agoyan | Baños de Agua Santa">
+<BaseLayout lang="en" title="Hostería Agoyán | Baños de Agua Santa">
   <HeroSlider lang="en" slides={slides} />
-  <FacilitiesServices lang="en" items={facilitiesServices} />
+  <Welcome lang="en" />
   <FeaturedPackages lang="en" packages={featuredPackages} />
   <FeaturedPromotions lang="en" promotions={featuredPromotions} />
+  <FacilitiesServices lang="en" items={facilitiesServices} />
   <Testimonials
-  lang="en"
-  items={testimonials}
-  googleReviewsUrl="https://www.google.com/maps/place/Hoster%C3%ADa+Agoyan+Deluxe/@-1.3989756,-78.3707316,17z/data=!4m11!3m10!1s0x91d393e94e9b472b:0x4c9cab982843a0ba!5m2!4m1!1i2!8m2!3d-1.398981!4d-78.3681567!9m1!1b1!16s%2Fg%2F11c2llttmh?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D"/>
+    lang="en"
+    items={testimonials}
+    googleReviewsUrl="https://www.google.com/maps/place/Hoster%C3%ADa+Agoyan+Deluxe/@-1.3989756,-78.3707316,17z/data=!4m11!3m10!1s0x91d393e94e9b472b:0x4c9cab982843a0ba!5m2!4m1!1i2!8m2!3d-1.398981!4d-78.3681567!9m1!1b1!16s%2Fg%2F11c2llttmh?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D"
+  />
+  <YoutubeSection />
   <ContactSection lang="en" />
-  
-  <!-- <FinalCTA lang="en" backgroundImage="/public/wallpaper1.jpg" /> -->
+  <FinalCTA lang="en" />
 </BaseLayout>

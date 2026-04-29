@@ -5,208 +5,196 @@ import { SITE } from "../../../config/site";
 const page = {
   title: "Promotions",
   subtitle:
-    "Discover special offers and promotions designed to help you enjoy more for less at Hostería Agoyán.",
-  heroImage: "/imagenes/promotions/pareja.jpg",
+    "Discover our special offers designed to help you enjoy more for less at Hostería Agoyán — from weekend escapes to seasonal deals with exclusive benefits.",
+  heroImage: "/imagenes/instalaciones/Familia.jpg",
 };
 
 const promotions = [
   {
-    title: "Weekend Promotion",
+    title: "Family Package",
     description:
-      "A special weekend offer with exclusive benefits, comfort and access to our facilities.",
-    price: "From $59",
+      "Make the most of your Sunday to Thursday with special rates, full access to the wellness area and an ideal atmosphere to disconnect from the week.",
+    price: "From $25 for person",
     href: "/en/promotions/weekend/",
-    image: "/imagenes/promotions/season/pareja.jpg",
-    badge: "Weekend",
+    image: "/imagenes/instalaciones/Familia3.jpg",
+    badge: "Weekdays",
+    pills: ["🏊 Pool & wellness", "🌿 Green areas", "📅 Fri – Sun"],
   },
   {
     title: "Season Promotion",
     description:
-      "Take advantage of our seasonal offer with special rates on lodging and selected experiences.",
-    price: "From $79",
+      "Take advantage of our seasonal rates on lodging and selected experiences — the perfect moment to plan your visit with special benefits at a great price.",
+    price: "From $25 for persom",
     href: "/en/promotions/season/",
-    image: "/imagenes/promotions/weekend/pareja.jpg",
+    image: "/imagenes/instalaciones/balconHosteria.jpeg",
     badge: "Season",
+    pills: ["🌟 Special rates", "🏡 Accommodation", "⏳ Limited time"],
   },
 ];
 
-const waText = `Hi, I'd like information about the promotions at ${SITE.name}.`;
-const waUrl =
-  `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
+const waText = `Hello, I'd like some information about the current promotions at ${SITE.name}.`;
+const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout
-  lang="en"
-  title={`Promotions | ${SITE.name}`}
-  description={page.subtitle}
->
+<BaseLayout lang="en" title={`Promotions | ${SITE.name}`} description={page.subtitle}>
+
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
-    <div class="relative min-h-[56vh] overflow-hidden">
-      <img
-        src={page.heroImage}
-        alt="Hostería Agoyán promotions"
-        class="absolute inset-0 h-full w-full object-cover"
-      />
-      <div class="absolute inset-0 bg-black/45"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-slate-950/10"></div>
+    <div class="relative h-[62vh] min-h-[480px] overflow-hidden">
+      <img src={page.heroImage} alt="Hostería Agoyán promotions" class="absolute inset-0 h-full w-full object-cover object-center" loading="eager" fetchpriority="high" />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/72 via-black/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10"></div>
 
-      <div class="relative z-10 mx-auto flex min-h-[56vh] max-w-7xl items-end px-4 pb-14 pt-28 sm:px-6 lg:px-8">
+      <div class="relative z-10 mx-auto flex h-full max-w-7xl items-end px-4 pb-14 pt-28 sm:px-6 lg:px-8">
         <div class="max-w-3xl" data-reveal>
-          <p class="font-menu text-sm tracking-[0.14em] text-emerald-300">
-            SPECIAL OFFERS
-          </p>
-          <h1 class="mt-4 font-hero text-5xl leading-[1.02] text-white sm:text-6xl lg:text-7xl">
-            {page.title}
-          </h1>
-          <p class="mt-5 max-w-2xl text-base leading-8 text-white/82 sm:text-lg">
-            {page.subtitle}
-          </p>
-
+          <div class="mb-4 flex items-center gap-2 font-menu text-xs tracking-[0.16em] text-white/55">
+            <a href="/en/" class="transition hover:text-white/90">HOME</a>
+            <span>/</span>
+            <span class="text-emerald-300">SPECIAL OFFERS</span>
+          </div>
+          <h1 class="font-hero text-5xl leading-[1.02] text-white sm:text-6xl lg:text-7xl">{page.title}</h1>
+          <p class="mt-5 max-w-2xl text-base leading-8 text-white/82 sm:text-lg">{page.subtitle}</p>
           <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-400"
-            >
+            <a href={waUrl} target="_blank" rel="noopener" class="hero-wa-btn inline-flex items-center justify-center gap-2.5 rounded-2xl px-7 py-3.5 text-sm font-bold text-white">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
               Ask on WhatsApp
             </a>
-
-            <a
-              href="#promotions-list"
-              class="inline-flex items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
-            >
+            <a href="#promotions-list" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
               View promotions
             </a>
           </div>
         </div>
       </div>
+
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/45">
+        <span class="font-menu text-[10px] tracking-widest">EXPLORE</span>
+        <svg class="scroll-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
     </div>
   </section>
 
-  <section class="bg-white py-20">
+  <section class="bg-white py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div data-reveal>
-          <p class="font-menu text-sm text-emerald-600">Make the most of it</p>
-          <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
-            Promotions to enjoy your stay
-          </h2>
+          <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">MAKE THE MOST OF IT</p>
+          <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Promotions to enjoy your stay for less</h2>
           <p class="mt-5 text-base leading-8 text-slate-600">
-            Here you will find current offers and promotions designed for weekends,
-            specific dates or seasonal campaigns. A more convenient way to enjoy
-            the Agoyán experience.
+            Here you'll find our current offers and promotions — designed for weekends, specific seasons or special dates. A smarter way to enjoy the full Hostería Agoyán experience without paying full price.
           </p>
+          <p class="mt-4 text-base leading-8 text-slate-600">
+            All promotions include access to the wellness area, green spaces, parking and Wi-Fi. Book directly via WhatsApp and our team will confirm your reservation straight away.
+          </p>
+          <a href={waUrl} target="_blank" rel="noopener" class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition hover:text-emerald-500">
+            Ask about availability
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
 
-        <div class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-[0_16px_40px_rgba(0,0,0,0.05)]" data-reveal>
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div class="rounded-2xl bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-              <div class="text-sm text-slate-500">Promotions</div>
-              <div class="mt-2 text-2xl font-bold text-slate-900">2 active</div>
+        <div class="grid grid-cols-2 gap-4" data-reveal>
+          {[
+            { label: "Active promotions", value: "2", icon: "🎟️" },
+            { label: "Booking",           value: "Direct",   icon: "📲" },
+            { label: "Support",           value: "WhatsApp", icon: "💬" },
+            { label: "Benefits",          value: "Exclusive", icon: "⭐" },
+          ].map((s) => (
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-[0_4px_16px_rgba(0,0,0,0.04)]">
+              <div class="text-2xl">{s.icon}</div>
+              <div class="mt-3 text-xl font-bold text-slate-900">{s.value}</div>
+              <div class="mt-1 text-xs font-menu tracking-wider text-slate-500">{s.label}</div>
             </div>
-            <div class="rounded-2xl bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-              <div class="text-sm text-slate-500">Booking</div>
-              <div class="mt-2 text-2xl font-bold text-slate-900">Direct</div>
-            </div>
-            <div class="rounded-2xl bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-              <div class="text-sm text-slate-500">Support</div>
-              <div class="mt-2 text-2xl font-bold text-slate-900">WhatsApp</div>
-            </div>
-            <div class="rounded-2xl bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-              <div class="text-sm text-slate-500">Benefits</div>
-              <div class="mt-2 text-2xl font-bold text-slate-900">Special</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <section id="promotions-list" class="bg-slate-50 py-20">
+  <section id="promotions-list" class="bg-slate-50 py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto mb-12 max-w-3xl text-center" data-reveal>
-        <p class="font-menu text-sm text-sky-600">Available promotions</p>
-        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
-          Choose the best offer for your visit
-        </h2>
+      <div class="mb-14 text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">AVAILABLE PROMOTIONS</p>
+        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Choose the best offer for your visit</h2>
       </div>
 
       <div class="grid gap-8 lg:grid-cols-2">
         {promotions.map((item) => (
-          <article
-            class="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_12px_35px_rgba(0,0,0,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]"
-            data-reveal
-          >
-            <a href={item.href} class="block">
-              <div class="relative h-80 overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/8 to-transparent"></div>
+          <a href={item.href} class="promo-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_8px_28px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_50px_rgba(0,0,0,0.12)]" data-reveal>
+            <div class="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-emerald-400 to-teal-400 transition-transform duration-500 group-hover:scale-x-100 [will-change:transform]"></div>
 
-                <div class="absolute left-5 top-5">
-                  <span class="rounded-full bg-white/95 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-slate-900 shadow">
-                    {item.badge}
-                  </span>
-                </div>
-
-                <div class="absolute bottom-5 left-5">
-                  <span class="rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow">
-                    {item.price}
-                  </span>
-                </div>
+            <div class="relative h-72 overflow-hidden">
+              <img src={item.image} alt={item.title} class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 [will-change:transform]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent"></div>
+              <div class="absolute left-5 top-5">
+                <span class="rounded-full border border-white/30 bg-white/95 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-slate-800 shadow backdrop-blur">
+                  {item.badge}
+                </span>
               </div>
-
-              <div class="p-6">
-                <h3 class="font-menu text-2xl text-slate-900">{item.title}</h3>
-                <p class="mt-4 text-sm leading-7 text-slate-600">
-                  {item.description}
-                </p>
-
-                <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition group-hover:text-emerald-500">
-                  <span>View details</span>
-                  <span aria-hidden="true">→</span>
-                </div>
+              <div class="absolute bottom-5 left-5">
+                <span class="rounded-full bg-emerald-500 px-4 py-1.5 text-sm font-bold text-white shadow-[0_4px_14px_rgba(16,185,129,0.5)]">
+                  {item.price}
+                </span>
               </div>
-            </a>
-          </article>
+            </div>
+
+            <div class="p-7">
+              <h3 class="font-hero text-2xl text-slate-900">{item.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                {item.pills.map((pill) => (
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs text-slate-600">{pill}</span>
+                ))}
+              </div>
+              <div class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition-colors group-hover:text-emerald-500">
+                View details
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="bg-white py-20">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8" data-reveal>
-      <div class="rounded-[2.2rem] border border-slate-200 bg-[linear-gradient(135deg,#f8fafc,#eefbf6)] p-8 text-center shadow-[0_18px_45px_rgba(0,0,0,0.06)] sm:p-12">
-        <p class="font-menu text-sm text-emerald-600">Quick help</p>
-        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
-          Need help choosing?
-        </h2>
-        <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600">
-          Message us on WhatsApp and we will help you choose the most convenient
-          promotion based on your travel date and the type of experience you want.
-        </p>
-
-        <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-          <a
-            href={waUrl}
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
-          >
-            Ask on WhatsApp
-          </a>
-          <a
-            href="/en/contact/"
-            class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-          >
-            Go to contact
-          </a>
+  <section class="cta-section relative -mx-4 overflow-hidden py-28 sm:-mx-6 sm:py-36 lg:-mx-8">
+    <div class="pointer-events-none absolute -left-32 -top-32 h-[480px] w-[480px] rounded-full bg-emerald-400/20 blur-[96px]"></div>
+    <div class="pointer-events-none absolute -right-32 bottom-0 h-[440px] w-[440px] rounded-full bg-teal-300/15 blur-[80px]"></div>
+    <div class="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[100px]"></div>
+    <div class="cta-grid pointer-events-none absolute inset-0 opacity-[0.06]"></div>
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/40 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent"></div>
+    <div class="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
+      <div class="mb-8 flex justify-center">
+        <div class="cta-badge inline-flex h-16 w-16 items-center justify-center rounded-2xl">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
+      </div>
+      <p class="font-menu text-sm tracking-[0.2em] text-emerald-300">NOT SURE WHICH PROMOTION IS RIGHT FOR YOU?</p>
+      <h2 class="mt-5 font-hero text-4xl leading-[1.04] text-white sm:text-5xl lg:text-6xl">We'll help you choose<br />the perfect deal</h2>
+      <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
+        Message us on WhatsApp and our team will guide you to the most convenient promotion based on your travel date, group size and the experience you're looking for.
+      </p>
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href={waUrl} target="_blank" rel="noopener" class="cta-wa-btn inline-flex min-w-[220px] items-center justify-center gap-2.5 rounded-2xl bg-white px-8 py-4 text-sm font-bold text-emerald-700">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+          Ask on WhatsApp
+        </a>
+        <a href="/en/contact/" class="inline-flex min-w-[200px] items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition hover:border-white/40 hover:bg-white/18">
+          Go to contact
+        </a>
       </div>
     </div>
   </section>
+
 </BaseLayout>
+
+<style>
+  .hero-wa-btn { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 8px 24px rgba(16, 185, 129, 0.38); transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease; }
+  .hero-wa-btn:hover { transform: translateY(-2px); filter: brightness(1.07); box-shadow: 0 14px 34px rgba(16, 185, 129, 0.48); }
+  .scroll-arrow { animation: bounce-arr 1.8s ease-in-out infinite; }
+  @keyframes bounce-arr { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  .cta-section { background: radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(20, 184, 166, 0.14) 0%, transparent 45%), linear-gradient(160deg, #0d2218 0%, #0f2d22 30%, #0b2320 60%, #071a17 100%); }
+  .cta-grid { background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); }
+  .cta-badge { background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(20,184,166,0.15)); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; box-shadow: 0 0 0 6px rgba(16,185,129,0.06), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .cta-wa-btn { box-shadow: 0 16px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06); transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease; }
+  .cta-wa-btn:hover { transform: translateY(-2px); filter: brightness(1.03); box-shadow: 0 22px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1); }
+</style>

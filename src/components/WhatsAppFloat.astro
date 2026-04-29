@@ -14,220 +14,565 @@ const msg = isEs
 
 const waUrl =
   `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(msg);
+
+const text = {
+  status:    isEs ? "En línea ahora" : "Online now",
+  greeting:  isEs ? "👋 ¡Hola! ¿En qué podemos ayudarte hoy?" : "👋 Hi! How can we help you today?",
+  body:      isEs
+    ? "Estamos listos para ayudarte con reservas, paquetes y toda la información sobre Hostería Agoyán."
+    : "We're ready to help you with bookings, packages and all information about Hostería Agoyán.",
+  cta:       isEs ? "Iniciar chat" : "Start chat",
+  ariaBtn:   isEs ? "Abrir chat de WhatsApp" : "Open WhatsApp chat",
+  ariaClose: isEs ? "Cerrar" : "Close",
+  label:     isEs ? "Chatea con nosotros" : "Chat with us",
+};
 ---
 
-<a
-  href={waUrl}
-  target="_blank"
-  rel="noopener"
-  class="wa-float group fixed bottom-5 right-5 z-50"
-  aria-label={isEs ? "Reservar por WhatsApp" : "Book on WhatsApp"}
->
-  <span class="wa-glow" aria-hidden="true"></span>
+<div class="wa-root" id="wa-root" aria-live="polite">
 
-  <span class="wa-shell">
-    <span class="wa-icon-wrap">
-      <svg class="wa-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path
-          d="M16 5.2c-5.8 0-10.5 4.4-10.5 9.9 0 2 .6 3.9 1.8 5.6L6 25.6l5-1.3c1.4.8 3 1.2 4.9 1.2 5.8 0 10.5-4.4 10.5-9.9S21.8 5.2 16 5.2Z"
-          fill="white"
-        />
-        <path
-          d="M13 12.1c.2-.5.5-.6.8-.6h.5c.3 0 .5.2.6.5l.7 1.8c.1.3.1.7-.2 1l-.6.7c-.1.2-.2.4-.1.6.5.9 1.2 1.7 2.2 2.4.2.2.5.2.7 0l.7-.5c.3-.2.7-.3 1-.2l1.8.7c.4.2.6.5.6.8v.5c0 .5-.2.8-.6 1-.7.3-1.4.4-2 .3-1.8-.3-3.6-1.2-5.2-2.8-1.5-1.5-2.5-3.2-2.9-5-.1-.7 0-1.4.2-2Z"
-          fill="#16a34a"
-        />
-      </svg>
+  <!-- ── Popup de chat ───────────────────────────────────── -->
+  <div
+    class="wa-popup"
+    id="wa-popup"
+    role="dialog"
+    aria-label={isEs ? "Chat de WhatsApp" : "WhatsApp chat"}
+    aria-hidden="true"
+  >
+    <!-- Cabecera verde -->
+    <div class="wa-popup-header">
+      <div class="wa-avatar">
+        <svg viewBox="0 0 24 24" fill="white" aria-hidden="true" width="26" height="26">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+        </svg>
+        <span class="wa-avatar-dot" aria-hidden="true"></span>
+      </div>
+      <div class="wa-popup-info">
+        <p class="wa-popup-name">{SITE.name}</p>
+        <p class="wa-popup-status">
+          <span class="wa-status-dot" aria-hidden="true"></span>
+          {text.status}
+        </p>
+      </div>
+      <button
+        class="wa-close"
+        id="wa-close"
+        type="button"
+        aria-label={text.ariaClose}
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
 
-      <span class="wa-dot"></span>
-    </span>
+    <!-- Cuerpo del popup -->
+    <div class="wa-popup-body">
+      <div class="wa-bubble">
+        <p class="wa-bubble-greeting">{text.greeting}</p>
+        <p class="wa-bubble-body">{text.body}</p>
+        <span class="wa-bubble-time" aria-hidden="true">
+          {isEs ? "Ahora" : "Now"}
+        </span>
+      </div>
+    </div>
 
-    <span class="wa-text hidden sm:flex">
-      <span class="wa-kicker">
-        {isEs ? "Atención inmediata" : "Instant support"}
+    <!-- CTA -->
+    <div class="wa-popup-footer">
+      <a
+        href={waUrl}
+        target="_blank"
+        rel="noopener"
+        class="wa-cta"
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+        </svg>
+        {text.cta}
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Botón flotante ──────────────────────────────────── -->
+  <div class="wa-btn-wrap">
+    <!-- Etiqueta tooltip (desktop) -->
+    <span class="wa-label" aria-hidden="true">{text.label}</span>
+
+    <!-- Anillos de pulso -->
+    <span class="wa-ring wa-ring-1" aria-hidden="true"></span>
+    <span class="wa-ring wa-ring-2" aria-hidden="true"></span>
+
+    <!-- Botón principal -->
+    <button
+      class="wa-btn"
+      id="wa-btn"
+      type="button"
+      aria-label={text.ariaBtn}
+      aria-expanded="false"
+      aria-controls="wa-popup"
+    >
+      <!-- Icono WhatsApp (estado normal) -->
+      <span class="wa-icon-wa" id="wa-icon-wa" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="white" width="30" height="30">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+        </svg>
       </span>
-      <span class="wa-title">
-        {isEs ? "Reservar por WhatsApp" : "Book on WhatsApp"}
+      <!-- Icono X (estado abierto) -->
+      <span class="wa-icon-x" id="wa-icon-x" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+          <path d="M18 6 6 18M6 6l12 12" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
       </span>
-    </span>
 
-    <span class="wa-mobile sm:hidden">
-      WhatsApp
-    </span>
-  </span>
-</a>
+      <!-- Badge de notificación -->
+      <span class="wa-badge" id="wa-badge" aria-hidden="true">1</span>
+    </button>
+  </div>
+
+</div>
 
 <style>
-  .wa-float {
-    animation: waFadeIn 0.45s ease both;
-  }
-
-  .wa-glow {
-    position: absolute;
-    inset: auto 8px 4px 8px;
-    height: 26px;
-    border-radius: 9999px;
-    background: rgba(34, 197, 94, 0.32);
-    filter: blur(18px);
-    z-index: -1;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 0.8;
-  }
-
-  .wa-shell {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.85rem;
-    border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(51, 65, 85, 0.88);
-    padding: 0.82rem 1rem;
-    color: white;
-    box-shadow:
-      0 16px 34px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    transition:
-      transform 0.28s ease,
-      background-color 0.28s ease,
-      border-color 0.28s ease,
-      box-shadow 0.28s ease;
-  }
-
-  .wa-float:hover .wa-shell {
-    transform: translateY(-2px);
-    background: rgba(51, 65, 85, 0.95);
-    border-color: rgba(74, 222, 128, 0.28);
-    box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.22),
-      0 0 0 1px rgba(74, 222, 128, 0.08) inset;
-  }
-
-  .wa-float:hover .wa-glow {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-
-  .wa-icon-wrap {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 9999px;
-    background:
-      radial-gradient(circle at 30% 28%, #4ade80 0%, #22c55e 38%, #16a34a 68%, #15803d 100%);
-    box-shadow:
-      inset 0 2px 4px rgba(255, 255, 255, 0.28),
-      inset 0 -4px 10px rgba(0, 0, 0, 0.18),
-      0 10px 22px rgba(34, 197, 94, 0.24);
-    flex-shrink: 0;
-    transition:
-      transform 0.28s ease,
-      box-shadow 0.28s ease,
-      filter 0.28s ease;
-  }
-
-  .wa-float:hover .wa-icon-wrap {
-    transform: scale(1.05);
-    box-shadow:
-      inset 0 2px 4px rgba(255, 255, 255, 0.3),
-      inset 0 -4px 10px rgba(0, 0, 0, 0.2),
-      0 14px 26px rgba(34, 197, 94, 0.3);
-    filter: brightness(1.03);
-  }
-
-  .wa-icon {
-    width: 1.45rem;
-    height: 1.45rem;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
-  }
-
-  .wa-dot {
-    position: absolute;
-    right: 0.08rem;
-    top: 0.08rem;
-    width: 0.58rem;
-    height: 0.58rem;
-    border-radius: 9999px;
-    background: #22c55e;
-    box-shadow:
-      0 0 0 3px rgba(51, 65, 85, 0.95),
-      0 0 12px rgba(34, 197, 94, 0.55);
-    animation: waPulse 1.8s infinite;
-  }
-
-  .wa-text {
+  /* ─── Raíz ───────────────────────────────────────────── */
+  .wa-root {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
-    line-height: 1.08;
+    align-items: flex-end;
+    gap: 0.75rem;
+    animation: waRootIn 0.5s 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   }
 
-  .wa-kicker {
+  /* ─── Popup ──────────────────────────────────────────── */
+  .wa-popup {
+    width: 22rem;
+    max-width: calc(100vw - 3rem);
+    border-radius: 1.25rem;
+    background: #fff;
+    box-shadow:
+      0 24px 60px rgba(0, 0, 0, 0.16),
+      0 4px 12px rgba(0, 0, 0, 0.08),
+      0 0 0 1px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    transform-origin: bottom right;
+
+    /* Estado oculto */
+    opacity: 0;
+    transform: scale(0.88) translateY(10px);
+    pointer-events: none;
+    transition:
+      opacity 0.28s cubic-bezier(0.34, 1.2, 0.64, 1),
+      transform 0.28s cubic-bezier(0.34, 1.2, 0.64, 1);
+  }
+
+  .wa-popup.is-open {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Cabecera */
+  .wa-popup-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.1rem;
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  }
+
+  .wa-avatar {
+    position: relative;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.2);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .wa-avatar-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 9999px;
+    background: #4ade80;
+    border: 2px solid #25d366;
+    box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.4);
+    animation: waPulse 2s infinite;
+  }
+
+  .wa-popup-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .wa-popup-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .wa-popup-status {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
     font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.68);
-    margin-bottom: 0.18rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 0.1rem;
   }
 
-  .wa-title {
-    font-size: 0.95rem;
-    font-weight: 700;
+  .wa-status-dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 9999px;
+    background: #a7f3d0;
+    animation: waPulse 2s infinite;
+    flex-shrink: 0;
+  }
+
+  .wa-close {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.15);
     color: white;
-    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.18s ease;
   }
 
-  .wa-mobile {
-    font-size: 0.92rem;
+  .wa-close:hover {
+    background: rgba(255, 255, 255, 0.28);
+  }
+
+  /* Cuerpo del popup */
+  .wa-popup-body {
+    padding: 1.1rem 1.1rem 0.75rem;
+    background: #ece5dd; /* WhatsApp chat background */
+    min-height: 5rem;
+  }
+
+  .wa-bubble {
+    position: relative;
+    background: #fff;
+    border-radius: 0 0.9rem 0.9rem 0.9rem;
+    padding: 0.75rem 0.9rem 1.4rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    max-width: 92%;
+    animation: waBubbleIn 0.35s 0.1s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  }
+
+  /* Triangulito del bubble */
+  .wa-bubble::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -0.45rem;
+    border-width: 0 0.5rem 0.5rem 0;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+  }
+
+  .wa-bubble-greeting {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1c1c1c;
+    line-height: 1.4;
+    margin-bottom: 0.45rem;
+  }
+
+  .wa-bubble-body {
+    font-size: 0.82rem;
+    color: #4b5563;
+    line-height: 1.55;
+  }
+
+  .wa-bubble-time {
+    position: absolute;
+    bottom: 0.45rem;
+    right: 0.7rem;
+    font-size: 0.65rem;
+    color: #9ca3af;
+  }
+
+  /* Footer del popup */
+  .wa-popup-footer {
+    padding: 0.85rem 1.1rem 1rem;
+    background: #fff;
+  }
+
+  .wa-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: 100%;
+    border-radius: 0.75rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.88rem;
     font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+    transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+  }
+
+  .wa-cta:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(37, 211, 102, 0.38);
+  }
+
+  /* ─── Botón flotante ─────────────────────────────────── */
+  .wa-btn-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Etiqueta tooltip */
+  .wa-label {
+    position: absolute;
+    right: calc(100% + 0.75rem);
     white-space: nowrap;
+    background: rgba(15, 23, 42, 0.88);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: 9999px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(6px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .wa-label {
+      display: block;
+    }
+    .wa-btn-wrap:hover .wa-label {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Anillos de pulso */
+  .wa-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    border: 2px solid rgba(37, 211, 102, 0.5);
+    animation: waRing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+    pointer-events: none;
+  }
+
+  .wa-ring-2 {
+    animation-delay: 0.8s;
+  }
+
+  /* Botón */
+  .wa-btn {
+    position: relative;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    box-shadow:
+      0 8px 28px rgba(37, 211, 102, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    display: grid;
+    place-items: center;
+    transition:
+      transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.22s ease,
+      filter 0.22s ease;
+    flex-shrink: 0;
+  }
+
+  .wa-btn:hover {
+    transform: scale(1.08);
+    box-shadow:
+      0 14px 36px rgba(37, 211, 102, 0.5),
+      0 4px 12px rgba(0, 0, 0, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    filter: brightness(1.04);
+  }
+
+  .wa-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Estados del icono */
+  .wa-icon-wa,
+  .wa-icon-x {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .wa-icon-x {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.7);
+  }
+
+  .wa-btn[aria-expanded="true"] .wa-icon-wa {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.7);
+  }
+
+  .wa-btn[aria-expanded="true"] .wa-icon-x {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* Badge */
+  .wa-badge {
+    position: absolute;
+    top: -0.18rem;
+    right: -0.18rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 9999px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
+    animation: waBadgeIn 0.4s 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .wa-badge.is-hidden {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  /* ─── Keyframes ──────────────────────────────────────── */
+  @keyframes waRootIn {
+    from { opacity: 0; transform: translateY(14px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes waRing {
+    0%   { transform: scale(1);   opacity: 0.7; }
+    100% { transform: scale(1.9); opacity: 0; }
   }
 
   @keyframes waPulse {
-    0% {
-      transform: scale(1);
-      box-shadow:
-        0 0 0 3px rgba(51, 65, 85, 0.95),
-        0 0 0 0 rgba(34, 197, 94, 0.4);
-    }
-    70% {
-      transform: scale(1);
-      box-shadow:
-        0 0 0 3px rgba(51, 65, 85, 0.95),
-        0 0 0 9px rgba(34, 197, 94, 0);
-    }
-    100% {
-      transform: scale(1);
-      box-shadow:
-        0 0 0 3px rgba(51, 65, 85, 0.95),
-        0 0 0 0 rgba(34, 197, 94, 0);
-    }
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
   }
 
-  @keyframes waFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px) scale(0.97);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+  @keyframes waBadgeIn {
+    from { opacity: 0; transform: scale(0); }
+    to   { opacity: 1; transform: scale(1); }
   }
 
-  @media (max-width: 640px) {
-    .wa-shell {
-      padding: 0.8rem 0.95rem;
-      gap: 0.72rem;
+  @keyframes waBubbleIn {
+    from { opacity: 0; transform: translateY(6px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ─── Mobile ─────────────────────────────────────────── */
+  @media (max-width: 639px) {
+    .wa-root {
+      bottom: 1.25rem;
+      right: 1.25rem;
     }
 
-    .wa-icon-wrap {
-      width: 2.9rem;
-      height: 2.9rem;
+    .wa-popup {
+      width: calc(100vw - 2.5rem);
     }
 
-    .wa-icon {
-      width: 1.32rem;
-      height: 1.32rem;
+    .wa-btn {
+      width: 3.3rem;
+      height: 3.3rem;
     }
   }
 </style>
+
+<script>
+  (() => {
+    const root    = document.getElementById("wa-root");
+    const popup   = document.getElementById("wa-popup");
+    const btn     = document.getElementById("wa-btn");
+    const closeBtn = document.getElementById("wa-close");
+    const badge   = document.getElementById("wa-badge");
+
+    if (!root || !popup || !btn || !closeBtn || !badge) return;
+
+    const DISMISSED_KEY = "wa_popup_dismissed";
+
+    function openPopup() {
+      popup.classList.add("is-open");
+      popup.setAttribute("aria-hidden", "false");
+      btn.setAttribute("aria-expanded", "true");
+      badge.classList.add("is-hidden");
+    }
+
+    function closePopup() {
+      popup.classList.remove("is-open");
+      popup.setAttribute("aria-hidden", "true");
+      btn.setAttribute("aria-expanded", "false");
+      sessionStorage.setItem(DISMISSED_KEY, "1");
+    }
+
+    // Toggle al click del botón principal
+    btn.addEventListener("click", () => {
+      const isOpen = popup.classList.contains("is-open");
+      if (isOpen) {
+        closePopup();
+      } else {
+        openPopup();
+      }
+    });
+
+    // Cerrar con el botón X
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closePopup();
+    });
+
+    // Cerrar al hacer click fuera
+    document.addEventListener("click", (e) => {
+      if (
+        popup.classList.contains("is-open") &&
+        !root.contains(e.target as Node)
+      ) {
+        closePopup();
+      }
+    });
+
+    // Auto-abrir después de 3.5s si no fue descartado antes
+    if (!sessionStorage.getItem(DISMISSED_KEY)) {
+      setTimeout(openPopup, 3500);
+    }
+  })();
+</script>

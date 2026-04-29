@@ -30,35 +30,53 @@ const packagesLinks = isEs
       { label: "Full Day", href: "/es/paquetes/full-day/" },
       { label: "Romántico", href: "/es/paquetes/romantico/" },
       { label: "Hospedaje", href: "/es/paquetes/hospedaje/" },
+      { label: "Aventura", href: "/es/paquetes/aventura/" },
+      { label: "Baños-Extremo", href: "/es/paquetes/banos-extremo/" },
+      { label: "Baños-Premium", href: "/es/paquetes/banos-premium/" },
+      { label: "Baños-Quilotoa", href: "/es/paquetes/banos-quilotoa/" },
+      { label: "Baños-Selva", href: "/es/paquetes/banos-selva/" },
+      { label: "Selva-Amazonica", href: "/es/paquetes/selva-amazonica/" },
     ]
   : [
       { label: "Full Day", href: "/en/packages/full-day/" },
       { label: "Romantic", href: "/en/packages/romantic/" },
       { label: "Lodging", href: "/en/packages/lodging/" },
+      { label: "Adventure", href: "/en/packages/adventure/" },
+      { label: "Baños-Premium", href: "/en/packages/banos-premium/" },
+      { label: "Baños-Amazon", href: "/en/packages/banos-amazon/" },
+      { label: "Baños-Extreme", href: "/en/packages/banos-extreme/" },
+      { label: "Baños-Quilotoa", href: "/en/packages/banos-quilotoa/" },
+      { label: "Amazon-Rainforest", href: "/en/packages/amazon-rainforest/" },
     ];
 
 const promotionsLinks = isEs
   ? [
       { label: "Promociones vigentes", href: "/es/promociones/" },
-      { label: "Fin de semana", href: "/es/promociones/fin-de-semana/" },
+      { label: "Entre semana", href: "/es/promociones/fin-de-semana/" },
       { label: "Temporada", href: "/es/promociones/temporada/" },
     ]
   : [
       { label: "Current promotions", href: "/en/promotions/" },
-      { label: "Weekend", href: "/en/promotions/weekend/" },
+      { label: "weekdays ", href: "/en/promotions/weekend/" },
       { label: "Season", href: "/en/promotions/season/" },
     ];
 
 const facilitiesLinks = isEs
   ? [
-      { label: "Piscina", href: "/es/instalaciones/piscina/" },
-      { label: "Sauna y turco", href: "/es/instalaciones/sauna-turco/" },
-      { label: "Áreas verdes", href: "/es/instalaciones/areas-verdes/" },
+      { label: "Zona Húmeda", href: "/es/instalaciones/areaHumeda/" },
+      { label: "Restaurante", href: "/es/instalaciones/restaurante/" },
+      { label: "Salón de Juegos", href: "/es/instalaciones/salonDeJuegos/" },
+      { label: "Salones de Eventos", href: "/es/instalaciones/salonesEventos/" },
+      { label: "Discoteca", href: "/es/instalaciones/discoteca/" },
+      { label: "Areas Verdes", href: "/es/instalaciones/areasVerdes/" },
     ]
   : [
-      { label: "Pool", href: "/en/facilities/pool/" },
-      { label: "Sauna & Steam", href: "/en/facilities/sauna-steam/" },
-      { label: "Green Areas", href: "/en/facilities/green-areas/" },
+      { label: "Wet Area", href: "/en/facilities/areaHumedaEN/" },
+      { label: "Restaurant", href: "/en/facilities/restauranteEN/" },
+      { label: "Game Room", href: "/en/facilities/salonDeJuegosEN/" },
+      { label: "Event Halls", href: "/en/facilities/salonesEventosEN/" },
+      { label: "Disco", href: "/en/facilities/discotecaEN/" },
+      { label: "Green spaces", href: "/en/facilities/areaVerdeEn/" },
     ];
 
 const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
@@ -73,7 +91,7 @@ const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
           class="flex h-16 w-16 items-center justify-center rounded-xl bg-white/95 p-1.5 shadow-lg ring-1 ring-black/10"
         >
           <img
-            src="/logoAgoyanHosteria.png"
+            src="/imagenes/instalaciones/logoAgoyanHosteria.png"
             alt="Logo Hostería Agoyán"
             class="h-full w-full object-contain"
           />
@@ -173,7 +191,7 @@ const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
             aria-label="Español"
             class={`flag-link ${isEs ? "flag-active" : ""}`}
           >
-            <img
+            <img loading="lazy"
               src="/flags/ecuador.png"
               alt="Bandera de Ecuador"
               class="h-4 w-6 rounded-sm object-cover"
@@ -185,7 +203,7 @@ const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
             aria-label="English"
             class={`flag-link ${!isEs ? "flag-active" : ""}`}
           >
-            <img
+            <img loading="lazy"
               src="/flags/usa.png"
               alt="Flag of United States"
               class="h-4 w-6 rounded-sm object-cover"
@@ -278,7 +296,7 @@ const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
 
         <div class="mt-3 flex items-center gap-3 px-4">
           <a href="/es/" class="flag-link" aria-label="Español">
-            <img
+            <img loading="lazy"
               src="/flags/ecuador.png"
               alt="Bandera de Ecuador"
               class="h-5 w-7 rounded-sm object-cover"
@@ -286,7 +304,7 @@ const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
           </a>
 
           <a href="/en/" class="flag-link" aria-label="English">
-            <img
+            <img loading="lazy"
               src="/flags/usa.png"
               alt="Flag of United States"
               class="h-5 w-7 rounded-sm object-cover"

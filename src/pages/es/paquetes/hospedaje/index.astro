@@ -4,25 +4,26 @@ import { SITE } from "../../../../config/site";
 
 const pkg = {
   title: "Hospedaje Familiar",
+  eyebrow: "DESCANSO EN FAMILIA",
   subtitle:
     "Una opción ideal para familias o grupos que desean descansar en un ambiente cómodo, natural y acogedor en Baños de Agua Santa.",
-  price: "$85",
-  priceNote: "desde / noche",
+  price: "$35",
+  priceNote: "por persona/noche",
   duration: "1 noche o más",
   guests: "Familias y grupos",
   availability: "Todo el año",
-  heroImage: "/imagenes/packeges/hospedaje/wallpaper2.jpg",
+  heroImage: "/imagenes/instalaciones/Suite5.jpg",
   gallery: [
-    "/imagenes/packeges/hospedaje/wallpaper2.jpg",
-    "/imagenes/packeges/hospedaje/wallpaper2.jpg",
-    "/imagenes/packeges/hospedaje/wallpaper2.jpg",
-    "/imagenes/packeges/hospedaje/wallpaper2.jpg",
+    { src: "/imagenes/instalaciones/Familia2.jpg",   alt: "Área de descanso" },
+    { src: "/imagenes/instalaciones/balconHosteria.jpeg",  alt: "Espacios familiares" },
+    { src: "/imagenes/instalaciones/Suite5-2.jpg",  alt: "Hospedaje familiar" },
+    { src: "/imagenes/instalaciones/jacuzzi.jpeg",  alt: "Habitaciones y servicios" },
   ],
   includes: [
     "Alojamiento en habitación familiar",
     "Desayuno incluido",
     "Acceso a piscina",
-    "Acceso a sauna y turco",
+    "Acceso a sauna, turco e hidromasaje",
     "Uso de áreas verdes",
     "Parqueadero",
     "Wi-Fi",
@@ -42,201 +43,262 @@ const pkg = {
 };
 
 const related = [
-  {
-    title: "Full Day",
-    href: "/es/paquetes/full-day/",
-    image: "/imagenes/packeges/full-day/pareja.jpg",
-  },
-  {
-    title: "Paquete Romance",
-    href: "/es/paquetes/romantico/",
-    image: "/imagenes/packeges/romance/romance.jpg",
-  },
+  { title: "Full Day",       href: "/es/paquetes/full-day/",  image: "/imagenes/instalaciones/FullDay.jpg" },
+  { title: "Paquete Romance", href: "/es/paquetes/romantico/", image: "/imagenes/instalaciones/Pareja3.jpg" },
 ];
 
 const waText = `Hola, quiero información para reservar el ${pkg.title} en ${SITE.name}.`;
-const waUrl =
-  `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
+const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout
-  lang="es"
-  title={`${pkg.title} | ${SITE.name}`}
-  description={pkg.subtitle}
->
+<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
-    <div class="relative min-h-[78vh] overflow-hidden">
-      <img src={pkg.heroImage} alt={pkg.title} class="absolute inset-0 h-full w-full object-cover" />
-      <div class="absolute inset-0 bg-black/40"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-slate-950/10"></div>
+    <div class="relative h-[82vh] min-h-[600px] overflow-hidden">
+      <img src={pkg.heroImage} alt={pkg.title}
+        class="absolute inset-0 h-full w-full object-cover object-center"
+        loading="eager" fetchpriority="high"/>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
 
-      <div class="relative z-10 mx-auto flex min-h-[78vh] max-w-7xl items-end px-4 pb-14 pt-28 sm:px-6 lg:px-8">
-        <div class="grid w-full gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+      <div class="relative z-10 mx-auto flex h-full max-w-7xl items-end px-4 pb-14 pt-28 sm:px-6 lg:px-8">
+        <div class="grid w-full gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+
           <div data-reveal>
-            <p class="font-menu text-sm tracking-[0.14em] text-emerald-300">DESCANSO EN FAMILIA</p>
-            <h1 class="mt-4 font-hero text-5xl leading-[1.02] text-white sm:text-6xl lg:text-7xl">{pkg.title}</h1>
+            <div class="mb-4 flex items-center gap-2 font-menu text-xs tracking-[0.16em] text-white/55">
+              <a href="/es/paquetes/" class="transition hover:text-white/90">PAQUETES</a>
+              <span>/</span>
+              <span class="text-emerald-300">{pkg.eyebrow}</span>
+            </div>
+            <h1 class="font-hero text-5xl leading-[1.02] text-white sm:text-6xl lg:text-7xl">{pkg.title}</h1>
             <p class="mt-5 max-w-2xl text-base leading-8 text-white/82 sm:text-lg">{pkg.subtitle}</p>
-
             <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a href={waUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-400">
+              <a href={waUrl} target="_blank" rel="noopener"
+                class="hero-wa-btn inline-flex items-center justify-center gap-2.5 rounded-2xl px-7 py-3.5 text-sm font-bold text-white">
+                <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
                 Reservar por WhatsApp
               </a>
-              <a href="#incluye" class="inline-flex items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18">
+              <a href="#incluye"
+                class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
                 Ver qué incluye
               </a>
             </div>
           </div>
 
-          <aside class="rounded-[2rem] border border-white/15 bg-white/10 p-6 text-white shadow-[0_24px_60px_rgba(0,0,0,0.2)] backdrop-blur-xl" data-reveal>
-            <div class="text-sm uppercase tracking-[0.12em] text-white/70">Tarifa referencial</div>
-            <div class="mt-3 text-5xl font-bold leading-none">{pkg.price}</div>
-            <div class="mt-2 text-sm text-white/70">{pkg.priceNote}</div>
-
-            <div class="mt-6 grid grid-cols-2 gap-3">
-              <div class="rounded-2xl border border-white/10 bg-black/15 p-4">
-                <div class="text-xs text-white/60">Duración</div>
-                <div class="mt-1 text-sm font-semibold">{pkg.duration}</div>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-black/15 p-4">
-                <div class="text-xs text-white/60">Personas</div>
-                <div class="mt-1 text-sm font-semibold">{pkg.guests}</div>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-black/15 p-4">
-                <div class="text-xs text-white/60">Disponibilidad</div>
-                <div class="mt-1 text-sm font-semibold">{pkg.availability}</div>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-black/15 p-4">
-                <div class="text-xs text-white/60">Reserva</div>
-                <div class="mt-1 text-sm font-semibold">Directa</div>
-              </div>
+          <aside class="price-card rounded-[2rem] border border-white/20 p-6 text-white shadow-[0_24px_60px_rgba(0,0,0,0.3)] backdrop-blur-xl" data-reveal>
+            <div class="font-menu text-xs tracking-[0.14em] text-white/60">TARIFA REFERENCIAL</div>
+            <div class="mt-3 font-hero text-6xl font-bold leading-none text-white">{pkg.price}</div>
+            <div class="mt-1.5 text-sm text-white/65">{pkg.priceNote}</div>
+            <div class="mt-6 grid grid-cols-2 gap-2.5">
+              {[
+                { label: "Duración",       value: pkg.duration },
+                { label: "Personas",       value: pkg.guests },
+                { label: "Disponibilidad", value: pkg.availability },
+                { label: "Check-in",       value: "14h00" },
+              ].map((d) => (
+                <div class="rounded-2xl border border-white/10 bg-black/20 p-3.5">
+                  <div class="text-[10px] font-menu tracking-wider text-white/55">{d.label}</div>
+                  <div class="mt-1 text-sm font-semibold text-white">{d.value}</div>
+                </div>
+              ))}
             </div>
-
-            <a href={waUrl} target="_blank" rel="noopener" class="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100">
+            <a href={waUrl} target="_blank" rel="noopener"
+              class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-bold text-emerald-700 transition hover:bg-emerald-50">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
               Consultar disponibilidad
             </a>
           </aside>
         </div>
       </div>
+
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/45">
+        <span class="font-menu text-[10px] tracking-widest">EXPLORAR</span>
+        <svg class="scroll-arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
     </div>
   </section>
 
-  <section class="bg-white py-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-        <div data-reveal>
-          <p class="font-menu text-sm text-emerald-600">Comodidad para compartir</p>
-          <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">
-            Un hospedaje pensado para disfrutar en familia
-          </h2>
-          <p class="mt-5 text-base leading-8 text-slate-600">
-            Esta propuesta está pensada para quienes buscan una estancia cómoda, espacios agradables y acceso a servicios que complementen la experiencia de descanso.
-          </p>
-        </div>
 
-        <div class="relative" data-reveal>
-          <img src={pkg.gallery[0]} alt="Hospedaje Familiar" class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.08)]" />
-          <div class="absolute -bottom-8 left-8 max-w-xs rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
-            <div class="font-semibold text-slate-900">Desayuno incluido</div>
-            <p class="mt-2 text-sm leading-6 text-slate-600">
-              Habitaciones cómodas, desayuno y acceso a instalaciones para una experiencia más completa.
-            </p>
+  <!-- ══ INTRO ════════════════════════════════════════════ -->
+  <section class="bg-white py-20 sm:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div data-reveal>
+          <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">COMODIDAD PARA COMPARTIR</p>
+          <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Un hospedaje pensado para disfrutar en familia</h2>
+          <p class="mt-5 text-base leading-8 text-slate-600">
+            Esta propuesta está diseñada para quienes buscan una estancia cómoda, espacios agradables y acceso a servicios que complementen su experiencia de descanso.
+          </p>
+          <p class="mt-4 text-base leading-8 text-slate-600">
+            Con desayuno incluido, habitaciones familiares y acceso a toda el área húmeda, el Hospedaje Familiar es la opción más completa para vivir Hostería Agoyán durante varios días.
+          </p>
+          <a href={waUrl} target="_blank" rel="noopener"
+            class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition hover:text-emerald-500">
+            Consultar disponibilidad
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="relative pb-10" data-reveal>
+          <img src="/imagenes/instalaciones/Familia3.jpg" alt="Hospedaje Familiar"
+            class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]" loading="lazy"/>
+          <div class="absolute -bottom-2 left-6 max-w-[280px] rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
+            <div class="flex items-center gap-2">
+              <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-100">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-600"><path d="M4 14h16"/><path d="M6 14v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2"/><path d="M8 10h8M9 6h6"/></svg>
+              </span>
+              <div class="font-semibold text-slate-900 text-sm">Desayuno incluido</div>
+            </div>
+            <p class="mt-2 text-xs leading-6 text-slate-500">Habitaciones cómodas, desayuno y acceso a instalaciones para una experiencia más completa.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="incluye" class="bg-slate-50 py-20">
+
+  <!-- ══ QUÉ INCLUYE ═══════════════════════════════════════ -->
+  <section id="incluye" class="bg-slate-50 py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto mb-12 max-w-3xl text-center" data-reveal>
-        <p class="font-menu text-sm text-sky-600">Qué incluye</p>
+      <div class="mb-14 text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">QUÉ INCLUYE</p>
         <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Todo para una estancia cómoda y tranquila</h2>
       </div>
-
-      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
         {pkg.includes.map((item) => (
-          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]" data-reveal>
-            <div class="flex items-start gap-3">
-              <span class="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">✓</span>
-              <p class="text-sm leading-7 text-slate-700">{item}</p>
-            </div>
+          <div class="group flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)]" data-reveal>
+            <span class="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 transition-colors duration-300 group-hover:bg-emerald-200">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" class="text-emerald-600"><path d="M20 6L9 17l-5-5"/></svg>
+            </span>
+            <p class="text-sm leading-7 text-slate-700">{item}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="bg-white py-20">
+
+  <!-- ══ GALERÍA ══════════════════════════════════════════ -->
+  <section class="bg-white py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid gap-6 md:grid-cols-2" data-reveal>
-        {pkg.gallery.map((img, i) => (
-          <img src={img} alt={`Galería hospedaje ${i + 1}`} class="h-[320px] w-full rounded-[2rem] object-cover shadow-[0_16px_40px_rgba(0,0,0,0.08)]" />
+      <div class="mb-14 text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">GALERÍA</p>
+        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Tu estadía familiar</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div class="group relative overflow-hidden rounded-3xl lg:col-span-2 lg:row-span-2" data-reveal>
+          <img src={pkg.gallery[0].src} alt={pkg.gallery[0].alt}
+            class="h-[280px] w-full object-cover transition-transform duration-700 group-hover:scale-105 [will-change:transform] lg:h-full lg:min-h-[460px]" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+          <span class="absolute bottom-4 left-4 rounded-full bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-slate-800 opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">{pkg.gallery[0].alt}</span>
+        </div>
+        {pkg.gallery.slice(1).map((img) => (
+          <div class="group relative overflow-hidden rounded-3xl" data-reveal>
+            <img src={img.src} alt={img.alt}
+              class="h-[210px] w-full object-cover transition-transform duration-700 group-hover:scale-105 [will-change:transform]" loading="lazy"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <span class="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-800 opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">{img.alt}</span>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
+
+  <!-- ══ EXTRAS + CONDICIONES ══════════════════════════════ -->
   <section class="bg-slate-50 py-20">
-    <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-      <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)]" data-reveal>
-        <p class="font-menu text-sm text-sky-600">Adicionales</p>
+    <div class="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_8px_28px_rgba(0,0,0,0.05)]" data-reveal>
+        <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">ADICIONALES</p>
         <h3 class="mt-3 font-hero text-3xl text-slate-900">Personaliza tu estancia</h3>
-        <ul class="mt-5 space-y-3 text-sm leading-7 text-slate-600">
+        <ul class="mt-6 space-y-4">
           {pkg.extras.map((item) => (
-            <li class="flex gap-3"><span class="mt-1 text-emerald-600">•</span><span>{item}</span></li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-teal-100">
+                <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3" class="text-teal-600"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+              <span class="text-sm leading-7 text-slate-600">{item}</span>
+            </li>
           ))}
         </ul>
       </div>
-
-      <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)]" data-reveal>
-        <p class="font-menu text-sm text-sky-600">Condiciones</p>
+      <div class="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_8px_28px_rgba(0,0,0,0.05)]" data-reveal>
+        <p class="font-menu text-sm tracking-[0.16em] text-slate-500">CONDICIONES</p>
         <h3 class="mt-3 font-hero text-3xl text-slate-900">Antes de reservar</h3>
-        <ul class="mt-5 space-y-3 text-sm leading-7 text-slate-600">
+        <ul class="mt-6 space-y-4">
           {pkg.conditions.map((item) => (
-            <li class="flex gap-3"><span class="mt-1 text-emerald-600">•</span><span>{item}</span></li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-slate-100">
+                <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" class="text-slate-500"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="10"/></svg>
+              </span>
+              <span class="text-sm leading-7 text-slate-600">{item}</span>
+            </li>
           ))}
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="bg-white py-20">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8" data-reveal>
-      <div class="rounded-[2.2rem] border border-slate-200 bg-[linear-gradient(135deg,#f8fafc,#eefbf6)] p-8 text-center shadow-[0_18px_45px_rgba(0,0,0,0.06)] sm:p-12">
-        <p class="font-menu text-sm text-emerald-600">Reserva directa</p>
-        <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Reserva tu Hospedaje Familiar</h2>
-        <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-600">
-          Una opción ideal para descansar en familia, con comodidad, servicios incluidos y acceso a las instalaciones de la hostería.
-        </p>
 
-        <div class="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-          <a href={waUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400">
-            Reservar por WhatsApp
-          </a>
-          <a href="/es/paquetes/" class="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50">
-            Ver todos los paquetes
-          </a>
+  <!-- ══ CTA FINAL ════════════════════════════════════════ -->
+  <section class="cta-section relative -mx-4 overflow-hidden py-28 sm:-mx-6 sm:py-36 lg:-mx-8">
+    <div class="pointer-events-none absolute -left-32 -top-32 h-[480px] w-[480px] rounded-full bg-emerald-400/20 blur-[96px]"></div>
+    <div class="pointer-events-none absolute -right-32 bottom-0 h-[440px] w-[440px] rounded-full bg-teal-300/15 blur-[80px]"></div>
+    <div class="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[100px]"></div>
+    <div class="cta-grid pointer-events-none absolute inset-0 opacity-[0.06]"></div>
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/40 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent"></div>
+    <div class="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
+      <div class="mb-8 flex justify-center">
+        <div class="cta-badge inline-flex h-16 w-16 items-center justify-center rounded-2xl">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M3 18v-7h18v7"/><path d="M7 11V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/><path d="M3 18v2M21 18v2"/>
+          </svg>
         </div>
       </div>
+      <p class="font-menu text-sm tracking-[0.2em] text-emerald-300">RESERVA TU HOSPEDAJE</p>
+      <h2 class="mt-5 font-hero text-4xl leading-[1.04] text-white sm:text-5xl lg:text-6xl">
+        Una estadía familiar<br />que siempre recordarán
+      </h2>
+      <p class="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
+        Habitaciones cómodas, desayuno incluido y acceso a todas las instalaciones. Reserva tu Hospedaje Familiar hoy mismo.
+      </p>
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href={waUrl} target="_blank" rel="noopener"
+          class="cta-wa-btn inline-flex min-w-[220px] items-center justify-center gap-2.5 rounded-2xl bg-white px-8 py-4 text-sm font-bold text-emerald-700">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+          Reservar por WhatsApp
+        </a>
+        <a href="/es/paquetes/"
+          class="inline-flex min-w-[200px] items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition hover:border-white/40 hover:bg-white/18">
+          Ver todos los paquetes
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="bg-slate-50 py-20">
+
+  <!-- ══ PAQUETES RELACIONADOS ══════════════════════════════ -->
+  <section class="bg-slate-50 py-20 sm:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-10 text-center" data-reveal>
-        <p class="font-menu text-sm text-sky-600">También te puede interesar</p>
+      <div class="mb-12 text-center" data-reveal>
+        <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">TAMBIÉN TE PUEDE INTERESAR</p>
         <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">Otros paquetes</h2>
       </div>
-
       <div class="grid gap-6 md:grid-cols-2">
         {related.map((item) => (
-          <a href={item.href} class="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.05)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.08)]" data-reveal>
-            <img src={item.image} alt={item.title} class="h-64 w-full object-cover transition duration-500 group-hover:scale-105" />
+          <a href={item.href}
+            class="related-card group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_8px_28px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_44px_rgba(0,0,0,0.11)]"
+            data-reveal>
+            <div class="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-emerald-400 to-teal-400 transition-transform duration-500 group-hover:scale-x-100 [will-change:transform]"></div>
+            <img src={item.image} alt={item.title}
+              class="h-60 w-full object-cover transition-transform duration-600 group-hover:scale-105 [will-change:transform]" loading="lazy"/>
             <div class="p-6">
-              <h3 class="font-menu text-xl text-slate-900">{item.title}</h3>
-              <div class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600">
-                <span>Ver detalles</span>
-                <span aria-hidden="true">→</span>
+              <h3 class="font-hero text-xl text-slate-900">{item.title}</h3>
+              <div class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition-colors group-hover:text-emerald-500">
+                Ver detalles
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform duration-200 group-hover:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </div>
             </div>
           </a>
@@ -244,4 +306,18 @@ const waUrl =
       </div>
     </div>
   </section>
+
 </BaseLayout>
+
+<style>
+  .hero-wa-btn { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 8px 24px rgba(16,185,129,0.38); transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease; }
+  .hero-wa-btn:hover { transform: translateY(-2px); filter: brightness(1.07); box-shadow: 0 14px 34px rgba(16,185,129,0.48); }
+  .price-card { background: rgba(255,255,255,0.10); }
+  .scroll-arrow { animation: bounce-arr 1.8s ease-in-out infinite; }
+  @keyframes bounce-arr { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  .cta-section { background: radial-gradient(ellipse at 20% 50%, rgba(16,185,129,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(20,184,166,0.14) 0%, transparent 45%), linear-gradient(160deg, #0d2218 0%, #0f2d22 30%, #0b2320 60%, #071a17 100%); }
+  .cta-grid { background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); }
+  .cta-badge { background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(20,184,166,0.15)); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; box-shadow: 0 0 0 6px rgba(16,185,129,0.06), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .cta-wa-btn { box-shadow: 0 16px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06); transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease; }
+  .cta-wa-btn:hover { transform: translateY(-2px); filter: brightness(1.03); box-shadow: 0 22px 48px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1); }
+</style>

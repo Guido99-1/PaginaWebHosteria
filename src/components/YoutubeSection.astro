@@ -1,0 +1,71 @@
+---
+const {
+  title = "Descubre la experiencia",
+  subtitle = "Vive momentos únicos en Hostería Agoyán",
+  videoId = "8kPomvteTZg",
+  backgroundImage = "/imagenes/instalaciones/Cascada.jpg"
+} = Astro.props;
+
+const videoUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0`;
+---
+
+<section class="relative py-20 overflow-hidden">
+
+  <!-- 🌄 Fondo con imagen -->
+  <div class="absolute inset-0">
+    {backgroundImage ? (
+      <img loading="lazy"
+        src={backgroundImage}
+        alt="background"
+        class="w-full h-full object-cover scale-110 blur-2xl brightness-75"
+      />
+    ) : (
+      <div class="w-full h-full bg-gray-900"></div>
+    )}
+
+    <!-- Capa de profundidad -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
+  </div>
+
+  <!-- Contenido -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+    
+    <!-- Eyebrow -->
+    <p class="text-sm tracking-[0.2em] text-emerald-400 uppercase">
+      Experiencia visual
+    </p>
+
+    <!-- Título -->
+    <h2 class="mt-4 text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-tight">
+      {title}
+    </h2>
+
+    <!-- Subtítulo -->
+    <p class="mt-4 text-white/80 max-w-2xl mx-auto text-lg">
+      {subtitle}
+    </p>
+
+    <!-- Video -->
+    <div class="mt-12 relative group">
+      
+      <!-- Glow -->
+      <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-cyan-400 blur-xl opacity-30 group-hover:opacity-60 transition"></div>
+      
+      <!-- Contenedor -->
+      <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm">
+        
+        <div class="aspect-video">
+          <iframe
+            src={videoUrl}
+            title="YouTube video"
+            class="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

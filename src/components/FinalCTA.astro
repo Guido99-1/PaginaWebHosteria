@@ -3,34 +3,39 @@ import { SITE } from "../config/site";
 
 type Props = {
   lang?: "es" | "en";
-  backgroundImage?: string;
 };
 
-const {
-  lang = "es",
-  backgroundImage = "/images/final-cta.jpg",
-} = Astro.props;
-
+const { lang = "es" } = Astro.props;
 const isEs = lang === "es";
 
 const content = isEs
   ? {
-      eyebrow: "Reserva tu experiencia",
+      eyebrow: "RESERVA TU EXPERIENCIA",
       title: "Vive una experiencia inolvidable en Hostería Agoyán",
       subtitle:
         "Descubre descanso, naturaleza y comodidad en Baños de Agua Santa. Reserva hoy mismo y disfruta una estadía única.",
       primaryButton: "Reservar por WhatsApp",
       secondaryButton: "Ver paquetes",
       secondaryHref: "/es/paquetes/",
+      features: [
+        { icon: "🌿", label: "Naturaleza y tranquilidad" },
+        { icon: "♨️", label: "Piscina, sauna y turco" },
+        { icon: "🏡", label: "Hospedaje familiar" },
+      ],
     }
   : {
-      eyebrow: "Book your experience",
+      eyebrow: "BOOK YOUR EXPERIENCE",
       title: "Enjoy an unforgettable experience at Hostería Agoyán",
       subtitle:
         "Discover rest, nature and comfort in Baños de Agua Santa. Book today and enjoy a unique stay.",
       primaryButton: "Book on WhatsApp",
       secondaryButton: "View packages",
       secondaryHref: "/en/packages/",
+      features: [
+        { icon: "🌿", label: "Nature & tranquility" },
+        { icon: "♨️", label: "Pool, sauna & steam room" },
+        { icon: "🏡", label: "Family lodging" },
+      ],
     };
 
 const waText = isEs
@@ -41,104 +46,126 @@ const waUrl =
   `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<section class="relative bg-white py-28 sm:py-32">
-  <div class="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-8">
-    <div
-      class="group relative overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.18)]"
-      data-reveal
-    >
-      <!-- Fondo -->
-      <div class="absolute inset-0">
-        <img
-          src={backgroundImage}
-          alt={content.title}
-          class="h-full w-full object-cover object-center"
-          loading="lazy"
-          decoding="async"
-        />
+<section class="cta-section relative overflow-hidden py-28 sm:py-36">
+
+  <!-- ── Fondo decorativo ─────────────────────────────── -->
+  <!-- Orbes de glow -->
+  <div class="pointer-events-none absolute -left-32 -top-32 h-[520px] w-[520px] rounded-full bg-emerald-400/20 blur-[96px]"></div>
+  <div class="pointer-events-none absolute -right-32 bottom-0 h-[480px] w-[480px] rounded-full bg-teal-300/15 blur-[80px]"></div>
+  <div class="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[100px]"></div>
+
+  <!-- Grid pattern sutil -->
+  <div class="cta-grid pointer-events-none absolute inset-0 opacity-[0.06]"></div>
+
+  <!-- Línea superior decorativa -->
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/40 to-transparent"></div>
+  <!-- Línea inferior decorativa -->
+  <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent"></div>
+
+  <!-- ── Contenido ────────────────────────────────────── -->
+  <div class="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
+
+    <!-- Icono badge -->
+    <div class="mb-8 flex justify-center">
+      <div class="cta-badge inline-flex h-16 w-16 items-center justify-center rounded-2xl">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" aria-hidden="true">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
       </div>
+    </div>
 
-      <!-- Overlays -->
-      <div class="absolute inset-0 bg-black/30"></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/55 via-slate-950/30 to-slate-950/40"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent"></div>
+    <!-- Eyebrow -->
+    <p class="font-menu text-sm tracking-[0.2em] text-emerald-300">
+      {content.eyebrow}
+    </p>
 
-      <!-- Glow -->
-      <div class="pointer-events-none absolute -left-20 top-0 h-64 w-64 rounded-full bg-emerald-300/15 blur-3xl"></div>
-      <div class="pointer-events-none absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-sky-300/10 blur-3xl"></div>
+    <!-- Título -->
+    <h2 class="mt-5 font-hero text-5xl leading-[1.04] text-white sm:text-6xl lg:text-7xl xl:text-8xl">
+      {content.title}
+    </h2>
 
-      <!-- Contenido -->
-      <div class="relative z-10 flex min-h-[720px] items-center px-8 py-24 sm:px-14 sm:py-28 lg:px-20 lg:py-32">
-        <div class="mx-auto max-w-5xl text-center">
-          <div class="mb-6 flex justify-center">
-            <div class="inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/10 text-emerald-300 backdrop-blur">
-              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true">
-                <path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
-            </div>
-          </div>
+    <!-- Subtítulo -->
+    <p class="mx-auto mt-7 max-w-3xl text-base leading-8 text-white/75 sm:text-lg lg:text-xl">
+      {content.subtitle}
+    </p>
 
-          <p class="font-menu text-sm tracking-[0.14em] text-emerald-300">
-            {content.eyebrow}
-          </p>
+    <!-- Feature pills -->
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
+      {content.features.map((f) => (
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-5 py-2 text-sm text-white/85 backdrop-blur">
+          <span aria-hidden="true">{f.icon}</span>
+          {f.label}
+        </span>
+      ))}
+    </div>
 
-          <h2 class="mt-4 font-hero text-5xl leading-[1.05] text-white sm:text-6xl lg:text-7xl xl:text-8xl">
-            {content.title}
-          </h2>
+    <!-- Botones -->
+    <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a
+        href={waUrl}
+        target="_blank"
+        rel="noopener"
+        class="cta-wa inline-flex min-w-[230px] items-center justify-center gap-2.5 rounded-2xl bg-white px-8 py-4 text-sm font-bold text-emerald-700"
+      >
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+        </svg>
+        {content.primaryButton}
+      </a>
 
-          <p class="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/82 sm:text-lg lg:text-xl">
-            {content.subtitle}
-          </p>
-
-          <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener"
-              class="cta-primary inline-flex min-w-[230px] items-center justify-center rounded-2xl px-7 py-4 text-sm font-semibold text-white"
-            >
-              {content.primaryButton}
-            </a>
-
-            <a
-              href={content.secondaryHref}
-              class="inline-flex min-w-[190px] items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-7 py-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18"
-            >
-              {content.secondaryButton}
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Borde interno -->
-      <div class="pointer-events-none absolute inset-[1px] rounded-[2.45rem] ring-1 ring-white/10"></div>
+      <a
+        href={content.secondaryHref}
+        class="inline-flex min-w-[190px] items-center justify-center rounded-2xl border border-white/25 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18 hover:border-white/40"
+      >
+        {content.secondaryButton}
+      </a>
     </div>
   </div>
 </section>
 
 <style>
-  .cta-primary {
-    background: linear-gradient(135deg, #10b981, #059669);
-    box-shadow: 0 18px 40px rgba(16, 185, 129, 0.22);
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease,
-      filter 0.3s ease;
+  /* ── Degradado de fondo ── */
+  .cta-section {
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(20, 184, 166, 0.14) 0%, transparent 45%),
+      linear-gradient(160deg, #0d2218 0%, #0f2d22 30%, #0b2320 60%, #071a17 100%);
   }
 
-  .cta-primary:hover {
+  /* ── Grid pattern ── */
+  .cta-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+
+  /* ── Badge icono ── */
+  .cta-badge {
+    background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(20,184,166,0.15));
+    border: 1px solid rgba(16,185,129,0.3);
+    color: #6ee7b7;
+    box-shadow:
+      0 0 0 6px rgba(16,185,129,0.06),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  /* ── Botón WhatsApp ── */
+  .cta-wa {
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  }
+  .cta-wa:hover {
     transform: translateY(-2px);
-    filter: brightness(1.04);
-    box-shadow: 0 24px 48px rgba(16, 185, 129, 0.28);
+    filter: brightness(1.03);
+    box-shadow:
+      0 22px 48px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
   }
-
-  .group img {
-    transform: scale(1);
-    transition: transform 7s ease;
-  }
-
-  .group:hover img {
-    transform: scale(1.04);
+  .cta-wa:active {
+    transform: translateY(0);
   }
 </style>

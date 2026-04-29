@@ -58,13 +58,36 @@ const canonical = new URL(Astro.url.pathname, SITE.url).toString();
     <!-- Global CSS -->
     <link rel="stylesheet" href="/src/styles/global.css" />
 
-    <!-- Performance: preloads (opcional si tienes una imagen hero fija) -->
-    <!-- <link rel="preload" as="image" href="/images/hero.webp"> -->
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": SITE.name,
+      "url": SITE.url,
+      "description": SITE.description,
+      "telephone": SITE.phone,
+      "email": SITE.email,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": SITE.address,
+        "addressLocality": "Baños de Agua Santa",
+        "addressCountry": "EC"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -1.3989756,
+        "longitude": -78.3707316
+      },
+      "openingHours": "Mo-Su 00:00-23:59",
+      "priceRange": "$$",
+      "image": SITE.ogImage,
+      "sameAs": SITE.socials.map((s: { url: string }) => s.url)
+    })} />
   </head>
 
   <body class="min-h-screen bg-white text-slate-900 antialiased">
     <!-- Fondo premium tipo “resort”: gradientes + textura sutil -->
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="relative mx-auto max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8">
       <div class="absolute -top-48 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl"></div>
       <div class="absolute top-40 -left-32 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-3xl"></div>
       <div class="absolute -bottom-48 right-0 h-[620px] w-[820px] rounded-full bg-indigo-500/10 blur-3xl"></div>
