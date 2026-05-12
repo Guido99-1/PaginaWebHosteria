@@ -48,8 +48,9 @@ const canonical = new URL(Astro.url.pathname, SITE.url).toString();
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Favicon (opcional) -->
-    <link rel="icon" href="/favicon.ico" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
 
     <!-- Preconnect fonts (si usas Google Fonts, opcional) -->
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
