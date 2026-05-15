@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,14 +13,14 @@ const pkg = {
   duration: "2 Noches / 3 Días",
   guests: "Desde 1 persona",
   availability: "Todo el año",
-  heroImage: "/imagenes/instalaciones/Aventura2.jpeg",
+  heroImage: "/imagenes/instalaciones/Aventura2.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Aventura.jpeg",    alt: "Cascadas de Baños" },
-    { src: "/imagenes/instalaciones/Aventura3.jpeg",   alt: "Tours y aventura" },
-    { src: "/imagenes/instalaciones/Aventura6.jpeg",   alt: "Naturaleza y senderos" },
-    { src: "/imagenes/instalaciones/Aventura5.jpeg",   alt: "Paisajes de Baños" },
-    { src: "/imagenes/instalaciones/Aventura4.jpeg",   alt: "Ruta de las Cascadas" },
-    { src: "/imagenes/instalaciones/Cascada2.jpeg",    alt: "Cascadas de Baños" },
+    { src: "/imagenes/instalaciones/Aventura.webp",    alt: "Cascadas de Baños" },
+    { src: "/imagenes/instalaciones/Aventura3.webp",   alt: "Tours y aventura" },
+    { src: "/imagenes/instalaciones/Aventura6.webp",   alt: "Naturaleza y senderos" },
+    { src: "/imagenes/instalaciones/Aventura5.webp",   alt: "Paisajes de Baños" },
+    { src: "/imagenes/instalaciones/Aventura4.webp",   alt: "Ruta de las Cascadas" },
+    { src: "/imagenes/instalaciones/Cascada2.webp",    alt: "Cascadas de Baños" },
   ],
   includes: [
     "Alojamiento 2 noches en Hostería Agoyán",
@@ -51,15 +52,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Selva Amazónica", href: "/es/paquetes/selva-amazonica/", image: "/imagenes/instalaciones/Amazonia.jpeg" },
-  { title: "Baños Extremo",   href: "/es/paquetes/banos-extremo/",   image: "/imagenes/instalaciones/Extremo.jpeg" },
+  { title: "Selva Amazónica", href: "/es/paquetes/selva-amazonica/", image: "/imagenes/instalaciones/Amazonia.webp" },
+  { title: "Baños Extremo",   href: "/es/paquetes/banos-extremo/",   image: "/imagenes/instalaciones/Extremo.webp" },
 ];
 
 const waText = `Hola, quiero información para reservar el ${pkg.title} en ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Aventura2.webp">
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
@@ -194,7 +195,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
 
         <div class="relative pb-10" data-reveal>
           <img
-            src="/imagenes/instalaciones/Aventura5.jpeg"
+            src="/imagenes/instalaciones/Aventura5.webp"
             alt="Aventura en Baños"
             class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]"
             loading="lazy"
@@ -428,6 +429,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>

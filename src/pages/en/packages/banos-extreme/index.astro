@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,12 +13,12 @@ const pkg = {
   duration: "2 Nights / 3 Days",
   guests: "From 1 person",
   availability: "All year round",
-  heroImage: "/imagenes/instalaciones/Extremo.jpeg",
+  heroImage: "/imagenes/instalaciones/Extremo.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Aventura.jpeg",        alt: "Waterfalls of Baños" },
-    { src: "/imagenes/instalaciones/Aventura4.jpeg",        alt: "Extreme adventure in Baños" },
-    { src: "/imagenes/instalaciones/Extremo3.jpg",  alt: "Nature and adventure" },
-    { src: "/imagenes/instalaciones/Extremo.jpeg", alt: "Nature and adventure" },
+    { src: "/imagenes/instalaciones/Aventura.webp",        alt: "Waterfalls of Baños" },
+    { src: "/imagenes/instalaciones/Aventura4.webp",        alt: "Extreme adventure in Baños" },
+    { src: "/imagenes/instalaciones/Extremo3.webp",  alt: "Nature and adventure" },
+    { src: "/imagenes/instalaciones/Extremo.webp", alt: "Nature and adventure" },
   ],
   includes: [
     "2-night accommodation at Hostería Agoyán",
@@ -54,15 +55,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Baños + Quilotoa Package", href: "/en/packages/banos-quilotoa/", image: "/imagenes/instalaciones/AreasVerdes2.jpeg" },
-  { title: "Baños Premium Package",    href: "/en/packages/banos-premium/",  image: "/imagenes/instalaciones/ExteriorSuites2.jpg" },
+  { title: "Baños + Quilotoa Package", href: "/en/packages/banos-quilotoa/", image: "/imagenes/instalaciones/AreasVerdes2.webp" },
+  { title: "Baños Premium Package",    href: "/en/packages/banos-premium/",  image: "/imagenes/instalaciones/ExteriorSuites2.webp" },
 ];
 
 const waText = `Hello, I'd like some information about booking the ${pkg.title} at ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="en" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Extremo.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">
@@ -142,7 +143,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
           </a>
         </div>
         <div class="relative pb-10" data-reveal>
-          <img src="/imagenes/instalaciones/Extremo2.jpeg" alt="Baños Extreme" class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]" loading="lazy" />
+          <img src="/imagenes/instalaciones/Extremo2.webp" alt="Baños Extreme" class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]" loading="lazy" />
           <div class="absolute -bottom-2 left-6 max-w-[280px] rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
             <div class="flex items-center gap-2">
               <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-100">
@@ -293,6 +294,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>

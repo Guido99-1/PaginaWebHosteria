@@ -6,7 +6,7 @@ const page = {
   title: "Promotions",
   subtitle:
     "Discover our special offers designed to help you enjoy more for less at Hostería Agoyán — from weekend escapes to seasonal deals with exclusive benefits.",
-  heroImage: "/imagenes/instalaciones/Familia.jpg",
+  heroImage: "/imagenes/instalaciones/Familia.webp",
 };
 
 const promotions = [
@@ -16,7 +16,7 @@ const promotions = [
       "Make the most of your Sunday to Thursday with special rates, full access to the wellness area and an ideal atmosphere to disconnect from the week.",
     price: "From $25 for person",
     href: "/en/promotions/weekend/",
-    image: "/imagenes/instalaciones/Familia3.jpg",
+    image: "/imagenes/instalaciones/Familia3.webp",
     badge: "Weekdays",
     pills: ["🏊 Pool & wellness", "🌿 Green areas", "📅 Fri – Sun"],
   },
@@ -26,7 +26,7 @@ const promotions = [
       "Take advantage of our seasonal rates on lodging and selected experiences — the perfect moment to plan your visit with special benefits at a great price.",
     price: "From $25 for persom",
     href: "/en/promotions/season/",
-    image: "/imagenes/instalaciones/balconHosteria.jpeg",
+    image: "/imagenes/instalaciones/balconHosteria.webp",
     badge: "Season",
     pills: ["🌟 Special rates", "🏡 Accommodation", "⏳ Limited time"],
   },
@@ -36,7 +36,7 @@ const waText = `Hello, I'd like some information about the current promotions at
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`Promotions | ${SITE.name}`} description={page.subtitle}>
+<BaseLayout lang="en" title={`Promotions | ${SITE.name}`} description={page.subtitle} ogImage="/imagenes/instalaciones/Familia.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[62vh] min-h-[480px] overflow-hidden">

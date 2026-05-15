@@ -12,12 +12,12 @@ const promo = {
   duration: "Fin de semana",
   guests: "Parejas, amigos o familia",
   availability: "Domingo a jueves - Aplica condisiones",
-  heroImage: "/imagenes/instalaciones/FullDay2.jpg",
+  heroImage: "/imagenes/instalaciones/FullDay2.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Familia2.jpg", alt: "Fin de semana en Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/Familia4.jpg",        alt: "Áreas recreativas" },
-    { src: "/imagenes/instalaciones/Piscina.jpeg",       alt: "Piscina y zona de bienestar" },
-    { src: "/imagenes/instalaciones/AreasVerdes.jpeg",   alt: "Áreas verdes y naturaleza" },
+    { src: "/imagenes/instalaciones/Familia2.webp", alt: "Fin de semana en Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/Familia4.webp",        alt: "Áreas recreativas" },
+    { src: "/imagenes/instalaciones/Piscina.webp",       alt: "Piscina y zona de bienestar" },
+    { src: "/imagenes/instalaciones/AreasVerdes.webp",   alt: "Áreas verdes y naturaleza" },
   ],
   includes: [
     "Tarifa promocional especial — domingo a jueves",
@@ -49,7 +49,7 @@ const related = [
   {
     title: "Promoción de Temporada",
     href: "/es/promociones/temporada/",
-    image: "/imagenes/instalaciones/comedorHosteria.jpeg",
+    image: "/imagenes/instalaciones/comedorHosteria.webp",
   },
 ];
 
@@ -57,7 +57,7 @@ const waText = `Hola, quiero información sobre la ${promo.title} en ${SITE.name
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="es" title={`${promo.title} | ${SITE.name}`} description={promo.subtitle}>
+<BaseLayout lang="es" title={`${promo.title} | ${SITE.name}`} description={promo.subtitle} ogImage="/imagenes/instalaciones/FullDay2.webp">
 
   <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">

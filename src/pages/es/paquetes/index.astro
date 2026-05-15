@@ -7,7 +7,7 @@ const page = {
   eyebrow: "EXPERIENCIAS AGOYÁN",
   subtitle:
     "Desde un día completo de bienestar hasta aventuras de varios días por la región — descubre paquetes diseñados para cada tipo de viajero en Hostería Agoyán, Baños de Agua Santa.",
-  heroImage: "/imagenes/instalaciones/Aventura2.jpeg",
+  heroImage: "/imagenes/instalaciones/Aventura2.webp",
 };
 
 const mainPackages = [
@@ -18,7 +18,7 @@ const mainPackages = [
     price: "$10",
     priceNote: "por persona",
     href: "/es/paquetes/full-day/",
-    image: "/imagenes/instalaciones/FullDay.jpg",
+    image: "/imagenes/instalaciones/FullDay.webp",
     badge: "Escapada de un día",
     pills: ["🏊 Piscina", "♨️ Sauna", "🌿 Naturaleza"],
   },
@@ -29,7 +29,7 @@ const mainPackages = [
     price: "$199",
     priceNote: "por pareja",
     href: "/es/paquetes/romantico/",
-    image: "/imagenes/instalaciones/Pareja2.jpg",
+    image: "/imagenes/instalaciones/Pareja2.webp",
     badge: "Para parejas",
     pills: ["🍷 Vino & cena", "🌸 Decoración", "♨️ Bienestar"],
   },
@@ -40,7 +40,7 @@ const mainPackages = [
     price: "$35 por persona",
     priceNote: "por persona / noche",
     href: "/es/paquetes/hospedaje/",
-    image: "/imagenes/instalaciones/Familia2.jpg",
+    image: "/imagenes/instalaciones/Familia2.webp",
     badge: "Familias y grupos",
     pills: ["🏡 Habitaciones", "🍳 Desayuno", "👶 Niños menores de 5 gratis"],
   },
@@ -54,7 +54,7 @@ const adventurePackages = [
     price: "Desde $129",
     priceNote: "por persona",
     href: "/es/paquetes/banos-selva/",
-    image: "/imagenes/instalaciones/Amazonia7.jpeg",
+    image: "/imagenes/instalaciones/Amazonia7.webp",
     badge: "Aventura",
     pills: ["🌊 Cascadas", "🌳 Amazonía", "🎒 Guiado"],
   },
@@ -65,7 +65,7 @@ const adventurePackages = [
     price: "Desde $135",
     priceNote: "por persona",
     href: "/es/paquetes/banos-quilotoa/",
-    image: "/imagenes/instalaciones/Quilotoa.jpeg",
+    image: "/imagenes/instalaciones/Quilotoa.webp",
     badge: "Cultural",
     pills: ["🌋 Quilotoa", "🗺️ 5 tours", "🎒 Guiado"],
   },
@@ -76,7 +76,7 @@ const adventurePackages = [
     price: "Desde $155",
     priceNote: "por persona",
     href: "/es/paquetes/banos-extremo/",
-    image: "/imagenes/instalaciones/Extremo.jpeg",
+    image: "/imagenes/instalaciones/Extremo.webp",
     badge: "Deportes extremos",
     pills: ["🚣 Rafting", "🧗 Rappel", "⚡ Adrenalina"],
   },
@@ -87,7 +87,7 @@ const adventurePackages = [
     price: "Desde $175",
     priceNote: "por persona",
     href: "/es/paquetes/banos-premium/",
-    image: "/imagenes/instalaciones/Aventura4.jpeg",
+    image: "/imagenes/instalaciones/Aventura4.webp",
     badge: "Premium",
     pills: ["⭐ 12+ tours", "🎖️ Premium", "🏆 Todo incluido"],
   },
@@ -104,7 +104,7 @@ const waText = `Hola, quiero información sobre los paquetes de ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="es" title={`Paquetes | ${SITE.name}`} description={page.subtitle}>
+<BaseLayout lang="es" title={`Paquetes | ${SITE.name}`} description={page.subtitle} ogImage="/imagenes/instalaciones/Aventura2.webp">
 
   <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
@@ -522,7 +522,6 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
       </div>
     </div>
   </section>
-
 </BaseLayout>
 
 <style>

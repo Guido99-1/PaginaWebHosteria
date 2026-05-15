@@ -7,12 +7,12 @@ const facility = {
   eyebrow: "NATURE & RELAXATION",
   subtitle:
     "Explore our lush tropical gardens, stroll along peaceful paths and reconnect with nature. Our green spaces are a sanctuary of calm, colour and biodiversity — perfect for rest, birdwatching and outdoor photography.",
-  heroImage: "/imagenes/instalaciones/ExteriorComedor.jpg",
+  heroImage: "/imagenes/instalaciones/ExteriorComedor.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/AreasVerdes.jpeg",  alt: "Green spaces at Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/AreasVerdes5.png", alt: "Tropical gardens and paths" },
-    { src: "/imagenes/instalaciones/AreasVerdes4.png",      alt: "Natural surroundings and waterfall" },
-    { src: "/imagenes/instalaciones/AreasVerdes2.jpeg",     alt: "Family in the green areas" },
+    { src: "/imagenes/instalaciones/AreasVerdes.webp",  alt: "Green spaces at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/AreasVerdes5.webp", alt: "Tropical gardens and paths" },
+    { src: "/imagenes/instalaciones/AreasVerdes4.webp",      alt: "Natural surroundings and waterfall" },
+    { src: "/imagenes/instalaciones/AreasVerdes2.webp",     alt: "Family in the green areas" },
   ],
   includes: [
     "Extensive tropical gardens with native plants",
@@ -40,15 +40,15 @@ const facility = {
 };
 
 const related = [
-  { title: "Wet Area",   href: "/en/facilities/areaHumedaEN/",  image: "/imagenes/instalaciones/FullDay2.jpg" },
-  { title: "Restaurant", href: "/en/facilities/restauranteEN/", image: "/imagenes/instalaciones/Familia.jpg" },
+  { title: "Wet Area",   href: "/en/facilities/areaHumedaEN/",  image: "/imagenes/instalaciones/FullDay2.webp" },
+  { title: "Restaurant", href: "/en/facilities/restauranteEN/", image: "/imagenes/instalaciones/Familia.webp" },
 ];
 
 const waText = `Hello, I'd like more information about the ${facility.title} at ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle}>
+<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle} ogImage="/imagenes/instalaciones/ExteriorComedor.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">

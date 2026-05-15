@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,14 +13,14 @@ const pkg = {
   duration: "1 noche",
   guests: "2 personas",
   availability: "Todo el año",
-  heroImage: "/imagenes/instalaciones/Jacuzzi.jpg",
+  heroImage: "/imagenes/instalaciones/Jacuzzi.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Pareja2.jpg",       alt: "Momento romántico" },
-    { src: "/imagenes/instalaciones/jacuzzi.jpeg",      alt: "Jacuzzi privado" },
-    { src: "/imagenes/instalaciones/Pareja3.jpg",       alt: "Experiencia para parejas" },
-    { src: "/imagenes/instalaciones/balconPareja.jpeg", alt: "Balcón romántico" },
-    { src: "/imagenes/instalaciones/Pareja4.jpg",       alt: "Escapada en pareja" },
-    { src: "/imagenes/instalaciones/Suite2.jpg",        alt: "Suite matrimonial" },
+    { src: "/imagenes/instalaciones/Pareja2.webp",       alt: "Momento romántico" },
+    { src: "/imagenes/instalaciones/jacuzzi.webp",      alt: "Jacuzzi privado" },
+    { src: "/imagenes/instalaciones/Pareja3.webp",       alt: "Experiencia para parejas" },
+    { src: "/imagenes/instalaciones/balconPareja.webp", alt: "Balcón romántico" },
+    { src: "/imagenes/instalaciones/Pareja4.webp",       alt: "Escapada en pareja" },
+    { src: "/imagenes/instalaciones/Suite2.webp",        alt: "Suite matrimonial" },
   ],
   includes: [
     "1 noche de alojamiento en habitación o cabaña matrimonial superior",
@@ -47,15 +48,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Full Day",          href: "/es/paquetes/full-day/",  image: "/imagenes/instalaciones/FullDay.jpg" },
-  { title: "Hospedaje Familiar", href: "/es/paquetes/hospedaje/", image: "/imagenes/instalaciones/Familia4.jpg" },
+  { title: "Full Day",          href: "/es/paquetes/full-day/",  image: "/imagenes/instalaciones/FullDay.webp" },
+  { title: "Hospedaje Familiar", href: "/es/paquetes/hospedaje/", image: "/imagenes/instalaciones/Familia4.webp" },
 ];
 
 const waText = `Hola, quiero información para reservar el ${pkg.title} en ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Jacuzzi.webp">
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
@@ -190,7 +191,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
 
         <div class="relative pb-10" data-reveal>
           <img
-            src=/imagenes/instalaciones/Pareja4.jpg
+            src=/imagenes/instalaciones/Pareja4.webp
             alt="Experiencia romántica"
             class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]"
             loading="lazy"
@@ -422,6 +423,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>

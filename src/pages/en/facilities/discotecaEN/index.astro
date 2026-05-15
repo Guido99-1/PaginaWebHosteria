@@ -7,12 +7,12 @@ const facility = {
   eyebrow: "NIGHTLIFE & ENTERTAINMENT",
   subtitle:
     "Dance the night away at our exclusive disco with a professional sound system, immersive lighting and a full cocktail bar. The perfect setting for private parties, group celebrations and unforgettable nights.",
-  heroImage: "/imagenes/instalaciones/Comedor2.jpg",
+  heroImage: "/imagenes/instalaciones/Comedor2.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/discoteca.jpeg", alt: "Disco at Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/discoteca3.jpeg",         alt: "Recreational & entertainment areas" },
-    { src: "/imagenes/instalaciones/discoteca4.jpeg",         alt: "Natural night atmosphere" },
-    { src: "/imagenes/instalaciones/discoteca5.jpeg",   alt: "Outdoor event ambience" },
+    { src: "/imagenes/instalaciones/discoteca.webp", alt: "Disco at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/discoteca3.webp",         alt: "Recreational & entertainment areas" },
+    { src: "/imagenes/instalaciones/discoteca4.webp",         alt: "Natural night atmosphere" },
+    { src: "/imagenes/instalaciones/discoteca5.webp",   alt: "Outdoor event ambience" },
   ],
   includes: [
     "Professional-grade sound system",
@@ -40,15 +40,15 @@ const facility = {
 };
 
 const related = [
-  { title: "Game Room",   href: "/en/facilities/salonDeJuegosEN/",   image: "/imagenes/instalaciones/FullDay.jpg" },
-  { title: "Event Halls", href: "/en/facilities/salonesEventosEN/",  image: "/imagenes/instalaciones/Familia2.jpg" },
+  { title: "Game Room",   href: "/en/facilities/salonDeJuegosEN/",   image: "/imagenes/instalaciones/FullDay.webp" },
+  { title: "Event Halls", href: "/en/facilities/salonesEventosEN/",  image: "/imagenes/instalaciones/Familia2.webp" },
 ];
 
 const waText = `Hello, I'd like more information about the ${facility.title} at ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle}>
+<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle} ogImage="/imagenes/instalaciones/Comedor2.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">

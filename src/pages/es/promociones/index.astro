@@ -6,7 +6,7 @@ const page = {
   title: "Promociones",
   subtitle:
     "Descubre ofertas especiales pensadas para que disfrutes más por menos en Hostería Agoyán.",
-  heroImage: "/imagenes/instalaciones/Familia.jpg",
+  heroImage: "/imagenes/instalaciones/Familia.webp",
 };
 
 const promotions = [
@@ -17,7 +17,7 @@ const promotions = [
       "Disfruta tu semana con una promoción exclusiva de domingo a jueves: descanso, beneficios únicos y acceso completo para un verdadero relax.",
     price: "Desde $25 por persona",
     href: "/es/promociones/fin-de-semana/",
-    image: "/imagenes/instalaciones/Familia3.jpg",
+    image: "/imagenes/instalaciones/Familia3.webp",
     badge: "Entre Semana",
     highlights: ["Hospedaje incluido", "Acceso a instalaciones", "Ambiente de descanso"],
   },
@@ -28,7 +28,7 @@ const promotions = [
       "Aprovecha nuestra temporada promocional con tarifas especiales en hospedaje y experiencias seleccionadas.",
     price: "Desde $25 por persona",
     href: "/es/promociones/temporada/",
-    image: "/imagenes/instalaciones/balconHosteria.jpeg",
+    image: "/imagenes/instalaciones/balconHosteria.webp",
     badge: "Temporada",
     highlights: ["Tarifas de temporada", "Experiencias incluidas", "Reserva anticipada"],
   },
@@ -71,7 +71,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
 <BaseLayout
   lang="es"
   title={`Promociones | ${SITE.name}`}
-  description={page.subtitle}
+  description={page.subtitle} ogImage="/imagenes/instalaciones/Familia.webp"
 >
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->

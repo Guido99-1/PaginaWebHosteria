@@ -12,12 +12,12 @@ const promo = {
   duration: "Temporada especial",
   guests: "Parejas, familias o grupos",
   availability: "Por tiempo limitado",
-  heroImage: "/imagenes/instalaciones/Familia4.jpg",
+  heroImage: "/imagenes/instalaciones/Familia4.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/FullDay.jpg",          alt: "Cascadas de Baños de Agua Santa" },
-    { src: "/imagenes/instalaciones/fachadaHosteria.jpeg",      alt: "Áreas verdes y naturaleza" },
-    { src: "/imagenes/instalaciones/Suite2.jpg",   alt: "Habitaciones y suites" },
-    { src: "/imagenes/instalaciones/Familia2.jpg",          alt: "Estancia familiar en Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/FullDay.webp",          alt: "Cascadas de Baños de Agua Santa" },
+    { src: "/imagenes/instalaciones/fachadaHosteria.webp",      alt: "Áreas verdes y naturaleza" },
+    { src: "/imagenes/instalaciones/Suite2.webp",   alt: "Habitaciones y suites" },
+    { src: "/imagenes/instalaciones/Familia2.webp",          alt: "Estancia familiar en Hostería Agoyán" },
   ],
   includes: [
     "Tarifa promocional exclusiva de temporada",
@@ -47,14 +47,14 @@ const promo = {
 };
 
 const related = [
-  { title: "Promoción de Fin de Semana", href: "/es/promociones/fin-de-semana/", image: "/imagenes/instalaciones/Familia3.jpg" },
+  { title: "Promoción de Fin de Semana", href: "/es/promociones/fin-de-semana/", image: "/imagenes/instalaciones/Familia3.webp" },
 ];
 
 const waText = `Hola, quiero información sobre la ${promo.title} en ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="es" title={`${promo.title} | ${SITE.name}`} description={promo.subtitle}>
+<BaseLayout lang="es" title={`${promo.title} | ${SITE.name}`} description={promo.subtitle} ogImage="/imagenes/instalaciones/Familia4.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">

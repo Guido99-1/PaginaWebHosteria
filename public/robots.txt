@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Excluir rutas internas
+Disallow: /.claude/
+Disallow: /src/
+
+# Sitemap
+Sitemap: https://hosteriaagoyan.com/sitemap-index.xml

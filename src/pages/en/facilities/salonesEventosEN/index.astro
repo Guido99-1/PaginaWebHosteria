@@ -7,12 +7,12 @@ const facility = {
   eyebrow: "EVENTS & CELEBRATIONS",
   subtitle:
     "Host your next event at Hostería Agoyán — from intimate weddings to corporate retreats. Our versatile halls offer full AV equipment, in-house catering, personalised decoration and a breathtaking natural backdrop.",
-  heroImage: "/imagenes/instalaciones/Comedor2.jpg",
+  heroImage: "/imagenes/instalaciones/Comedor2.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Comedor3.jpg", alt: "Event Halls at Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/arregloRestaurant.jpeg",        alt: "Group celebrations & events" },
-    { src: "/imagenes/instalaciones/Comedor.jpg",   alt: "Outdoor terrace & green areas" },
-    { src: "/imagenes/instalaciones/Comedor6.jpg",         alt: "Natural setting for events" },
+    { src: "/imagenes/instalaciones/Comedor3.webp", alt: "Event Halls at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/arregloRestaurant.webp",        alt: "Group celebrations & events" },
+    { src: "/imagenes/instalaciones/Comedor.webp",   alt: "Outdoor terrace & green areas" },
+    { src: "/imagenes/instalaciones/Comedor6.webp",         alt: "Natural setting for events" },
   ],
   includes: [
     "Multiple hall configurations for any event size",
@@ -48,15 +48,15 @@ const facility = {
 };
 
 const related = [
-  { title: "Restaurant",   href: "/en/facilities/restauranteEN/", image: "/imagenes/instalaciones/Familia.jpg" },
-  { title: "Green Spaces", href: "/en/facilities/areaVerdeEn/",  image: "/imagenes/instalaciones/AreasVerdes3.jpg" },
+  { title: "Restaurant",   href: "/en/facilities/restauranteEN/", image: "/imagenes/instalaciones/Familia.webp" },
+  { title: "Green Spaces", href: "/en/facilities/areaVerdeEn/",  image: "/imagenes/instalaciones/AreasVerdes3.webp" },
 ];
 
 const waText = `Hello, I'd like to inquire about the ${facility.title} at ${SITE.name} for a special event.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle}>
+<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle} ogImage="/imagenes/instalaciones/Comedor2.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">

@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,12 +13,12 @@ const pkg = {
   duration: "2 Nights / 3 Days",
   guests: "From 1 person",
   availability: "All year round",
-  heroImage: "/imagenes/instalaciones/Aventura2.jpeg",
+  heroImage: "/imagenes/instalaciones/Aventura2.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Aventura.jpeg",   alt: "Waterfalls of Baños" },
-    { src: "/imagenes/instalaciones/Aventura3.jpeg",      alt: "Tours and adventure" },
-    { src: "/imagenes/instalaciones/Aventura6.jpeg", alt: "Nature and trails" },
-    { src: "/imagenes/instalaciones/Aventura5.jpeg",alt: "Landscapes of Baños" },
+    { src: "/imagenes/instalaciones/Aventura.webp",   alt: "Waterfalls of Baños" },
+    { src: "/imagenes/instalaciones/Aventura3.webp",      alt: "Tours and adventure" },
+    { src: "/imagenes/instalaciones/Aventura6.webp", alt: "Nature and trails" },
+    { src: "/imagenes/instalaciones/Aventura5.webp",alt: "Landscapes of Baños" },
   ],
   includes: [
     "2-night accommodation at Hostería Agoyán",
@@ -49,15 +50,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Amazon-Rainforest", href: "/en/packages/amazon-rainforest/", image: "/imagenes/instalaciones/Amazonia.jpeg" },
-  { title: "Baños Extreme",   href: "/en/packages/banos-extreme/",   image: "/imagenes/instalaciones/Extremo.jpeg" },
+  { title: "Amazon-Rainforest", href: "/en/packages/amazon-rainforest/", image: "/imagenes/instalaciones/Amazonia.webp" },
+  { title: "Baños Extreme",   href: "/en/packages/banos-extreme/",   image: "/imagenes/instalaciones/Extremo.webp" },
 ];
 
 const waText = `Hello, I'd like some information about booking the ${pkg.title} at ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="en" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Aventura2.webp">
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
@@ -193,7 +194,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
 
         <div class="relative pb-10" data-reveal>
           <img
-            src="/imagenes/instalaciones/Aventura5.jpeg"
+            src="/imagenes/instalaciones/Aventura5.webp"
             alt="Adventure in Baños"
             class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]"
             loading="lazy"
@@ -427,6 +428,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>

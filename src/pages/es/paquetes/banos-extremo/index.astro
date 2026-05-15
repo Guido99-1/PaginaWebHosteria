@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,14 +13,14 @@ const pkg = {
   duration: "2 Noches / 3 Días",
   guests: "Desde 1 persona",
   availability: "Todo el año",
-  heroImage: "/imagenes/instalaciones/Extremo.jpeg",
+  heroImage: "/imagenes/instalaciones/Extremo.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Aventura.jpeg",    alt: "Naturaleza y aventura" },
-    { src: "/imagenes/instalaciones/Aventura4.jpeg",   alt: "Ruta de Cascadas" },
-    { src: "/imagenes/instalaciones/Extremo3.jpg",     alt: "Deportes extremos" },
-    { src: "/imagenes/instalaciones/Extremo.jpeg",     alt: "Adrenalina en Baños" },
-    { src: "/imagenes/instalaciones/Extremo2.jpeg",    alt: "Rapel en cascadas" },
-    { src: "/imagenes/instalaciones/Aventura3.jpeg",   alt: "Aventura en la naturaleza" },
+    { src: "/imagenes/instalaciones/Aventura.webp",    alt: "Naturaleza y aventura" },
+    { src: "/imagenes/instalaciones/Aventura4.webp",   alt: "Ruta de Cascadas" },
+    { src: "/imagenes/instalaciones/Extremo3.webp",     alt: "Deportes extremos" },
+    { src: "/imagenes/instalaciones/Extremo.webp",     alt: "Adrenalina en Baños" },
+    { src: "/imagenes/instalaciones/Extremo2.webp",    alt: "Rapel en cascadas" },
+    { src: "/imagenes/instalaciones/Aventura3.webp",   alt: "Aventura en la naturaleza" },
   ],
   includes: [
     "Alojamiento 2 noches en Hostería Agoyán",
@@ -53,15 +54,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Baños + Quilotoa", href: "/es/paquetes/banos-quilotoa/", image: "/imagenes/instalaciones/Quilotoa.jpeg" },
-  { title: "Baños Premium",    href: "/es/paquetes/banos-premium/",  image: "/imagenes/instalaciones/Premium.jpeg" },
+  { title: "Baños + Quilotoa", href: "/es/paquetes/banos-quilotoa/", image: "/imagenes/instalaciones/Quilotoa.webp" },
+  { title: "Baños Premium",    href: "/es/paquetes/banos-premium/",  image: "/imagenes/instalaciones/Premium.webp" },
 ];
 
 const waText = `Hola, quiero información para reservar el ${pkg.title} en ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Extremo.webp">
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
@@ -147,7 +148,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
           </a>
         </div>
         <div class="relative pb-10" data-reveal>
-          <img src="/imagenes/instalaciones/Extremo2.jpeg" alt="Baños Extremo" class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]" loading="lazy" />
+          <img src="/imagenes/instalaciones/Extremo2.webp" alt="Baños Extremo" class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]" loading="lazy" />
           <div class="absolute -bottom-2 left-6 max-w-[280px] rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
             <div class="flex items-center gap-2">
               <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-100">
@@ -318,6 +319,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>

@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,12 +13,12 @@ const pkg = {
   duration: "1 Night / 2 Days",
   guests: "2 guests",
   availability: "All year round",
-  heroImage: "/imagenes/instalaciones/Jacuzzi.jpg",
+  heroImage: "/imagenes/instalaciones/Jacuzzi.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Pareja2.jpg",        alt: "Romantic stay at Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/ExteriorSuites2.jpg", alt: "Superior rooms and suites" },
-    { src: "/imagenes/instalaciones/AreasVerdes2.jpeg",  alt: "Surrounded by nature" },
-    { src: "/imagenes/instalaciones/Cascada.jpg",        alt: "Baños de Agua Santa" },
+    { src: "/imagenes/instalaciones/Pareja2.webp",        alt: "Romantic stay at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/ExteriorSuites2.webp", alt: "Superior rooms and suites" },
+    { src: "/imagenes/instalaciones/AreasVerdes2.webp",  alt: "Surrounded by nature" },
+    { src: "/imagenes/instalaciones/Cascada.webp",        alt: "Baños de Agua Santa" },
   ],
   includes: [
     "1-night accommodation in a superior matrimonial room or cabin",
@@ -50,15 +51,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Full Day",    href: "/en/packages/full-day/", image: "/imagenes/instalaciones/FullDay.jpg" },
-  { title: "Family Stay", href: "/en/packages/lodging/",  image: "/imagenes/instalaciones/Familia2.jpg" },
+  { title: "Full Day",    href: "/en/packages/full-day/", image: "/imagenes/instalaciones/FullDay.webp" },
+  { title: "Family Stay", href: "/en/packages/lodging/",  image: "/imagenes/instalaciones/Familia2.webp" },
 ];
 
 const waText = `Hello, I'd like some information about booking the ${pkg.title} at ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="en" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Jacuzzi.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">
@@ -289,6 +290,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>

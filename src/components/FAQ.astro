@@ -1,0 +1,182 @@
+---
+type FAQItem = { q: string; a: string };
+
+type Props = {
+  lang?: "es" | "en";
+  items?: FAQItem[];
+};
+
+const { lang = "es", items } = Astro.props;
+const isEs = lang === "es";
+
+const defaultItems: FAQItem[] = isEs
+  ? [
+      {
+        q: "¿Cómo puedo hacer una reserva?",
+        a: "Puedes reservar directamente por WhatsApp al +593 996 215 835 o a través del botón de contacto en esta página. Te confirmamos disponibilidad de inmediato.",
+      },
+      {
+        q: "¿Cuál es el horario de check-in y check-out?",
+        a: "El check-in es a partir de las 14:00 y el check-out hasta las 12:00 del mediodía. Si necesitas horarios especiales, consúltanos con anticipación.",
+      },
+      {
+        q: "¿Se aceptan mascotas?",
+        a: "Actualmente no contamos con política de mascotas dentro de las instalaciones. Te recomendamos consultar opciones de alojamiento alternativas para tus mascotas en Baños.",
+      },
+      {
+        q: "¿Hay parqueadero disponible?",
+        a: "Sí, contamos con parqueadero privado, seguro y sin costo adicional para todos nuestros huéspedes y visitantes.",
+      },
+      {
+        q: "¿Se requiere anticipo para confirmar la reserva?",
+        a: "Para garantizar tu reserva solicitamos un anticipo. El monto y las condiciones se confirman por WhatsApp según disponibilidad y tipo de paquete.",
+      },
+      {
+        q: "¿Cuál es la política de cancelación?",
+        a: "Las cancelaciones con más de 48 horas de anticipación son reembolsables. Las realizadas con menos tiempo están sujetas a condiciones específicas del paquete. Consulta los detalles al momento de reservar.",
+      },
+      {
+        q: "¿El paquete incluye alimentación?",
+        a: "Depende del paquete seleccionado. Algunos incluyen desayuno o cena; otros solo el acceso a las instalaciones. Revisa el detalle de cada paquete o consúltanos.",
+      },
+      {
+        q: "¿Hay descuentos para grupos o familias?",
+        a: "Sí, ofrecemos tarifas especiales para grupos a partir de 8 personas y descuentos en temporadas específicas. Contáctanos por WhatsApp para una cotización personalizada.",
+      },
+    ]
+  : [
+      {
+        q: "How can I make a booking?",
+        a: "You can book directly via WhatsApp at +593 996 215 835 or through the contact button on this page. We confirm availability straight away.",
+      },
+      {
+        q: "What are the check-in and check-out times?",
+        a: "Check-in is from 14:00 and check-out by 12:00 noon. If you need different times, please let us know in advance.",
+      },
+      {
+        q: "Are pets allowed?",
+        a: "We currently do not have a pet-friendly policy within our facilities. We recommend looking into local pet-boarding options in Baños.",
+      },
+      {
+        q: "Is parking available?",
+        a: "Yes, we have private, secure parking at no extra cost for all our guests and visitors.",
+      },
+      {
+        q: "Is a deposit required to confirm a booking?",
+        a: "A deposit is required to secure your booking. The amount and conditions are confirmed via WhatsApp depending on availability and the package selected.",
+      },
+      {
+        q: "What is the cancellation policy?",
+        a: "Cancellations made more than 48 hours in advance are refundable. Those made with less notice are subject to the specific conditions of each package. Please ask for details when booking.",
+      },
+      {
+        q: "Does the package include meals?",
+        a: "It depends on the package. Some include breakfast or dinner; others cover access to facilities only. Check each package's details or ask us directly.",
+      },
+      {
+        q: "Are there discounts for groups or families?",
+        a: "Yes, we offer special rates for groups of 8 or more and discounts during specific seasons. Contact us via WhatsApp for a personalised quote.",
+      },
+    ];
+
+const faqItems = items ?? defaultItems;
+
+const label = isEs
+  ? { eyebrow: "PREGUNTAS FRECUENTES", title: "¿Tienes dudas?", subtitle: "Resolvemos las consultas más comunes sobre nuestros paquetes y servicios." }
+  : { eyebrow: "FAQ", title: "Have questions?", subtitle: "We answer the most common questions about our packages and services." };
+
+// Schema.org FAQPage
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+---
+
+<section class="bg-slate-50 py-20 sm:py-28">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+
+    <div class="mb-12 text-center" data-reveal>
+      <p class="font-menu text-sm tracking-[0.16em] text-emerald-600">{label.eyebrow}</p>
+      <h2 class="mt-3 font-hero text-4xl text-slate-900 sm:text-5xl">{label.title}</h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-slate-500">{label.subtitle}</p>
+    </div>
+
+    <div class="space-y-3" id="faq-list">
+      {faqItems.map((item, i) => (
+        <div
+          class="faq-item rounded-2xl border border-slate-200 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.04)] overflow-hidden"
+          data-reveal
+        >
+          <button
+            class="faq-btn flex w-full items-start justify-between gap-4 px-6 py-5 text-left"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${i}`}
+            type="button"
+          >
+            <span class="text-sm font-semibold leading-6 text-slate-800 sm:text-base">{item.q}</span>
+            <span class="faq-icon mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 transition-transform duration-300">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </span>
+          </button>
+          <div
+            id={`faq-answer-${i}`}
+            class="faq-answer px-6 pb-0 text-sm leading-7 text-slate-600"
+            style="max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding-bottom 0.35s ease;"
+            aria-hidden="true"
+          >
+            <p class="pb-5">{item.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- Schema.org FAQPage -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<script>
+  document.querySelectorAll('.faq-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answerId = btn.getAttribute('aria-controls')!;
+      const answer = document.getElementById(answerId)!;
+      const icon = btn.querySelector('.faq-icon') as HTMLElement;
+
+      // Cerrar todos los demás
+      document.querySelectorAll('.faq-btn').forEach((b) => {
+        if (b !== btn) {
+          b.setAttribute('aria-expanded', 'false');
+          const aid = b.getAttribute('aria-controls')!;
+          const a = document.getElementById(aid)!;
+          (a as HTMLElement).style.maxHeight = '0';
+          (a as HTMLElement).style.paddingBottom = '0';
+          a.setAttribute('aria-hidden', 'true');
+          const ic = b.querySelector('.faq-icon') as HTMLElement;
+          if (ic) ic.style.transform = '';
+        }
+      });
+
+      // Toggle el actual
+      if (expanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0';
+        answer.setAttribute('aria-hidden', 'true');
+        if (icon) icon.style.transform = '';
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.setAttribute('aria-hidden', 'false');
+        if (icon) icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+</script>

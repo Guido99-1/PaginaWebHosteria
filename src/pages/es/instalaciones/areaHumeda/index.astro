@@ -6,14 +6,14 @@ const facility = {
   title: "Área Húmeda",
   subtitle:
     "Un espacio pensado para el descanso y el bienestar, ideal para disfrutar momentos de relajación en Hostería Agoyán.",
-  heroImage: "/imagenes/instalaciones/Piscina3.jpg",
+  heroImage: "/imagenes/instalaciones/Piscina3.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Piscina3.jpg",    alt: "Piscina" },
-    { src: "/imagenes/instalaciones/piscinaSauna.jpeg",      alt: "Sauna seco" },
-    { src: "/imagenes/instalaciones/Turco.jpeg",      alt: "Turco de vapor" },
-    { src: "/imagenes/instalaciones/FullDay.jpg", alt: "Hidromasaje" },
-    { src: "/imagenes/instalaciones/piscinaCompleta.jpeg", alt: "Zona Húmeda" },
-    { src: "/imagenes/instalaciones/FullDay2.jpg", alt: "Sauna seco" },
+    { src: "/imagenes/instalaciones/Piscina3.webp",    alt: "Piscina" },
+    { src: "/imagenes/instalaciones/piscinaSauna.webp",      alt: "Sauna seco" },
+    { src: "/imagenes/instalaciones/Turco.webp",      alt: "Turco de vapor" },
+    { src: "/imagenes/instalaciones/FullDay.webp", alt: "Hidromasaje" },
+    { src: "/imagenes/instalaciones/piscinaCompleta.webp", alt: "Zona Húmeda" },
+    { src: "/imagenes/instalaciones/FullDay2.webp", alt: "Sauna seco" },
   ],
   features: [
     "Piscina temperada para toda la familia",
@@ -64,7 +64,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
 <BaseLayout
   lang="es"
   title={`${facility.title} | ${SITE.name}`}
-  description={facility.subtitle}
+  description={facility.subtitle} ogImage="/imagenes/instalaciones/Piscina3.webp"
 >
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->

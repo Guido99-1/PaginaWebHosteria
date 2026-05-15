@@ -7,12 +7,12 @@ const facility = {
   eyebrow: "POOL & WELLNESS",
   subtitle:
     "Immerse yourself in our outdoor pool, unwind in the sauna and steam room, enjoy the hydromassage jets and let the stress of daily life dissolve in our fully equipped wellness area.",
-  heroImage: "/imagenes/instalaciones/Piscina3.jpg",
+  heroImage: "/imagenes/instalaciones/Piscina3.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Piscina3.jpg",      alt: "Pool at Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/piscinaSauna.jpeg",       alt: "Full wellness area" },
-    { src: "/imagenes/instalaciones/Turco.jpeg", alt: "Natural surroundings" },
-    { src: "/imagenes/instalaciones/FullDay.jpg",       alt: "Water & relaxation" },
+    { src: "/imagenes/instalaciones/Piscina3.webp",      alt: "Pool at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/piscinaSauna.webp",       alt: "Full wellness area" },
+    { src: "/imagenes/instalaciones/Turco.webp", alt: "Natural surroundings" },
+    { src: "/imagenes/instalaciones/FullDay.webp",       alt: "Water & relaxation" },
   ],
   includes: [
     "Outdoor swimming pool open throughout the day",
@@ -40,15 +40,15 @@ const facility = {
 };
 
 const related = [
-  { title: "Green Spaces",  href: "/en/facilities/areaVerdeEn/",  image: "/imagenes/instalaciones/AreasVerdes3.jpg" },
-  { title: "Restaurant",    href: "/en/facilities/restauranteEN/", image: "/imagenes/instalaciones/Familia.jpg" },
+  { title: "Green Spaces",  href: "/en/facilities/areaVerdeEn/",  image: "/imagenes/instalaciones/AreasVerdes3.webp" },
+  { title: "Restaurant",    href: "/en/facilities/restauranteEN/", image: "/imagenes/instalaciones/Familia.webp" },
 ];
 
 const waText = `Hello, I'd like more information about the ${facility.title} at ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle}>
+<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle} ogImage="/imagenes/instalaciones/Piscina3.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">

@@ -21,6 +21,63 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+
+// OG image: asegurar URL absoluta
+const ogImageAbsolute = ogImage?.startsWith("http")
+  ? ogImage
+  : new URL(ogImage ?? SITE.ogImage, SITE.url).toString();
+
+// ── Hreflang: mapeo ES ↔ EN de rutas conocidas ──────────────────────────
+const esToEn: Record<string, string> = {
+  es: "en",
+  paquetes: "packages",
+  instalaciones: "facilities",
+  promociones: "promotions",
+  contacto: "contact",
+  // paquetes
+  aventura: "adventure",
+  "selva-amazonica": "amazon-rainforest",
+  "banos-selva": "banos-amazon",
+  "banos-extremo": "banos-extreme",
+  romantico: "romantic",
+  hospedaje: "lodging",
+  // instalaciones
+  areaHumeda: "areaHumedaEN",
+  areasVerdes: "areaVerdeEn",
+  discoteca: "discotecaEN",
+  restaurante: "restauranteEN",
+  salonDeJuegos: "salonDeJuegosEN",
+  salonesEventos: "salonesEventosEN",
+  // promociones
+  "fin-de-semana": "weekend",
+  temporada: "season",
+};
+const enToEs: Record<string, string> = Object.fromEntries(
+  Object.entries(esToEn).map(([k, v]) => [v, k])
+);
+
+function translatePath(path: string, map: Record<string, string>) {
+  const segs = path.split("/").filter(Boolean);
+  return "/" + segs.map((s) => map[s] ?? s).join("/") + "/";
+}
+
+const pathname = Astro.url.pathname;
+let esPath: string;
+let enPath: string;
+
+if (pathname.startsWith("/es")) {
+  esPath = pathname.endsWith("/") ? pathname : pathname + "/";
+  enPath = translatePath(pathname, esToEn);
+} else if (pathname.startsWith("/en")) {
+  enPath = pathname.endsWith("/") ? pathname : pathname + "/";
+  esPath = translatePath(pathname, enToEs);
+} else {
+  esPath = "/es/";
+  enPath = "/en/";
+}
+
+const hrefEs = new URL(esPath, SITE.url).toString();
+const hrefEn = new URL(enPath, SITE.url).toString();
 ---
 
 <!doctype html>
@@ -31,6 +88,11 @@ const canonical = new URL(Astro.url.pathname, SITE.url).toString();
     <meta name="theme-color" content="#0b1220" />
     <link rel="canonical" href={canonical} />
 
+    <!-- Hreflang: ES ↔ EN -->
+    <link rel="alternate" hreflang="es"        href={hrefEs} />
+    <link rel="alternate" hreflang="en"        href={hrefEn} />
+    <link rel="alternate" hreflang="x-default" href={hrefEs} />
+
     <title>{title}</title>
     <meta name="description" content={description} />
 
@@ -40,13 +102,13 @@ const canonical = new URL(Astro.url.pathname, SITE.url).toString();
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageAbsolute} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32"  href="/favicon-32x32.png?v=2" />
@@ -60,6 +122,16 @@ const canonical = new URL(Astro.url.pathname, SITE.url).toString();
 
     <!-- Global CSS -->
     <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <!-- Google Analytics 4 — reemplaza G-XXXXXXXXXX con tu ID real -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      // @ts-nocheck
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 
     <!-- Schema.org LocalBusiness -->
     <script type="application/ld+json" set:html={JSON.stringify({

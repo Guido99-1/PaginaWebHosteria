@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,14 +13,14 @@ const pkg = {
   duration: "1 día",
   guests: "Individual o grupos",
   availability: "Todo el año",
-  heroImage: "/imagenes/instalaciones/Piscina3.jpg",
+  heroImage: "/imagenes/instalaciones/Piscina3.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/hidromasaje.jpg",   alt: "Área de descanso" },
-    { src: "/imagenes/instalaciones/Turco.jpeg", alt: "Piscina exterior" },
-    { src: "/imagenes/instalaciones/FullDay.jpg",  alt: "Experiencia Full Day" },
-    { src: "/imagenes/instalaciones/FullDay2.jpg", alt: "Instalaciones Full Day" },
-    { src: "/imagenes/instalaciones/salonJuegos4.jpeg", alt: "Instalaciones Full Day" },
-    { src: "/imagenes/instalaciones/Garage3.jpg", alt: "Instalaciones Full Day" },
+    { src: "/imagenes/instalaciones/hidromasaje.webp",   alt: "Área de descanso" },
+    { src: "/imagenes/instalaciones/Turco.webp", alt: "Piscina exterior" },
+    { src: "/imagenes/instalaciones/FullDay.webp",  alt: "Experiencia Full Day" },
+    { src: "/imagenes/instalaciones/FullDay2.webp", alt: "Instalaciones Full Day" },
+    { src: "/imagenes/instalaciones/salonJuegos4.webp", alt: "Instalaciones Full Day" },
+    { src: "/imagenes/instalaciones/Garage3.webp", alt: "Instalaciones Full Day" },
   ],
   includes: [
     "Acceso a piscina",
@@ -44,15 +45,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Paquete Romance",   href: "/es/paquetes/romantico/", image: "/imagenes/instalaciones/Pareja3.jpg" },
-  { title: "Hospedaje Familiar", href: "/es/paquetes/hospedaje/", image: "/imagenes/instalaciones/Familia2.jpg" },
+  { title: "Paquete Romance",   href: "/es/paquetes/romantico/", image: "/imagenes/instalaciones/Pareja3.webp" },
+  { title: "Hospedaje Familiar", href: "/es/paquetes/hospedaje/", image: "/imagenes/instalaciones/Familia2.webp" },
 ];
 
 const waText = `Hola, quiero información para reservar el ${pkg.title} en ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Piscina3.webp">
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
@@ -317,6 +318,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>

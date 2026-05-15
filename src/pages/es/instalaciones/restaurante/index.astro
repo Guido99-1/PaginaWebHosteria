@@ -6,14 +6,14 @@ const facility = {
   title: "Restaurante",
   subtitle:
     "Un ambiente acogedor para compartir desayunos, almuerzos, cenas y momentos especiales con una experiencia gastronómica agradable.",
-  heroImage: "/imagenes/instalaciones/Comedor.jpg",
+  heroImage: "/imagenes/instalaciones/Comedor.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Comedor.jpg", alt: "Comedor principal" },
-    { src: "/imagenes/instalaciones/Comedor6.jpg", alt: "Área de mesas" },
-    { src: "/imagenes/instalaciones/Comedor4.jpg", alt: "Ambiente interior" },
-    { src: "/imagenes/instalaciones/Comedor5.jpg", alt: "Detalles del restaurante" },
-    { src: "/imagenes/instalaciones/comedor7.jpeg", alt: "Detalles del restaurante" },
-    { src: "/imagenes/instalaciones/comedor8.jpeg", alt: "Detalles del restaurante" },
+    { src: "/imagenes/instalaciones/Comedor.webp", alt: "Comedor principal" },
+    { src: "/imagenes/instalaciones/Comedor6.webp", alt: "Área de mesas" },
+    { src: "/imagenes/instalaciones/Comedor4.webp", alt: "Ambiente interior" },
+    { src: "/imagenes/instalaciones/Comedor5.webp", alt: "Detalles del restaurante" },
+    { src: "/imagenes/instalaciones/comedor7.webp", alt: "Detalles del restaurante" },
+    { src: "/imagenes/instalaciones/comedor8.webp", alt: "Detalles del restaurante" },
   ],
   features: [
     "Desayunos incluidos en paquetes de hospedaje",
@@ -64,7 +64,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
 <BaseLayout
   lang="es"
   title={`${facility.title} | ${SITE.name}`}
-  description={facility.subtitle}
+  description={facility.subtitle} ogImage="/imagenes/instalaciones/Comedor.webp"
 >
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->

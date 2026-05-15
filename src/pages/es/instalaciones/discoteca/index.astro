@@ -6,12 +6,12 @@ const facility = {
   title: "Discoteca",
   subtitle:
     "Un espacio ideal para disfrutar música, compartir con amigos y vivir una experiencia diferente dentro de la hostería.",
-  heroImage: "/imagenes/instalaciones/Comedor2.jpg",
+  heroImage: "/imagenes/instalaciones/Comedor2.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/discoteca.jpeg",          alt: "Vista del espacio" },
-    { src: "/imagenes/instalaciones/discoteca3.jpeg", alt: "Ambiente nocturno" },
-    { src: "/imagenes/instalaciones/discoteca4.jpeg",    alt: "Zona de reunión" },
-    { src: "/imagenes/instalaciones/discoteca5.jpeg",        alt: "Área social" },
+    { src: "/imagenes/instalaciones/discoteca.webp",          alt: "Vista del espacio" },
+    { src: "/imagenes/instalaciones/discoteca3.webp", alt: "Ambiente nocturno" },
+    { src: "/imagenes/instalaciones/discoteca4.webp",    alt: "Zona de reunión" },
+    { src: "/imagenes/instalaciones/discoteca5.webp",        alt: "Área social" },
   ],
   features: [
     "Ambiente ideal para celebraciones y reuniones",
@@ -62,7 +62,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
 <BaseLayout
   lang="es"
   title={`${facility.title} | ${SITE.name}`}
-  description={facility.subtitle}
+  description={facility.subtitle} ogImage="/imagenes/instalaciones/Comedor2.webp"
 >
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->

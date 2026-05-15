@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,14 +13,14 @@ const pkg = {
   duration: "2 Noches / 3 Días",
   guests: "Desde 1 persona",
   availability: "Todo el año",
-  heroImage: "/imagenes/instalaciones/Amazonia2.jpeg",
+  heroImage: "/imagenes/instalaciones/Amazonia2.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Aventura2.jpeg",   alt: "Baños de Agua Santa" },
-    { src: "/imagenes/instalaciones/Amazonia.jpeg",    alt: "Selva amazónica" },
-    { src: "/imagenes/instalaciones/Aventura6.jpeg",   alt: "Tours en Baños" },
-    { src: "/imagenes/instalaciones/Amazonia4.jpeg",   alt: "Naturaleza tropical" },
-    { src: "/imagenes/instalaciones/Amazonia3.jpeg",   alt: "Biodiversidad amazónica" },
-    { src: "/imagenes/instalaciones/Amazonia6.jpeg",   alt: "Selva húmeda tropical" },
+    { src: "/imagenes/instalaciones/Aventura2.webp",   alt: "Baños de Agua Santa" },
+    { src: "/imagenes/instalaciones/Amazonia.webp",    alt: "Selva amazónica" },
+    { src: "/imagenes/instalaciones/Aventura6.webp",   alt: "Tours en Baños" },
+    { src: "/imagenes/instalaciones/Amazonia4.webp",   alt: "Naturaleza tropical" },
+    { src: "/imagenes/instalaciones/Amazonia3.webp",   alt: "Biodiversidad amazónica" },
+    { src: "/imagenes/instalaciones/Amazonia6.webp",   alt: "Selva húmeda tropical" },
   ],
   includes: [
     "Alojamiento 2 noches en Hostería Agoyán",
@@ -52,15 +53,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Paquete Aventura",       href: "/es/paquetes/aventura/",        image: "/imagenes/instalaciones/Aventura3.jpeg" },
-  { title: "Baños + Quilotoa",       href: "/es/paquetes/banos-quilotoa/",  image: "/imagenes/instalaciones/Quilotoa.jpeg" },
+  { title: "Paquete Aventura",       href: "/es/paquetes/aventura/",        image: "/imagenes/instalaciones/Aventura3.webp" },
+  { title: "Baños + Quilotoa",       href: "/es/paquetes/banos-quilotoa/",  image: "/imagenes/instalaciones/Quilotoa.webp" },
 ];
 
 const waText = `Hola, quiero información para reservar el ${pkg.title} en ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Amazonia2.webp">
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
@@ -192,7 +193,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
 
         <div class="relative pb-10" data-reveal>
           <img
-            src="/imagenes/instalaciones/Amazonia3.jpeg"
+            src="/imagenes/instalaciones/Amazonia3.webp"
             alt="Baños y Selva Amazónica"
             class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]"
             loading="lazy"
@@ -413,6 +414,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>

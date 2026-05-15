@@ -7,14 +7,14 @@ const facility = {
   eyebrow: "GASTRONOMY & FLAVOUR",
   subtitle:
     "Savour authentic flavours in a warm, welcoming atmosphere. Buffet breakfast, à la carte lunch and dinner, regional specialties and international cuisine — all with views of the surrounding nature.",
-  heroImage: "/imagenes/instalaciones/Comedor.jpg",
+  heroImage: "/imagenes/instalaciones/Comedor.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Familia.jpg",       alt: "Restaurant at Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/comedor7.jpeg",      alt: "Dining area " },
-    { src: "/imagenes/instalaciones/Comedor4.jpg", alt: "Dining with family" },
-    { src: "/imagenes/instalaciones/comedor8.jpeg",       alt: "Views the restaurant" },
-    { src: "/imagenes/instalaciones/arregloRestaurant.jpeg",       alt: "Views the restaurant" },
-    { src: "/imagenes/instalaciones/desayunoRestaurant.jpeg",       alt: "Views the restaurant" },
+    { src: "/imagenes/instalaciones/Familia.webp",       alt: "Restaurant at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/comedor7.webp",      alt: "Dining area " },
+    { src: "/imagenes/instalaciones/Comedor4.webp", alt: "Dining with family" },
+    { src: "/imagenes/instalaciones/comedor8.webp",       alt: "Views the restaurant" },
+    { src: "/imagenes/instalaciones/arregloRestaurant.webp",       alt: "Views the restaurant" },
+    { src: "/imagenes/instalaciones/desayunoRestaurant.webp",       alt: "Views the restaurant" },
   ],
   includes: [
     "Buffet breakfast with regional and international options",
@@ -42,15 +42,15 @@ const facility = {
 };
 
 const related = [
-  { title: "Wet Area",     href: "/en/facilities/areaHumedaEN/", image: "/imagenes/instalaciones/FullDay2.jpg" },
-  { title: "Green Spaces", href: "/en/facilities/areaVerdeEn/",  image: "/imagenes/instalaciones/AreasVerdes3.jpg" },
+  { title: "Wet Area",     href: "/en/facilities/areaHumedaEN/", image: "/imagenes/instalaciones/FullDay2.webp" },
+  { title: "Green Spaces", href: "/en/facilities/areaVerdeEn/",  image: "/imagenes/instalaciones/AreasVerdes3.webp" },
 ];
 
 const waText = `Hello, I'd like to make a reservation at the Restaurant of ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle}>
+<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle} ogImage="/imagenes/instalaciones/Comedor.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">

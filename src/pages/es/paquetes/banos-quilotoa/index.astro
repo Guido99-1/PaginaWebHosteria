@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,14 +13,14 @@ const pkg = {
   duration: "2 Noches / 3 Días",
   guests: "Desde 1 persona",
   availability: "Todo el año",
-  heroImage: "/imagenes/instalaciones/Quilotoa3.jpeg",
+  heroImage: "/imagenes/instalaciones/Quilotoa3.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/Aventura2.jpeg",   alt: "Baños de Agua Santa" },
-    { src: "/imagenes/instalaciones/Quilotoa2.jpeg",   alt: "Paisajes de los Andes" },
-    { src: "/imagenes/instalaciones/Aventura3.jpeg",   alt: "Naturaleza ecuatoriana" },
-    { src: "/imagenes/instalaciones/Premium4.jpeg",    alt: "Tours en Baños" },
-    { src: "/imagenes/instalaciones/Quilotoa.jpeg",    alt: "Laguna del Quilotoa" },
-    { src: "/imagenes/instalaciones/Cascada.jpg",      alt: "Cascadas de Baños" },
+    { src: "/imagenes/instalaciones/Aventura2.webp",   alt: "Baños de Agua Santa" },
+    { src: "/imagenes/instalaciones/Quilotoa2.webp",   alt: "Paisajes de los Andes" },
+    { src: "/imagenes/instalaciones/Aventura3.webp",   alt: "Naturaleza ecuatoriana" },
+    { src: "/imagenes/instalaciones/Premium4.webp",    alt: "Tours en Baños" },
+    { src: "/imagenes/instalaciones/Quilotoa.webp",    alt: "Laguna del Quilotoa" },
+    { src: "/imagenes/instalaciones/Cascada.webp",      alt: "Cascadas de Baños" },
   ],
   includes: [
     "Alojamiento 2 noches en Hostería Agoyán",
@@ -52,15 +53,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Baños + Selva",   href: "/es/paquetes/banos-selva/",   image: "/imagenes/instalaciones/Amazonia2.jpeg" },
-  { title: "Baños Extremo",   href: "/es/paquetes/banos-extremo/", image: "/imagenes/instalaciones/Extremo3.jpg" },
+  { title: "Baños + Selva",   href: "/es/paquetes/banos-selva/",   image: "/imagenes/instalaciones/Amazonia2.webp" },
+  { title: "Baños Extremo",   href: "/es/paquetes/banos-extremo/", image: "/imagenes/instalaciones/Extremo3.webp" },
 ];
 
 const waText = `Hola, quiero información para reservar el ${pkg.title} en ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="es" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Quilotoa3.webp">
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
@@ -146,7 +147,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
           </a>
         </div>
         <div class="relative pb-10" data-reveal>
-          <img src="/imagenes/instalaciones/Quilotoa.jpeg" alt="Baños y Quilotoa" class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]" loading="lazy" />
+          <img src="/imagenes/instalaciones/Quilotoa.webp" alt="Baños y Quilotoa" class="w-full rounded-[2rem] object-cover shadow-[0_20px_50px_rgba(0,0,0,0.10)]" loading="lazy" />
           <div class="absolute -bottom-2 left-6 max-w-[280px] rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
             <div class="flex items-center gap-2">
               <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-100">
@@ -316,6 +317,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>

@@ -7,12 +7,12 @@ const facility = {
   eyebrow: "FUN FOR EVERYONE",
   subtitle:
     "Challenge your friends and family in our game room with billiards, ping pong, board games and video games. Entertainment for all ages, all day long — the perfect place to keep the fun going.",
-  heroImage: "/imagenes/instalaciones/salonJuegos2.jpeg",
+  heroImage: "/imagenes/instalaciones/salonJuegos2.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/salonJuegos4.jpeg",       alt: "Game Room at Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/salonJuegos3.jpeg",      alt: "Family fun and entertainment" },
-    { src: "/imagenes/instalaciones/Familia4.jpg",       alt: "Group activities" },
-    { src: "/imagenes/instalaciones/salonJuegos5.jpeg", alt: "Recreation & nature" },
+    { src: "/imagenes/instalaciones/salonJuegos4.webp",       alt: "Game Room at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/salonJuegos3.webp",      alt: "Family fun and entertainment" },
+    { src: "/imagenes/instalaciones/Familia4.webp",       alt: "Group activities" },
+    { src: "/imagenes/instalaciones/salonJuegos5.webp", alt: "Recreation & nature" },
   ],
   includes: [
     "Billiards / pool table",
@@ -40,15 +40,15 @@ const facility = {
 };
 
 const related = [
-  { title: "Wet Area", href: "/en/facilities/areaHumedaEN/", image: "/imagenes/instalaciones/hidromasaje.jpg" },
-  { title: "Disco",    href: "/en/facilities/discotecaEN/",  image: "/imagenes/instalaciones/ExteriorSuites2.jpg" },
+  { title: "Wet Area", href: "/en/facilities/areaHumedaEN/", image: "/imagenes/instalaciones/hidromasaje.webp" },
+  { title: "Disco",    href: "/en/facilities/discotecaEN/",  image: "/imagenes/instalaciones/ExteriorSuites2.webp" },
 ];
 
 const waText = `Hello, I'd like more information about the ${facility.title} at ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle}>
+<BaseLayout lang="en" title={`${facility.title} | ${SITE.name}`} description={facility.subtitle} ogImage="/imagenes/instalaciones/salonJuegos2.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">

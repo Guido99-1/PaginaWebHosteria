@@ -1,4 +1,5 @@
 ---
+import FAQ from "../../../../components/FAQ.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import { SITE } from "../../../../config/site";
 
@@ -12,14 +13,14 @@ const pkg = {
   duration: "1 day",
   guests: "Individual or groups",
   availability: "All year round",
-  heroImage: "/imagenes/instalaciones/Piscina3.jpg",
+  heroImage: "/imagenes/instalaciones/Piscina3.webp",
   gallery: [
-    { src: "/imagenes/instalaciones/hidromasaje.jpg",        alt: "Full Day at Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/Turco.jpeg",       alt: "Recreational areas" },
-    { src: "/imagenes/instalaciones/FullDay.jpg",  alt: "Full Day at Hostería Agoyán" },
-    { src: "/imagenes/instalaciones/FullDay2.jpg",   alt: "Relaxation spaces" },
-    { src: "/imagenes/instalaciones/salonJuegos4.jpeg", alt: "Recreational areas" },
-    { src: "/imagenes/instalaciones/Garage3.jpg", alt: "Full Day at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/hidromasaje.webp",        alt: "Full Day at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/Turco.webp",       alt: "Recreational areas" },
+    { src: "/imagenes/instalaciones/FullDay.webp",  alt: "Full Day at Hostería Agoyán" },
+    { src: "/imagenes/instalaciones/FullDay2.webp",   alt: "Relaxation spaces" },
+    { src: "/imagenes/instalaciones/salonJuegos4.webp", alt: "Recreational areas" },
+    { src: "/imagenes/instalaciones/Garage3.webp", alt: "Full Day at Hostería Agoyán" },
   ],
   includes: [
     "Access to the pool throughout the day",
@@ -47,15 +48,15 @@ const pkg = {
 };
 
 const related = [
-  { title: "Romantic Package", href: "/en/packages/romantic/", image: "/imagenes/instalaciones/Pareja2.jpg" },
-  { title: "Family Stay",      href: "/en/packages/lodging/",  image: "/imagenes/instalaciones/Familia2.jpg" },
+  { title: "Romantic Package", href: "/en/packages/romantic/", image: "/imagenes/instalaciones/Pareja2.webp" },
+  { title: "Family Stay",      href: "/en/packages/lodging/",  image: "/imagenes/instalaciones/Familia2.webp" },
 ];
 
 const waText = `Hello, I'd like some information about booking the ${pkg.title} at ${SITE.name}.`;
 const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent(waText);
 ---
 
-<BaseLayout lang="en" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle}>
+<BaseLayout lang="en" title={`${pkg.title} | ${SITE.name}`} description={pkg.subtitle} ogImage="/imagenes/instalaciones/Piscina3.webp">
 
   <section class="relative -mx-4 sm:-mx-6 lg:-mx-8">
     <div class="relative h-[82vh] min-h-[600px] overflow-hidden">
@@ -286,6 +287,7 @@ const waUrl  = `https://wa.me/${SITE.whatsappNumber}?text=` + encodeURIComponent
     </div>
   </section>
 
+  <FAQ lang="es" />
 </BaseLayout>
 
 <style>
