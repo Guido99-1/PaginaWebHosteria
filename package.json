@@ -9,8 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
+    "glightbox": "^3.3.1",
     "swiper": "^12.1.2",
     "tailwindcss": "^4.2.1"
   },

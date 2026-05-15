@@ -107,6 +107,39 @@ const canonical = new URL(Astro.url.pathname, SITE.url).toString();
 
     <WhatsAppFloat lang={lang} />
 
+    <!-- GLightbox: lightbox para galerías -->
+    <script>
+      import GLightbox from 'glightbox';
+      import 'glightbox/dist/css/glightbox.min.css';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-gallery]').forEach((grid) => {
+          const groups = [...grid.querySelectorAll('.group.relative.overflow-hidden')];
+
+          groups.forEach((group, startAt) => {
+            const img = group.querySelector('img');
+            if (!img) return;
+
+            // Cursor zoom para indicar que es clickeable
+            (group as HTMLElement).style.cursor = 'zoom-in';
+
+            group.addEventListener('click', () => {
+              const elements = groups
+                .map((g) => g.querySelector('img'))
+                .filter(Boolean)
+                .map((i) => ({
+                  href: (i as HTMLImageElement).getAttribute('src') ?? '',
+                  alt:  (i as HTMLImageElement).getAttribute('alt')  ?? '',
+                  type: 'image' as const,
+                }));
+
+              GLightbox({ elements, startAt, touchNavigation: true, loop: true }).open();
+            });
+          });
+        });
+      });
+    </script>
+
     <!-- Micro-interacciones: reveal on scroll (ligero, sin librerías) -->
     <script>
       (() => {
