@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 import { SITE } from "../config/site";
+import "../styles/global.css";
 
 import Testimonials from "../components/Testimonials.astro";
 
@@ -119,9 +120,6 @@ const hrefEn = new URL(enPath, SITE.url).toString();
     <!-- Preconnect fonts (si usas Google Fonts, opcional) -->
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
 
     <!-- Google Analytics 4 — reemplaza G-XXXXXXXXXX con tu ID real -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
