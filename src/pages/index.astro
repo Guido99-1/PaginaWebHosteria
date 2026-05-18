@@ -1,3 +1,16 @@
 ---
-return Astro.redirect("/es/");
+// Redirect handled by IIS web.config — this is a fallback for local dev
 ---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0; url=/es/" />
+    <link rel="canonical" href="https://hosteriaagoyan.com/es/" />
+    <title>Hostería Agoyán — Redirigiendo...</title>
+    <script>window.location.replace("/es/");</script>
+  </head>
+  <body>
+    <a href="/es/">Ir a Hostería Agoyán</a>
+  </body>
+</html>
