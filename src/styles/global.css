@@ -3,12 +3,20 @@
 html {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  /* Elimina el delay de 300ms en taps de móvil */
+  touch-action: manipulation;
 }
 
 body {
   background: white;
   color: #0f172a;
   overflow-x: hidden;
+}
+
+/* Área mínima de toque para botones y links en móvil */
+button, a, [role="button"], summary {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .font-hero {

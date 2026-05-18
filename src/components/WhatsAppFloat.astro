@@ -560,19 +560,24 @@ const text = {
       closePopup();
     });
 
-    // Cerrar al hacer click fuera
+    // Cerrar al hacer click/tap fuera — solo si no es un tap en un botón/link
     document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
       if (
         popup.classList.contains("is-open") &&
-        !root.contains(e.target as Node)
+        !root.contains(target)
       ) {
+        // No interceptar si el tap es en un botón, link u otro elemento interactivo
+        if (target.closest('a, button, [role="button"]')) return;
         closePopup();
       }
     });
 
-    // Auto-abrir después de 3.5s si no fue descartado antes
-    if (!sessionStorage.getItem(DISMISSED_KEY)) {
-      setTimeout(openPopup, 3500);
+    // Auto-abrir solo en desktop (>= 768px) después de 4s
+    // En móvil el popup cubre contenido y bloquea la interacción
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    if (isDesktop && !sessionStorage.getItem(DISMISSED_KEY)) {
+      setTimeout(openPopup, 4000);
     }
   })();
 </script>

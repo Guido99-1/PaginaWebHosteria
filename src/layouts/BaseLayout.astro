@@ -225,7 +225,7 @@ const hrefEn = new URL(enPath, SITE.url).toString();
               }
             }
           },
-          { threshold: 0.12 }
+          { threshold: 0 }  // 0 = activa en cuanto 1px entra en pantalla
         );
 
         els.forEach((el) => io.observe(el));
