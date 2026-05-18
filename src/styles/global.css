@@ -40,15 +40,27 @@ button, a, [role="button"], summary {
 /* apilaba abajo y se veía muy cargado dentro del hero.        */
 /* El precio sigue visible en el botón de WhatsApp del hero.   */
 @media (max-width: 1023px) {
-  /* Ocultar price-card: en móvil la tarjeta de precio
-     se apilaba dentro del hero y se veía muy cargada */
+  /* Price card en móvil: fondo sólido oscuro (sin blur)
+     para que sea legible y no se vea transparente */
   .price-card {
-    display: none;
+    background: rgba(8, 18, 30, 0.96) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
   }
 
-  /* Hero de paquetes: reducir altura mínima en móvil
-     para que quede similar al hero de instalaciones */
+  /* Hero de paquetes: altura automática en móvil para
+     que quepa el texto + la price card sin recortarse */
   .pkg-hero {
-    min-height: 560px !important;
+    height: auto !important;
+    min-height: 100svh;
+    padding-bottom: 2rem;
+  }
+
+  /* El contenedor flex interno también debe ser auto */
+  .pkg-hero > .relative.z-10 {
+    height: auto !important;
+    min-height: 100svh;
+    padding-bottom: 2rem;
   }
 }
