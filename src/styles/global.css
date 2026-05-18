@@ -34,3 +34,21 @@ button, a, [role="button"], summary {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
   filter: brightness(1.12);
 }
+
+/* ── Paquetes: ocultar price-card en el hero en móvil/tablet ── */
+/* En desktop (lg+) aparece al lado del texto. En móvil se     */
+/* apilaba abajo y se veía muy cargado dentro del hero.        */
+/* El precio sigue visible en el botón de WhatsApp del hero.   */
+@media (max-width: 1023px) {
+  /* Ocultar price-card: en móvil la tarjeta de precio
+     se apilaba dentro del hero y se veía muy cargada */
+  .price-card {
+    display: none;
+  }
+
+  /* Hero de paquetes: reducir altura mínima en móvil
+     para que quede similar al hero de instalaciones */
+  .pkg-hero {
+    min-height: 560px !important;
+  }
+}
