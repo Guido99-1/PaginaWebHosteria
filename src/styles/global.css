@@ -40,27 +40,47 @@ button, a, [role="button"], summary {
 /* apilaba abajo y se veía muy cargado dentro del hero.        */
 /* El precio sigue visible en el botón de WhatsApp del hero.   */
 @media (max-width: 1023px) {
-  /* Price card en móvil: fondo sólido oscuro (sin blur)
-     para que sea legible y no se vea transparente */
+  /* Price card en móvil: efecto vidrio compacto */
   .price-card {
-    background: rgba(8, 18, 30, 0.96) !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border-color: rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.10) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    /* Compacto: reducir padding y espaciado */
+    padding: 1rem !important;
   }
 
-  /* Hero de paquetes: altura automática en móvil para
-     que quepa el texto + la price card sin recortarse */
+  /* Grid interior de la price card: más compacto */
+  .price-card .mt-6 {
+    margin-top: 0.75rem !important;
+  }
+  .price-card .mt-3 {
+    margin-top: 0.5rem !important;
+  }
+  .price-card .mt-5 {
+    margin-top: 0.75rem !important;
+  }
+  /* Celdas del grid (Duración, Personas, etc.) */
+  .price-card .rounded-2xl.p-3\.5 {
+    padding: 0.5rem 0.75rem !important;
+  }
+  /* Texto del precio más pequeño en móvil */
+  .price-card .text-6xl {
+    font-size: 2.5rem !important;
+    line-height: 1 !important;
+  }
+
+  /* Hero de paquetes: altura automática en móvil */
   .pkg-hero {
     height: auto !important;
     min-height: 100svh;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
   }
 
-  /* El contenedor flex interno también debe ser auto */
+  /* Contenedor interno también auto */
   .pkg-hero > .relative.z-10 {
     height: auto !important;
     min-height: 100svh;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
   }
 }
