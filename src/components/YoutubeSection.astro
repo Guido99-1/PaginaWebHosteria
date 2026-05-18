@@ -14,7 +14,7 @@ const videoUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=
   <!-- 🌄 Fondo con imagen -->
   <div class="absolute inset-0">
     {backgroundImage ? (
-      <img loading="lazy"
+      <img loading="eager"
         src={backgroundImage}
         alt="background"
         class="w-full h-full object-cover scale-110 blur-2xl brightness-75"

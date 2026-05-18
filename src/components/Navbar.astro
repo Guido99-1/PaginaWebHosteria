@@ -191,7 +191,7 @@ const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
             aria-label="Español"
             class={`flag-link ${isEs ? "flag-active" : ""}`}
           >
-            <img loading="lazy"
+            <img loading="eager"
               src="/flags/ecuador.png"
               alt="Bandera de Ecuador"
               class="h-4 w-6 rounded-sm object-cover"
@@ -203,7 +203,7 @@ const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
             aria-label="English"
             class={`flag-link ${!isEs ? "flag-active" : ""}`}
           >
-            <img loading="lazy"
+            <img loading="eager"
               src="/flags/usa.png"
               alt="Flag of United States"
               class="h-4 w-6 rounded-sm object-cover"
@@ -296,7 +296,7 @@ const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
 
         <div class="mt-3 flex items-center gap-3 px-4">
           <a href="/es/" class="flag-link" aria-label="Español">
-            <img loading="lazy"
+            <img loading="eager"
               src="/flags/ecuador.png"
               alt="Bandera de Ecuador"
               class="h-5 w-7 rounded-sm object-cover"
@@ -304,7 +304,7 @@ const contactHref = isEs ? "/es/contacto/" : "/en/contact/";
           </a>
 
           <a href="/en/" class="flag-link" aria-label="English">
-            <img loading="lazy"
+            <img loading="eager"
               src="/flags/usa.png"
               alt="Flag of United States"
               class="h-5 w-7 rounded-sm object-cover"
