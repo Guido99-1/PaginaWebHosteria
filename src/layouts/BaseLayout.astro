@@ -160,12 +160,12 @@ const hrefEn = new URL(enPath, SITE.url).toString();
 
   <body class="min-h-screen bg-white text-slate-900 antialiased">
     <!-- Fondo premium tipo “resort”: gradientes + textura sutil -->
-    <div class="relative mx-auto max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8">
-      <div class="absolute -top-48 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl"></div>
-      <div class="absolute top-40 -left-32 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-3xl"></div>
-      <div class="absolute -bottom-48 right-0 h-[620px] w-[820px] rounded-full bg-indigo-500/10 blur-3xl"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_45%)]"></div>
-      <div class="absolute inset-0 opacity-[0.08] [background-image:url('/noise.png')]"></div>
+    <div class=”pointer-events-none relative mx-auto max-w-7xl overflow-hidden px-4 sm:px-6 lg:px-8”>
+      <div class=”absolute -top-48 left-1/2 h-[560px] w-[900px] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl”></div>
+      <div class=”absolute top-40 -left-32 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-3xl”></div>
+      <div class=”absolute -bottom-48 right-0 h-[620px] w-[820px] rounded-full bg-indigo-500/10 blur-3xl”></div>
+      <div class=”absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_45%)]”></div>
+      <div class=”absolute inset-0 opacity-[0.08] [background-image:url('/noise.png')]”></div>
     </div>
 
     <Navbar lang={lang} />
